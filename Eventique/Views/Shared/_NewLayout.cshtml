@@ -1,0 +1,87 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_NewLayout</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/common-css/bootstrap.css" rel="stylesheet">
+    <link href="~/css/common-css/ionicons.css" rel="stylesheet">
+    <link href="~/css/common-css/layerslider.css" rel="stylesheet">
+    <link href="~/css/01-homepage/css/styles.css" rel="stylesheet">
+    <link href="~/css/01-homepage/css/responsive.css" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="top-menu">
+            <partial name="_LoginPartial" />
+            <div class="right-area">
+
+                <div class="src-area">
+                    <form action="post">
+                        <input class="src-input" type="text" placeholder="Search">
+                        <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+                    </form>
+                </div><!-- src-area -->
+
+                <ul class="social-icons">
+                    <li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
+                    <li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
+                    <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                    <li><a href="#"><i class="ion-social-vimeo-outline"></i></a></li>
+                    <li><a href="#"><i class="ion-social-pinterest-outline"></i></a></li>
+                </ul><!-- right-area -->
+
+            </div><!-- right-area -->
+
+        </div><!-- top-menu -->
+
+        <div class="middle-menu center-text"><a href="#" class="logo"><img src="~/Images/logo.png" alt="Logo Image"></a></div>
+
+        <div class="bottom-area">
+
+            <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+
+            <ul class="main-menu visible-on-click" id="main-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">FEATURED</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CATEGORIES</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <partial name="_LoginPartial" />
+            </ul><!-- main-menu -->
+
+
+
+        </div><!-- conatiner -->
+    </header>
+    <div class="">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/js/common-js/jquery-3.1.1.min.js"></script>
+    <script src="~/js/common-js/tether.min.js"></script>
+    <script src="~/js/common-js/bootstrap.js"></script>
+    <script src="~/js/common-js/layerslider.js"></script>
+    <script src="~/js/common-js/scripts.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/popper.js/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/ph.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

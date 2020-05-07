@@ -1,0 +1,68 @@
+﻿@model List<Photographer>
+@{
+    ViewData["Title"] = "TestView";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<div class="main-slider">
+    <div id="slider">
+
+        <div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:4000; transition2d:104; kenburnsscale:1.00;">
+            <img src="~/Images/slider-1-1600x800.jpg" class="ls-bg" alt="" />
+
+            <div class="slider-content ls-l" style="top:60%; left:30%;" data-ls="offsetyin:100%; offsetxout:-50%; durationin:800; delayin:100; durationout:400; parallaxlevel:0;">
+                <a class="btn" href="#">TRAVEL</a>
+                <h3 class="title"><b>Travel, Love, Live</b></h3>
+                <h6>29 October, 2017</h6>
+            </div>
+
+        </div><!-- ls-slide -->
+
+        <div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:4000; transition2d:104; kenburnsscale:1.00;">
+            <img src="~/Images/slider-2-1600x800.jpg" class="ls-bg" alt="" />
+
+            <div class="slider-content ls-l" style="top:60%; left:30%;" data-ls="offsetyin:100%; offsetxout:-50%; durationin:800; delayin:100; durationout:400; parallaxlevel:0;">
+                <a class="btn" href="#">TRAVEL</a>
+                <h3 class="title"><b>Travel, Love, Live</b></h3>
+                <h6>29 October, 2017</h6>
+            </div>
+
+        </div><!-- ls-slide -->
+
+    </div><!-- slider -->
+</div><!-- main-slider -->
+
+<section class="container" style="margin-top:200px">
+    <div class="row">
+        @{
+            for (int i = 0; i < 3; i++)
+            {
+                <div class="col-lg-4 col-md-12">
+                    <div class="sidebar-area">
+
+                        <div class="sidebar-section about-author center-text">
+                            <div class="author-image"><img src="@Model[i].ImagePath" alt="Autohr Image" style="width:150px; height:150px"></div>
+
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-vimeo-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-pinterest-outline"></i></a></li>
+                            </ul><!-- right-area -->
+
+                            <h4 class="author-name"><b class="light-color">@Model[i].Ph_Name</b></h4>
+                            <p>
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                dolore magnam aliquam quaerat voluptatem.
+                            </p>
+
+                            <a class="read-more-link" href="#"><b>READ MORE</b></a>
+                        </div>
+                    </div><!-- about-author -->
+                </div>
+            }
+
+        }
+    </div>
+</section>

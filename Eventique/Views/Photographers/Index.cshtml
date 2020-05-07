@@ -1,0 +1,11 @@
+﻿@model List<Photographer>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{ 
+    foreach (var item in Model)
+    {
+        <h1>@item.Ph_Name</h1>
+    }
+}

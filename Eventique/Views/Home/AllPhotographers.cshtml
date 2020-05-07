@@ -1,0 +1,35 @@
+﻿@model  List<Photographer>
+@{
+    ViewData["Title"] = "AllPhotographers";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+    <section class="best-photographers-sec container-fluid">
+        <header style="margin-bottom: 100px;">
+            <h1 style="font-weight: bold; text-align: center;">PHOTOGRAPHERS</h1>
+        </header>
+        @{
+            foreach (var item in Model)
+            {
+                <section class="blow">
+                    <div class="row">
+                        <div class="best-photographer photographer-pic col-sm-4" style="margin-top: 10px;">
+                                    <div class="img-container">
+                                        <img alt="photographer" title="photographer" src="@item.ImagePath" />
+                                        <a href="~/Home/PhoView/@item.Ph_Id" style="color:black; text-decoration:none"><p style="color:black">@item.Ph_Name</p></a>
+                                    </div>
+                        </div>
+                        <div class="best-photographer col-sm-8 container" style="margin-top: 80px;">
+                            <h2>Information</h2>
+                            <p>@item.Description</p>
+                        </div>
+                    </div>
+                </section>
+            }
+        }
+
+
+        <input name="" id="" class="btn btn-danger" type="button" value="More.."
+               style="margin-top: 100px; padding: 10px;margin-left: auto;margin-right: auto; text-align: center;display: block;">
+    </section>
+
+
