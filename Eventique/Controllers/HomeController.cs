@@ -26,10 +26,18 @@ namespace Eventique.Controllers
         }
         public IActionResult Index()
         {
-
             return View(context.Photographers.ToList());
         }
 
+        public IActionResult MyDeals()
+        {
+            return View();
+        }
+        public IActionResult AllDesigners()
+        {
+
+            return View();
+        }
         public IActionResult TestView()
         {
             return View(context.Photographers.ToList());

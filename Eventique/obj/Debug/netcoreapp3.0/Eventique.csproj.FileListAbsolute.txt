@@ -598,3 +598,5 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.pdb
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllDesigners.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllWeddingHalls.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\MyDeals.cshtml.g.cs

@@ -19,6 +19,8 @@
     <link href="~/css/common-css/layerslider.css" rel="stylesheet">
     <link href="~/css/01-homepage/css/styles.css" rel="stylesheet">
     <link href="~/css/01-homepage/css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/notifications_css/css/style.css">
+
 
 
 </head>
@@ -57,9 +59,18 @@
                 <li><a asp-controller="Home" asp-action="TestView">Home</a></li>
                 <li><a asp-controller="Home" asp-action="AllPhotographers">Photographers</a></li>
                 <li><a asp-controller="Home" asp-action="">Wedding Halls</a></li>
-                <li><a asp-controller="Home" asp-action="">Designer Shop</a></li>
+                <li><a asp-controller="Home" asp-action="AllDesigners">Designer Shop</a></li>
                 <li><a href="#">CONTACT</a></li>
-                <partial name="_LoginPartial" />
+                <li id="notification_li">
+                    <span id="notification_count">3</span>
+                    <a asp-controller="Home" asp-action="MyDeals" id="notificationLink"><i class="fa fa-handshake-o" style="color:black !important;font-size:35px"></i></a>
+                    <div id="notificationContainer">
+                        <div id="notificationTitle">Notifications</div>
+                        <div id="notificationsBody" class="notifications">
+                        </div>
+                        <div id="notificationFooter"><a href="#">See All</a></div>
+                    </div>
+                </li>
             </ul><!-- main-menu -->
 
 
@@ -167,7 +178,7 @@
 
                     <div class="m-b-25">
                         <a href="#" class="txt10">
-                            Choose your Wedding Hall now 
+                            Choose your Wedding Hall now
                         </a>
                         <a href="#" class="txt10">
                             select perfect Photographer
@@ -220,6 +231,9 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/ph.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/notifications_css/js/main.js"></script>
+
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
