@@ -29,7 +29,11 @@ namespace Eventique.Controllers
 
             return View(context.Photographers.ToList());
         }
+        public IActionResult designerShow()
+        {
 
+            return View(context.Designers.ToList());
+        }
         public IActionResult TestView()
         {
             return View(context.Photographers.ToList());

@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fady Ragaa\\source\\repos\\Eventique\\Eventique.csproj": {}
+    "E:\\finial\\Eventique\\Eventique\\Eventique.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fady Ragaa\\source\\repos\\Eventique\\Eventique.csproj": {
+    "E:\\finial\\Eventique\\Eventique\\Eventique.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fady Ragaa\\source\\repos\\Eventique\\Eventique.csproj",
+        "projectUniqueName": "E:\\finial\\Eventique\\Eventique\\Eventique.csproj",
         "projectName": "Eventique",
-        "projectPath": "C:\\Users\\Fady Ragaa\\source\\repos\\Eventique\\Eventique.csproj",
-        "packagesPath": "C:\\Users\\Fady Ragaa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fady Ragaa\\source\\repos\\Eventique\\obj\\",
+        "projectPath": "E:\\finial\\Eventique\\Eventique\\Eventique.csproj",
+        "packagesPath": "C:\\Users\\magdy\\.nuget\\packages\\",
+        "outputPath": "E:\\finial\\Eventique\\Eventique\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Fady Ragaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\magdy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,10 +41,6 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
-            "Microsoft.AspNet.Mvc": {
-              "target": "Package",
-              "version": "[5.2.7, )"
-            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.0.0, )"
@@ -97,6 +96,14 @@
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[3.0.3, 3.0.3]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {
