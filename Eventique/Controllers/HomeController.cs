@@ -35,6 +35,11 @@ namespace Eventique.Controllers
             return View(context.Photographers.ToList());
         }
 
+        public IActionResult AllWeddingHalls()
+        {
+            return View(context.Hotels.ToList());
+        }
+
         public IActionResult AllPhotographers()
         {
             return View(context.Photographers.ToList());
