@@ -166,9 +166,12 @@ E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Details
 E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Edit.cshtml.g.cs
 E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Index.cshtml.g.cs
 E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\Index.cshtml.g.cs
+E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllDesigners.cshtml.g.cs
 E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllPhotographers.cshtml.g.cs
+E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllWeddingHalls.cshtml.g.cs
 E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\designerShow.cshtml.g.cs
 E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
+E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\MyDeals.cshtml.g.cs
 E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\PhoView.cshtml.g.cs
 E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\Privacy.cshtml.g.cs
 E:\finial\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\TestView.cshtml.g.cs

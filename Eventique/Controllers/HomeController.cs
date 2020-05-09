@@ -26,7 +26,6 @@ namespace Eventique.Controllers
         }
         public IActionResult Index()
         {
-
             return View(context.Photographers.ToList());
         }
         public IActionResult designerShow()
@@ -34,9 +33,24 @@ namespace Eventique.Controllers
 
             return View(context.Designers.ToList());
         }
+        public IActionResult MyDeals()
+        {
+            return View();
+        }
+        public IActionResult AllDesigners()
+        {
+
+            return View();
+
+        }
         public IActionResult TestView()
         {
             return View(context.Photographers.ToList());
+        }
+
+        public IActionResult AllWeddingHalls()
+        {
+            return View(context.Hotels.ToList());
         }
 
         public IActionResult AllPhotographers()

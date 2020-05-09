@@ -6,8 +6,22 @@
 
 @section Styles{
 
-         <link href="~/css/allphotogrphersStyle.css" rel="stylesheet" />
-   }
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="icon" type="image/png" href="~/Images/newLogo.png" />
+    <link rel="stylesheet" type="text/css" href="~/pato/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/fonts/themify/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/vendor/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/vendor/lightbox2/css/lightbox.min.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/css/main.css">
+    <link href="~/css/allphotogrphersStyle.css" rel="stylesheet" />
+}
 <section class="rooms-area section-padding-100-0" style="margin-top:250px;">
     <div class="container">
         <div class="row justify-content-center">
@@ -19,9 +33,6 @@
                 </div>
             </div>
         </div>
-
-        
-
         <div class="row justify-content-center">
             @{
                 foreach (var item in Model)
@@ -43,52 +54,31 @@
                             <a href="~/Home/PhoView/@item.Ph_Id" class="book-room-btn btn palatin-btn">Go To Profile </a>
                         </div>
                     </div>
-                    } 
                 }
-        </div> 
+            }
+        </div>
     </div>
 </section>
 
-
-@*<section class="best-photographers-sec container-fluid">*@
-
-
-    @*@{
-            foreach (var item in Model)
-            {
-                <section class="blow">
-                    <div class="row">
-                        <div class="best-photographer photographer-pic col-sm-4" style="margin-top: 10px;">
-                                    <div class="img-container">
-                                        <img alt="photographer" title="photographer" src="@item.ImagePath" />
-                                        <a href="~/Home/PhoView/@item.Ph_Id" style="color:black; text-decoration:none"><p style="color:black">@item.Ph_Name</p></a>
-                                    </div>
-                        </div>
-                        <div class="best-photographer col-sm-8 container" style="margin-top: 80px;">
-                            <h2>Information</h2>
-                            <p>@item.Description</p>
-                        </div>
-                    </div>
-                </section>
-            }
-        }*@
-
-
     <input name="" id="" class="btn btn-danger" type="button" value="More.."
            style="margin-top: 100px; padding: 10px;margin-left: auto;margin-right: auto; text-align: center;display: block;">
-@*</section>*@
+
+
+<input name="" id="" class="btn btn-danger" type="button" value="More.."
+       style="margin-top: 100px; padding: 10px;margin-left: auto;margin-right: auto; text-align: center;display: block;">
+
 
 
 @section Scripts{
 
-<script src="~/js/jquery/jquery-2.2.4.min.js"></script>
-<!-- Popper js -->
-<script src="~/js/bootstrap/popper.min.js"></script>
-<!-- Bootstrap js -->
-<script src="~/js/bootstrap/bootstrap.min.js"></script>
-<!-- All Plugins js -->
-<script src="~/js/plugins/plugins.js"></script>
-<!-- Active js -->
-<script src="~/js/active.js"></script>
+    <script src="~/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="~/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="~/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="~/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="~/js/active.js"></script>
 }
 
