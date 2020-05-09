@@ -24,14 +24,19 @@ namespace Eventique.Controllers
             context = _context;
             Environment = _environment;
         }
-        public IActionResult Index()
-        {
-            return View(context.Photographers.ToList());
-        }
+        //public IActionResult Index()
+        //{
+        //    return View(context.Photographers.ToList());
+        //}
         public IActionResult designerShow()
         {
 
             return View(context.Designers.ToList());
+        }
+        public IActionResult PhotoghrapherShow()
+        {
+
+            return View(context.Photographers.ToList());
         }
         public IActionResult MyDeals()
         {
