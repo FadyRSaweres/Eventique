@@ -13,6 +13,10 @@
     <WebStackScaffolding_DbContextTypeFullName>Eventique.Data.ApplicationDbContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
+
+    <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_designerLayout.cshtml</WebStackScaffolding_LayoutPageFile>
+
     <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_NewLayout.cshtml</WebStackScaffolding_LayoutPageFile>
+
   </PropertyGroup>
 </Project>
