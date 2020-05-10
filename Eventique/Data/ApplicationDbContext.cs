@@ -16,6 +16,8 @@ namespace Eventique.Data
         public DbSet<WeddingHall> Hotels { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<InvitationCard> InvitationCards{ get; set; }
 
 
 

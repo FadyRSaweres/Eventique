@@ -28,19 +28,40 @@ namespace Eventique.Controllers
         {
             return View(context.Photographers.ToList());
         }
-        public IActionResult designerShow()
+        public IActionResult designerShow(int id)
+        {
+
+            Designer p = new Designer();
+            p = context.Designers.Where(p => p.ID == id).FirstOrDefault();
+            context.Reviews.ToList();
+            context.InvitationCards.ToList();
+            return View(p);
+        }
+
+        //public IActionResult getOneDesigner(int id)
+        //{
+        //    Designer p = new Designer();
+        //    p = context.Designers.Where(p => p.ID == id).FirstOrDefault();
+        //    context.Reviews.ToList();
+        //    context.InvitationCards.ToList();
+        //    return View(p);
+        //}
+        public IActionResult DedignerProfile()
         {
 
             return View(context.Designers.ToList());
         }
+
+
+
         public IActionResult MyDeals()
         {
             return View();
         }
         public IActionResult AllDesigners()
         {
-
-            return View();
+            context.Reviews.ToList();
+            return View(context.Designers.ToList());
 
         }
         public IActionResult TestView()

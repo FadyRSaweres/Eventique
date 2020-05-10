@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Designer>
 @{
     ViewData["Title"] = "AllDesigners";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
@@ -24,131 +24,29 @@
             </div>
         </div>
     </div>
-    <div class="blog-card" style="position:relative;margin-top:50px">
-        <div class="meta">
-            <div class="photo" style="background-image: url(../Images/black.jpg)"></div>
-            <ul class="details">
-                <li class="author"><a href="#">John Doe</a></li>
-                <li class="date">Aug. 24, 2015</li>
-                <li class="tags">
-                    <ul>
-                        <li><a href="#">Learn</a></li>
-                        <li><a href="#">Code</a></li>
-                        <li><a href="#">HTML</a></li>
-                        <li><a href="#">CSS</a></li>
+    @{
+        foreach (var item in Model)
+        {
+            <div class="blog-card" style="position:relative;margin-top:50px">
+                <div class="meta">
+                    <div class="photo" style="background-image: url(..@item.Designer_ImgPath)"></div>
+                    <ul class="details">
+                        <li class="author"><a href="#">@item.ShopName</a></li>
+                        <li class="date">Aug. 24, 2015</li>
                     </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="description">
-            <h1>Learning to Code</h1>
-            <h2>Opening a door to the future</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
-            <p class="read-more">
-                <a href="#">Read More</a>
-            </p>
-        </div>
-    </div>
-    <div class="blog-card" style="position:relative">
-        <div class="meta">
-            <div class="photo" style="background-image: url(../Images/Desi.jpg)"></div>
-            <ul class="details">
-                <li class="author"><a href="#">John Doe</a></li>
-                <li class="date">Aug. 24, 2015</li>
-                <li class="tags">
-                    <ul>
-                        <li><a href="#">Learn</a></li>
-                        <li><a href="#">Code</a></li>
-                        <li><a href="#">HTML</a></li>
-                        <li><a href="#">CSS</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="description">
-            <h1>Learning to Code</h1>
-            <h2>Opening a door to the future</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
-            <p class="read-more">
-                <a href="#">Read More</a>
-            </p>
-        </div>
-    </div>
-    <div class="blog-card" style="position:relative">
-        <div class="meta">
-            <div class="photo" style="background-image: url(../Images/Desi02.png)"></div>
-            <ul class="details">
-                <li class="author"><a href="#">John Doe</a></li>
-                <li class="date">Aug. 24, 2015</li>
-                <li class="tags">
-                    <ul>
-                        <li><a href="#">Learn</a></li>
-                        <li><a href="#">Code</a></li>
-                        <li><a href="#">HTML</a></li>
-                        <li><a href="#">CSS</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="description">
-            <h1>Learning to Code</h1>
-            <h2>Opening a door to the future</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
-            <p class="read-more">
-                <a href="#">Read More</a>
-            </p>
-        </div>
-    </div>
-    <div class="blog-card" style="position:relative">
-        <div class="meta">
-            <div class="photo" style="background-image: url(../Images/Desi03.jpg)"></div>
-            <ul class="details">
-                <li class="author"><a href="#">John Doe</a></li>
-                <li class="date">Aug. 24, 2015</li>
-                <li class="tags">
-                    <ul>
-                        <li><a href="#">Learn</a></li>
-                        <li><a href="#">Code</a></li>
-                        <li><a href="#">HTML</a></li>
-                        <li><a href="#">CSS</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="description">
-            <h1>Learning to Code</h1>
-            <h2>Opening a door to the future</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
-            <p class="read-more">
-                <a href="#">Read More</a>
-            </p>
-        </div>
-    </div>
-    <div class="blog-card" style="position:relative">
-        <div class="meta">
-            <div class="photo" style="background-image: url(../Images/Desi04.jpg)"></div>
-            <ul class="details">
-                <li class="author"><a href="#">John Doe</a></li>
-                <li class="date">Aug. 24, 2015</li>
-                <li class="tags">
-                    <ul>
-                        <li><a href="#">Learn</a></li>
-                        <li><a href="#">Code</a></li>
-                        <li><a href="#">HTML</a></li>
-                        <li><a href="#">CSS</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="description">
-            <h1>Learning to Code</h1>
-            <h2>Opening a door to the future</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
-            <p class="read-more">
-                <a href="#">Read More</a>
-            </p>
-        </div>
-    </div>
+                </div>
+                <div class="description">
+                    <h1>@item.ShopName</h1>
+                    <h2>Opening a door to the future</h2>
+                    <p> @item.Offers</p>
+                    <p class="read-more">
+                        <a href="~/Home/designerShow/@item.ID">Go To Profile</a>
+                    </p>
+                </div>
+            </div>
+
+        }
+    }
 </section>
 @section Scripts {
     <script type="text/javascript" src="~/pato/vendor/jquery/jquery-3.2.1.min.js"></script>

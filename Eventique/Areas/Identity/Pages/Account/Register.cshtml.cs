@@ -117,7 +117,25 @@ namespace Eventique.Areas.Identity.Pages.Account
                             member.Users = user;
                             context.Members.Add(member);
                             context.SaveChanges();
-                            returnUrl = "~/Home/index/" +member.ID;
+                            returnUrl = "~/Home/TestView";
+                        }
+                        else if (Input.Role == "Designer")
+                        {
+                            Designer designer = new Designer();
+                            designer.Name = user.UserName;
+                            designer.Users = user;
+                            context.Designers.Add(designer);
+                            context.SaveChanges();
+                            returnUrl = "~/Home/TestView";
+                        }
+                        else if (Input.Role == "WeddingHall")
+                        {
+                            WeddingHall wh = new WeddingHall();
+                            wh.Name = user.UserName;
+                            wh.Users = user;
+                            context.Hotels.Add(wh);
+                            context.SaveChanges();
+                            returnUrl = "~/Home/TestView/";
                         }
                         return LocalRedirect(returnUrl);
                     }
