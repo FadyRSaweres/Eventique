@@ -46,7 +46,11 @@ namespace Eventique.Controllers
         //    context.InvitationCards.ToList();
         //    return View(p);
         //}
-        public IActionResult DedignerProfile()
+        //public IActionResult DedignerProfile()
+        //{
+        //    return View(context.Photographers.ToList());
+        //}
+        public IActionResult designerShow()
         {
 
             return View(context.Designers.ToList());
@@ -54,6 +58,11 @@ namespace Eventique.Controllers
 
 
 
+        public IActionResult PhotoghrapherShow()
+        {
+
+            return View(context.Photographers.ToList());
+        }
         public IActionResult MyDeals()
         {
             return View();
