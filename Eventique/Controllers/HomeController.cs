@@ -28,7 +28,11 @@ namespace Eventique.Controllers
         {
             return View(context.Photographers.ToList());
         }
+        public IActionResult designerShow()
+        {
 
+            return View(context.Designers.ToList());
+        }
         public IActionResult MyDeals()
         {
             return View();
@@ -37,6 +41,7 @@ namespace Eventique.Controllers
         {
 
             return View();
+
         }
         public IActionResult TestView()
         {
@@ -53,6 +58,14 @@ namespace Eventique.Controllers
             return View(context.Photographers.ToList());
         }
 
+        public IActionResult TestPhoView(int id)
+        {
+            Photographer p = new Photographer();
+            p = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
+            context.Albums.ToList();
+            context.Images.ToList();
+            return View(p);
+        }
 
         public IActionResult PhoView(int id)
         {

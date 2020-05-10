@@ -168,6 +168,7 @@ E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Vie
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllDesigners.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllPhotographers.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllWeddingHalls.cshtml.g.cs
+E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\designerShow.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\MyDeals.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\PhoView.cshtml.g.cs
@@ -185,11 +186,13 @@ E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Vie
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CustomLayout.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CustomPhotographer.cshtml.g.cs
+E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_designerLayout.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LoginLayout.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_NewLayout.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\View.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\_ViewImports.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\_ViewStart.cshtml.g.cs
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorTargetAssemblyInfo.cache
@@ -201,3 +204,6 @@ E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticweb
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.dll
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.pdb
 E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.genruntimeconfig.cache
+E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\TestPhoView.cshtml.g.cs
+E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_phoViewLayout.cshtml.g.cs
+E:\Final project EVENTIQUE\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
