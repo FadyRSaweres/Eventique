@@ -194,6 +194,9 @@ namespace Eventique.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("DesignerID")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Img_Id")
                         .HasColumnType("int");
 
@@ -204,6 +207,8 @@ namespace Eventique.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Inv_Id");
+
+                    b.HasIndex("DesignerID");
 
                     b.HasIndex("Img_Id");
 
@@ -693,6 +698,10 @@ namespace Eventique.Data.Migrations
 
             modelBuilder.Entity("Eventique.Models.InvitationCard", b =>
                 {
+                    b.HasOne("Eventique.Models.Designer", null)
+                        .WithMany("Invitations")
+                        .HasForeignKey("DesignerID");
+
                     b.HasOne("Eventique.Models.Image", "Img")
                         .WithMany()
                         .HasForeignKey("Img_Id");

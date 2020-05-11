@@ -88,6 +88,24 @@ namespace Eventique.Controllers
             return View(context.Photographers.ToList());
         }
 
+        public IActionResult TestDesiView(int id)
+        {
+            Designer D = new Designer();
+            D = context.Designers.Where(d => d.ID == id).FirstOrDefault();
+            context.Albums.ToList();
+            context.Images.ToList();
+            context.InvitationCards.ToList();
+            context.Users.ToList();
+            return View(D);
+        }
+        public IActionResult TestPhoView(int id)
+        {
+            Photographer p = new Photographer();
+            p = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
+            context.Albums.ToList();
+            context.Images.ToList();
+            return View(p);
+        }
 
         public IActionResult PhoView(int id)
         {
