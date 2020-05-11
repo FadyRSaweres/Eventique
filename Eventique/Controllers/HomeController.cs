@@ -28,10 +28,40 @@ namespace Eventique.Controllers
         {
             return View(context.Photographers.ToList());
         }
+        public IActionResult designerShow(int id)
+        {
+
+            Designer p = new Designer();
+            p = context.Designers.Where(p => p.ID == id).FirstOrDefault();
+            context.Reviews.ToList();
+            context.InvitationCards.ToList();
+            return View(p);
+        }
+
+        //public IActionResult getOneDesigner(int id)
+        //{
+        //    Designer p = new Designer();
+        //    p = context.Designers.Where(p => p.ID == id).FirstOrDefault();
+        //    context.Reviews.ToList();
+        //    context.InvitationCards.ToList();
+        //    return View(p);
+        //}
+        //public IActionResult DedignerProfile()
+        //{
+        //    return View(context.Photographers.ToList());
+        //}
         public IActionResult designerShow()
         {
 
             return View(context.Designers.ToList());
+        }
+
+
+
+        public IActionResult PhotoghrapherShow()
+        {
+
+            return View(context.Photographers.ToList());
         }
         public IActionResult MyDeals()
         {
@@ -39,8 +69,8 @@ namespace Eventique.Controllers
         }
         public IActionResult AllDesigners()
         {
-
-            return View();
+            context.Reviews.ToList();
+            return View(context.Designers.ToList());
 
         }
         public IActionResult TestView()
@@ -58,6 +88,16 @@ namespace Eventique.Controllers
             return View(context.Photographers.ToList());
         }
 
+        public IActionResult TestDesiView(int id)
+        {
+            Designer D = new Designer();
+            D = context.Designers.Where(d => d.ID == id).FirstOrDefault();
+            context.Albums.ToList();
+            context.Images.ToList();
+            context.InvitationCards.ToList();
+            context.Users.ToList();
+            return View(D);
+        }
         public IActionResult TestPhoView(int id)
         {
             Photographer p = new Photographer();
