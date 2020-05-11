@@ -24,7 +24,29 @@ namespace Eventique.Controllers
             context = _context;
             Environment = _environment;
         }
-        //public IActionResult Index()
+        public IActionResult Index()
+        {
+            return View(context.Photographers.ToList());
+        }
+        public IActionResult designerShow(int id)
+        {
+
+            Designer p = new Designer();
+            p = context.Designers.Where(p => p.ID == id).FirstOrDefault();
+            context.Reviews.ToList();
+            context.InvitationCards.ToList();
+            return View(p);
+        }
+
+        //public IActionResult getOneDesigner(int id)
+        //{
+        //    Designer p = new Designer();
+        //    p = context.Designers.Where(p => p.ID == id).FirstOrDefault();
+        //    context.Reviews.ToList();
+        //    context.InvitationCards.ToList();
+        //    return View(p);
+        //}
+        //public IActionResult DedignerProfile()
         //{
         //    return View(context.Photographers.ToList());
         //}
@@ -33,6 +55,9 @@ namespace Eventique.Controllers
 
             return View(context.Designers.ToList());
         }
+
+
+
         public IActionResult PhotoghrapherShow()
         {
 
@@ -44,8 +69,8 @@ namespace Eventique.Controllers
         }
         public IActionResult AllDesigners()
         {
-
-            return View();
+            context.Reviews.ToList();
+            return View(context.Designers.ToList());
 
         }
         public IActionResult TestView()

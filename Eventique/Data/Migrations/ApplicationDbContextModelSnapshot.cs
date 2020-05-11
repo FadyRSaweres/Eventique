@@ -207,7 +207,7 @@ namespace Eventique.Data.Migrations
 
                     b.HasIndex("Img_Id");
 
-                    b.ToTable("InvitationCard");
+                    b.ToTable("InvitationCards");
                 });
 
             modelBuilder.Entity("Eventique.Models.Member", b =>
@@ -353,7 +353,7 @@ namespace Eventique.Data.Migrations
 
                     b.HasIndex("WeddingHallID");
 
-                    b.ToTable("Review");
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Eventique.Models.WeddingHall", b =>
@@ -375,6 +375,9 @@ namespace Eventique.Data.Migrations
                     b.Property<string>("HallType")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Hall_ImgPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<float>("Hall_Price")
                         .HasColumnType("real");
 
@@ -391,9 +394,14 @@ namespace Eventique.Data.Migrations
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
+                    b.Property<string>("UsersId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("ID");
 
                     b.HasIndex("AlbumAl_Id");
+
+                    b.HasIndex("UsersId");
 
                     b.ToTable("Hotels");
                 });
@@ -739,6 +747,10 @@ namespace Eventique.Data.Migrations
                     b.HasOne("Eventique.Models.Album", "Album")
                         .WithMany()
                         .HasForeignKey("AlbumAl_Id");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersId");
                 });
 
             modelBuilder.Entity("Eventique.Models.WeddingHallsRequest", b =>

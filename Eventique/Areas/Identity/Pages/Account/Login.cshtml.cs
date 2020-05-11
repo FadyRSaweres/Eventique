@@ -104,7 +104,7 @@ namespace Eventique.Areas.Identity.Pages.Account
                     else if(role.Contains("User"))
                     {
                         Member m = context.Members.Where(me => me.Users.Id == user.Id).FirstOrDefault();
-                        returnUrl = "~/Home/index/";
+                        returnUrl = "~/Home/TestView";
 
                     }
                     else if(role.Contains("Admin"))

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Eventique.Models
         [MaxLength(50)]
         public string Name { get; set; }
         public int PhoneNumber { get; set; }
+        public string Hall_ImgPath { get; set; }
         public string Address { get; set; }
         public float Hall_Price { get; set; }
         public string Offers { get; set; }
@@ -23,5 +25,7 @@ namespace Eventique.Models
         public List<AvailableDate> AvailbleDates { get; set; }
         public Album Album { get; set; }
         public List<WeddingHallsRequest> HotelRequest { get; set; }
+        public IdentityUser Users { get; set; }
+
     }
 }
