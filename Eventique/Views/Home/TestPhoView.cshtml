@@ -6,7 +6,7 @@
 
 
     <div id="colorlib-main">
-        <div class="hero-wrap js-fullheight" style="background-image: url(/Images/bg_1.jpg);" data-stellar-background-ratio="0.5">
+        <div class="hero-wrap js-fullheight" id="AboutSEC" style="background-image: url(/Images/bg_1.jpg);" data-stellar-background-ratio="0.5">
             <div class="overlay"></div>
             <div class="js-fullheight d-flex justify-content-center align-items-center">
                 <div class="col-md-8 text text-center">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <section class="ftco-section">
+        <section class="ftco-section" id="GallerySEC">
             <div class="container">
                 <div class="row justify-content-center mb-5 pb-2">
                     <div class="col-md-7 heading-section text-center ftco-animate">
@@ -67,9 +67,9 @@
                                 j++;
                             }
                         }
-                        }
+                    }
                 </div>
-                <!-- The Modal/Lightbox -->
+                <!------------------------ The Modal/Lightbox ------------------------------>
                 @{
                     int i = 0;
                     if (Model.ListAlbum != null)
@@ -114,7 +114,46 @@
                 }
             </div>
         </section>
-        <section class="ftco-section contact-section">
+        <!-----------------------------------End The Modal/Lightbox------------------------------------------------>
+
+        <section class="ftco-section-2" id="OfferSEC">
+            <div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2 class="mb-4">Offers</h2>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-5 pb-2">
+                <p>@Model.Ph_Offers</p>
+            </div>
+        </section>
+
+        <section class="ftco-section-2" id="ReviewSEC">
+            <div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2 class="mb-4">Review</h2>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                </div>
+            </div>
+            <form action="#">
+                <div class="form-group row justify-content-center">
+                    <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Quality">
+                </div>
+                <div class="form-group row justify-content-center">
+                    <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Time Commitment">
+                </div>
+                <div class="form-group row justify-content-center">
+                    <input type="number" class="form-control col-md-4" placeholder="Deliver Commitmnent">
+                </div>
+                <div class="form-group row justify-content-center">
+                    <textarea name="" id="" cols="15" rows="4" class="form-control col-md-4" placeholder="Comment"></textarea>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <input type="submit" value="Post Your Review" class="btn btn-primary py-3 px-5">
+                </div>
+            </form>
+        </section>
+        <section class="ftco-section contact-section" id="ContactSEC">
             <div class="container">
                 <div class="row d-flex mb-5 contact-info">
                     <div class="col-md-12 mb-4">

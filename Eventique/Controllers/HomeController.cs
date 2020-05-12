@@ -10,6 +10,7 @@ using Eventique.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Identity;
 
 namespace Eventique.Controllers
 {
@@ -18,11 +19,14 @@ namespace Eventique.Controllers
         List<string> picList = new List<string>();
         private IHostingEnvironment Environment;
         private readonly ApplicationDbContext context;
+        
 
         public HomeController(ApplicationDbContext _context , IHostingEnvironment _environment)
         {
             context = _context;
             Environment = _environment;
+            
+
         }
         public IActionResult Index()
         {
@@ -36,6 +40,17 @@ namespace Eventique.Controllers
             context.Reviews.ToList();
             context.InvitationCards.ToList();
             return View(p);
+        }
+
+        public IActionResult MyDeals(string id)
+        {
+            context.Photographers.ToList();
+            context.Hotels.ToList();
+            context.Designers.ToList();
+            ViewData["phoRequest"]= context.PhotographerRequests.Where(p => p.RequestUser.Users.Id == id).ToList();
+            ViewData["WeddRequest"] = context.WeddingHallsRequests.Where(w => w.RequestUser.Users.Id == id).ToList();
+            ViewData["DesiRequest"] = context.DesignerRequests.Where(d => d.RequestUser.Users.Id == id).ToList();
+            return View();
         }
 
         //public IActionResult getOneDesigner(int id)
@@ -60,13 +75,9 @@ namespace Eventique.Controllers
 
         public IActionResult PhotoghrapherShow()
         {
-
             return View(context.Photographers.ToList());
         }
-        public IActionResult MyDeals()
-        {
-            return View();
-        }
+
         public IActionResult AllDesigners()
         {
             context.Reviews.ToList();

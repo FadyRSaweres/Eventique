@@ -37,85 +37,102 @@
         </div>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
-<!-- Shoping Cart Section Begin -->
+
+@*Breadcrumb Section End
+    Shoping Cart Section Begin*@
 <section class="shoping-cart spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Deal From</th>
-                                <th scope="col">Deal Message</th>
-                                <th scope="col"> Price Deal</th>
-                                <th scope="col">Deal Status</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="~/Images/person2.jpg" style="width:50px;height:50px" alt="">
-                                    <h5>Ahmed Khaled</h5>
-                                </td>
-                                <td>
-                                    your booking date is <date>12/12/2020</date>
-                                </td>
-                                <td>
-                                    1500 LE
-                                </td>
-                                <td>
-                                    Pendeing ...
-                                </td>
-                                <td>
-                                    <span><i class="fa fa-close"></i></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="~/Images/person2.jpg" style="width:50px;height:50px" alt="">
-                                    <h5>Ahmed Khaled</h5>
-                                </td>
-                                <td>
-                                    your booking date is <date>12/12/2020</date>
-                                </td>
-                                <td>
-                                    1500 LE
-                                </td>
-                                <td>
-                                    Pendeing ...
-                                </td>
-                                <td>
-                                    <span><i class="fa fa-close"></i></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="~/Images/person2.jpg" style="width:50px;height:50px" alt="">
-                                    <h5>Ahmed Khaled</h5>
-                                </td>
-                                <td>
-                                    your booking date is <date>12/12/2020</date>
-                                </td>
-                                <td>
-                                    1500 LE
-                                </td>
-                                <td>
-                                    Pendeing ...
-                                </td>
-                                <td>
-                                    <span><i class="fa fa-close"></i></span>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                    @{
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Deal with</th>
+                                    <th scope="col">Deal Date</th>
+                                    <th scope="col">Deal Price</th>
+                                    <th scope="col">Deal Message</th>
+                                    <th scope="col">Deal Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewData["phoRequest"] as IEnumerable<Eventique.Models.PhotographerRequest>)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="" style="width:50px;height:50px" alt="">
+                                            <h5>@item.RequestPhotographer.Ph_Name</h5>
+                                        </td>
+                                        <td>
+                                            <date>@item.Date</date>
+                                        </td>
+                                        <td>
+                                            @item.RequestPhotographer.Ph_Price
+                                        </td>
+                                        <td>
+                                            @item.Message
+                                        </td>
+                                        <td>
+                                            @item.Status
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
+<section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="">
+                    @{
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Deal with</th>
+                                    <th scope="col">Deal Date</th>
+                                    <th scope="col">Deal Price</th>
+                                    <th scope="col">Deal Message</th>
+                                    <th scope="col">Deal Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item2 in ViewData["WeddRequest"] as IEnumerable<Eventique.Models.WeddingHallsRequest>)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="" style="width:50px;height:50px" alt="">
+                                            <h5>@item2.RequestHotel.Name</h5>
+                                        </td>
+                                        <td>
+                                            <date>@item2.Date</date>
+                                        </td>
+                                        <td>
+                                            @item2.RequestHotel.Hall_Price
+                                        </td>
+                                        <td>
+                                            @item2.Message
+                                        </td>
+                                        <td>
+                                            @item2.Status
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <!-- Shoping Cart Section End -->
