@@ -1,39 +1,44 @@
-﻿
-@*@{
+﻿@model IEnumerable<Eventique.Models.Photographer>
+
+@{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_BackLayout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<link href="~/css/Designers.css" rel="stylesheet" />
-<input type="button" id="btnShowModal" value="Add New Designers" class="btn btn-primary" />
+
+<link href="~/css/Photographer.css" rel="stylesheet" />
+
+<input type="button" id="btnShowModal" value="Add New Photographer" class="btn btn-primary" />
 
 <table class="table" id="tableDesigner">
     <thead style="color:grey">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
-            <th scope="col">PhoneNumber</th>
+            <th scope="col">Address</th>
         </tr>
     </thead>
     <tbody style="color:grey">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.ID</td>
-                <td>@item.Name</td>
-                <td>@item.PhoneNumber</td>
-                <td>
-                    <a href="javascript:void(0);" id="showeditDesignerModal" class="edit" data-toggle="modal">
-                        Edit
-                    </a>
-                    <input type="hidden" class="id" value="@item.ID" />
-                </td>
-                <td>
-                    <a href="javascript:void(0);" id="showdeleteDesignerModal" class="delete" data-toggle="modal">
-                        Delete
-                    </a>
-                    <input type="hidden" class="id" value="@item.ID" />
-                </td>
-            </tr>
+        <tr>
+            <td>@item.Ph_Id</td>
+            <td>@item.Ph_Name</td>
+            <td>@item.Ph_Address</td>
+            
+          
+            <td>
+                <a href="javascript:void(0);" id="showeditPhotographerModal" class="edit" data-toggle="modal">
+                    Edit
+                </a>
+                <input type="hidden" class="id" value="@item.Ph_Id" />
+            </td>
+            <td>
+                <a href="javascript:void(0);" id="showdeletePhotographerModal" class="delete" data-toggle="modal">
+                    Delete
+                </a>
+                <input type="hidden" class="id" value="@item.Ph_Id" />
+            </td>
+        </tr>
         }
     </tbody>
 </table>
@@ -41,24 +46,24 @@
 <div class="modal fade" tabindex="-1" id="ModalCreate" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form method="post" asp-controller="Designers" asp-action="AddDesigner">
+            <form method="post" asp-controller="Photoers" asp-action="Create">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Hotel</h4>
+                    <h4 class="modal-title">Add Photogragher</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         ×
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID" required="required" name="ID" />
+                        <input class="form-control" type="text" placeholder="ID" required="required" name="Ph_Id" />
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
-                               type="text" required="required" name="Name" />
+                               type="text" required="required" name="Ph_Name" />
                     </div>
                     <div class="form-group">
-                        <input class="form-control" placeholder="PhoneNumber"
-                               type="text" required="required" name="PhoneNumber" />
+                        <input class="form-control" placeholder="Address"
+                               type="text" required="required" name="Ph_Address" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -72,41 +77,41 @@
 <div class="modal fade" tabindex="-1" id="ModalUpdate" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form method="post" asp-controller="Designers" asp-action="UpdateDesigner">
+            <form method="post" asp-controller="Photoers" asp-action="Update">
                 <div class="modal-header">
-                    <h4 class="modal-title">Update Hotel</h4>
+                    <h4 class="modal-title">Update Photogragher</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         ×
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID" id="IDDesigner;" required="required" name="ID" />
+                        <input class="form-control" type="text" placeholder="ID" id="Pho_Id" required="required" name="Pho_Id" />
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
-                               type="text" id="NameDesigner" required="required" name="Name" />
+                               type="text" id="Pho_Name" required="required" name="Pho_Name" />
                     </div>
                     <div class="form-group">
-                        <input class="form-control" placeholder="PhoneNumber"
-                               type="text" id="PhoneNumberDesigner" required="required" name="PhoneNumber" />
+                        <input class="form-control" placeholder="Address"
+                               type="text" id="Ph_Address" required="required" name="Ph_Address" />
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-success" value="Save" />
-                    <input type="hidden" name="ID" id="id" />
+                    <input type="hidden" name="Pho_Id" id="Pho_Id" />
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="ModalDelete">
+<div class="modal fade" id="deletePhotographerModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" asp-controller="Designers" asp-action="RemoveDesigner">
+            <form method="post" asp-controller="Photoers" asp-action="Remove">
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete Designer</h4>
+                    <h4 class="modal-title">Delete Photographer</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         ×
                     </button>
@@ -126,39 +131,42 @@
 </div>
 
 @section scripts2{
+    @*popup Modal*@
     <script type="text/javascript">
+
         $(document).ready(function () {
             $("#btnShowModal").click(function () {
                 $("#ModalCreate").modal('show');
             });
 
             $(".delete").click(function () {
-                $("#ModalDelete").modal('show');
+                $("#deletePhotographerModal").modal('show');
             });
 
             $(".edit").click(function () {
+                //debugger;
                 $("#ModalUpdate").modal('show');
             });
 
             $('table .delete').on('click', function () {
                 var id = $(this).parent().find('.id').val();
-                $("#ModalDelete #idhh").val(id);
+                $("#deletePhotographerModal #idhh").val(id);
             });
 
             $('table .edit').on('click', function () {
+                //debugger;
                 var id = $(this).parent().find('.id').val();
                 $.ajax({
                     type: 'GET',
-                    url: '/Designers/FindDesigner/' + id ,
-                    success: function (Designer) {
-                        $('#ModalUpdate #IDDesigner').val(Designer.ID);
-                        $('#ModalUpdate #NameDesigner').val(Designer.Name);
-                        $('#ModalUpdate #PhoneNumberDesigner').val(Designer.PhoneNumber);
+                    url: '/PhotographerBack/find/' + id,
+                    success: function (photogapher) {
+                        //debugger;
+                        $('#ModalUpdate #Pho_Id').val(photogapher.Ph_Id);
+                        $('#ModalUpdate #Pho_Name').val(photogapher.Ph_Name);
                     }
                 });
             });
         });
     </script>
 }
-<h1>Index</h1>*@
 

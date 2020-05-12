@@ -8,24 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using Eventique.Data;
 using Eventique.Models;
 
-namespace Eventique.Controllers
+namespace Eventique.Controllers.Admin
 {
-    public class AdminsController : Controller
+    public class HallsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public AdminsController(ApplicationDbContext context)
+        public HallsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Admins
+        // GET: Halls
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Admins.ToListAsync());
+            return View(await _context.Hotels.ToListAsync());
         }
 
-        // GET: Admins/Details/5
+        // GET: Halls/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace Eventique.Controllers
                 return NotFound();
             }
 
-            var admin = await _context.Admins
+            var weddingHall = await _context.Hotels
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (admin == null)
+            if (weddingHall == null)
             {
                 return NotFound();
             }
 
-            return View(admin);
+            return View(weddingHall);
         }
 
-        // GET: Admins/Create
+        // GET: Halls/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Admins/Create
+        // POST: Halls/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name")] Admin admin)
+        public async Task<IActionResult> Create([Bind("ID,Name,PhoneNumber,Hall_ImgPath,Address,Hall_Price,Offers,Capacity,OtherServices,HallType")] WeddingHall weddingHall)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(admin);
+                _context.Add(weddingHall);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(admin);
+            return View(weddingHall);
         }
 
-        // GET: Admins/Edit/5
+        // GET: Halls/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace Eventique.Controllers
                 return NotFound();
             }
 
-            var admin = await _context.Admins.FindAsync(id);
-            if (admin == null)
+            var weddingHall = await _context.Hotels.FindAsync(id);
+            if (weddingHall == null)
             {
                 return NotFound();
             }
-            return View(admin);
+            return View(weddingHall);
         }
 
-        // POST: Admins/Edit/5
+        // POST: Halls/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name")] Admin admin)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,PhoneNumber,Hall_ImgPath,Address,Hall_Price,Offers,Capacity,OtherServices,HallType")] WeddingHall weddingHall)
         {
-            if (id != admin.ID)
+            if (id != weddingHall.ID)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Eventique.Controllers
             {
                 try
                 {
-                    _context.Update(admin);
+                    _context.Update(weddingHall);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AdminExists(admin.ID))
+                    if (!WeddingHallExists(weddingHall.ID))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace Eventique.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(admin);
+            return View(weddingHall);
         }
 
-        // GET: Admins/Delete/5
+        // GET: Halls/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace Eventique.Controllers
                 return NotFound();
             }
 
-            var admin = await _context.Admins
+            var weddingHall = await _context.Hotels
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (admin == null)
+            if (weddingHall == null)
             {
                 return NotFound();
             }
 
-            return View(admin);
+            return View(weddingHall);
         }
 
-        // POST: Admins/Delete/5
+        // POST: Halls/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var admin = await _context.Admins.FindAsync(id);
-            _context.Admins.Remove(admin);
+            var weddingHall = await _context.Hotels.FindAsync(id);
+            _context.Hotels.Remove(weddingHall);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AdminExists(int id)
+        private bool WeddingHallExists(int id)
         {
-            return _context.Admins.Any(e => e.ID == id);
+            return _context.Hotels.Any(e => e.ID == id);
         }
     }
 }
