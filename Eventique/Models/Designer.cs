@@ -21,6 +21,7 @@ namespace Eventique.Models
         public List<Review> Reviews { get; set; }
         public List<Album> ListAlbums { get; set; }
         public List<DesignerRequest> DesignerRequest { get; set; }
+        public List<InvitationCard> Invitations { get; set; }
         public IdentityUser Users { get; set; }
     }
 }

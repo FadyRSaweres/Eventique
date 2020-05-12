@@ -15,7 +15,7 @@ namespace Eventique.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.0.0")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -194,6 +194,9 @@ namespace Eventique.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("DesignerID")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Img_Id")
                         .HasColumnType("int");
 
@@ -204,6 +207,8 @@ namespace Eventique.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Inv_Id");
+
+                    b.HasIndex("DesignerID");
 
                     b.HasIndex("Img_Id");
 
@@ -267,6 +272,9 @@ namespace Eventique.Data.Migrations
 
                     b.Property<float>("Rate")
                         .HasColumnType("real");
+
+                    b.Property<string>("TestDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");
@@ -393,6 +401,9 @@ namespace Eventique.Data.Migrations
 
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
+
+                    b.Property<string>("TestDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");
@@ -693,6 +704,10 @@ namespace Eventique.Data.Migrations
 
             modelBuilder.Entity("Eventique.Models.InvitationCard", b =>
                 {
+                    b.HasOne("Eventique.Models.Designer", null)
+                        .WithMany("Invitations")
+                        .HasForeignKey("DesignerID");
+
                     b.HasOne("Eventique.Models.Image", "Img")
                         .WithMany()
                         .HasForeignKey("Img_Id");
