@@ -194,6 +194,10 @@
 
         function available(date) {
             dmy = date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
+            var li = dmy.split('-');
+            if (li[0].length == 1) {
+                dmy = `0${li[0]}-${li[1]}-${li[2]}`;
+            }
             if ($.inArray(dmy, availableDates) != -1) {
                 return true;
             } else {
