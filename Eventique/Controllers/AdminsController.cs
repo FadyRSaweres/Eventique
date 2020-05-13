@@ -24,9 +24,7 @@ namespace Eventique.Controllers
         {
             return View(await _context.Admins.ToListAsync());
         }
-
-        // GET: Admins/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult>Details(int? id)
         {
             if (id == null)
             {
@@ -149,5 +147,12 @@ namespace Eventique.Controllers
         {
             return _context.Admins.Any(e => e.ID == id);
         }
+      
+
+
+
+
+
+
     }
 }
