@@ -55,6 +55,7 @@ namespace Eventique.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+            public string UserName { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -87,6 +88,7 @@ namespace Eventique.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+                
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
@@ -99,7 +101,7 @@ namespace Eventique.Areas.Identity.Pages.Account
                     if (role.Contains("Photographer"))
                     {
                         Photographer ph = context.Photographers.Where(p => p.Users.Id == user.Id).FirstOrDefault();
-                        returnUrl = "~/Photographers/PhoEdit/"+ph.Ph_Id;
+                        returnUrl = "~/Photographers/TestPhoEdit/"+ph.Ph_Id;
                     }
                     else if(role.Contains("User"))
                     {

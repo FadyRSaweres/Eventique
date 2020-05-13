@@ -65,11 +65,11 @@ namespace Eventique.Controllers
         //{
         //    return View(context.Photographers.ToList());
         //}
-        public IActionResult designerShow()
-        {
+        //public IActionResult designerShow()
+        //{
 
-            return View(context.Designers.ToList());
-        }
+        //    return View(context.Designers.ToList());
+        //}
 
 
 
