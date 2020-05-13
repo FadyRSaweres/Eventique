@@ -4,163 +4,204 @@
     Layout = "~/Views/Shared/_phoViewLayout.cshtml";
 }
 
+@section Styles{
+}
 
-    <div id="colorlib-main">
-        <div class="hero-wrap js-fullheight" style="background-image: url(/Images/bg_1.jpg);" data-stellar-background-ratio="0.5">
-            <div class="overlay"></div>
-            <div class="js-fullheight d-flex justify-content-center align-items-center">
-                <div class="col-md-8 text text-center">
-                    <div class="img mb-4" style="background-image: url(@Model.ImagePath);"></div>
-                    <div class="desc">
-                        <h2 class="subheading">Hello I'm</h2>
-                        <h1 class="mb-4">@Model.Ph_Name</h1>
-                        <p class="mb-4">I am A Blogger Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                        <p><a href="#" class="btn-custom">More About Me <span class="ion-ios-arrow-forward"></span></a></p>
-                    </div>
+<div id="colorlib-main">
+    <div class="hero-wrap js-fullheight" style="background-image: url(/Images/bg_1.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="js-fullheight d-flex justify-content-center align-items-center">
+            <div class="col-md-8 text text-center">
+                <div class="img mb-4" style="background-image: url(@Model.ImagePath);"></div>
+                <div class="desc">
+                    <h2 class="subheading">Hello I'm</h2>
+                    <h1 class="mb-4">@Model.Ph_Name</h1>
+                    <p class="mb-4">I am A Blogger Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                    <p><a href="#" class="btn-custom">More About Me <span class="ion-ios-arrow-forward"></span></a></p>
                 </div>
             </div>
         </div>
-        <section class="ftco-section">
-            <div class="container">
-                <div class="row justify-content-center mb-5 pb-2">
-                    <div class="col-md-7 heading-section text-center ftco-animate">
-                        <h2 class="mb-4">Alubms</h2>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
-                    </div>
+    </div>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-2">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2 class="mb-4">Alubms</h2>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
                 </div>
-                <div class="row">
-                    @{
-                        @if (Model.ListAlbum != null)
+            </div>
+            <div class="row">
+                @{
+                    @if (Model.ListAlbum != null)
+                    {
+                        int j = 0;
+                        foreach (var item in Model.ListAlbum)
                         {
-                            int j = 0;
-                            foreach (var item in Model.ListAlbum)
-                            {
-                                <div class="col-md-4">
-                                    <div class="blog-entry ftco-animate">
-                                        <div src="#" class="img" style="background-image: url(@item.MyProperty[j].Img_Path);" onclick="openModal('myModal'+' '+@j , 'mySlides'+' '+@j);currentSlide(1)"></div>
-                                        <div class="text text-2 pt-2 mt-3">
-                                            <span class="category mb-3 d-block"><a href="#">Technology</a></span>
-                                            <h3 class="mb-4"><a href="#">@item.Al_Title</a></h3>
-                                            <p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                                            <div class="author mb-4 d-flex align-items-center">
-                                                <a href="#" class="img" style="background-image: url(/Images/person_2.jpg);"></a>
-                                                <div class="ml-3 info">
-                                                    <span>Written by</span>
-                                                    <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                                                </div>
+                            <div class="col-md-4">
+                                <div class="blog-entry ftco-animate">
+                                    <div src="#" class="img" style="background-image: url(@item.MyProperty[j].Img_Path);" onclick="openModal('myModal'+' '+@j , 'mySlides'+' '+@j);currentSlide(1)"></div>
+                                    <div class="text text-2 pt-2 mt-3">
+                                        <span class="category mb-3 d-block"><a href="#">Technology</a></span>
+                                        <h3 class="mb-4"><a href="#">@item.Al_Title</a></h3>
+                                        <p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
+                                        <div class="author mb-4 d-flex align-items-center">
+                                            <a href="#" class="img" style="background-image: url(/Images/person_2.jpg);"></a>
+                                            <div class="ml-3 info">
+                                                <span>Written by</span>
+                                                <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
                                             </div>
-                                            <div class="meta-wrap align-items-center">
-                                                <div class="half order-md-last">
-                                                    <p class="meta">
-                                                        <span><i class="icon-heart"></i>3</span>
-                                                        <span><i class="icon-eye"></i>100</span>
-                                                        <span><i class="icon-comment"></i>5</span>
-                                                    </p>
-                                                </div>
-                                                <div class="half">
-                                                    <p><a href="#" class="btn py-2">Continue Reading <span class="ion-ios-arrow-forward"></span></a></p>
-                                                </div>
+                                        </div>
+                                        <div class="meta-wrap align-items-center">
+                                            <div class="half order-md-last">
+                                                <p class="meta">
+                                                    <span><i class="icon-heart"></i>3</span>
+                                                    <span><i class="icon-eye"></i>100</span>
+                                                    <span><i class="icon-comment"></i>5</span>
+                                                </p>
+                                            </div>
+                                            <div class="half">
+                                                <p><a href="#" class="btn py-2">Continue Reading <span class="ion-ios-arrow-forward"></span></a></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                j++;
-                            }
-                        }
-                        }
-                </div>
-                <!-- The Modal/Lightbox -->
-                @{
-                    int i = 0;
-                    if (Model.ListAlbum != null)
-                    {
-
-
-                        foreach (var item in Model.ListAlbum)
-                        {
-                            <div id="myModal @i" class="modal">
-                                <span class="close cursor" onclick="closeModal('myModal'+' '+ @i)">&times;</span>
-                                <div class="modal-content">
-
-                                    @{
-                                        for (int x = 0; x < item.MyProperty.Count(); x++)
-                                        {
-                                            <div class="mySlides @i">
-                                                <div class="numbertext"> @x / @item.MyProperty.Count()</div>
-                                                <img src="@item.MyProperty[x].Img_Path" style="width:100%">
-                                            </div>
-                                        }
-                                    }
-
-                                    <!-- Next/previous controls -->
-                                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-                                    <!-- Caption text -->
-                                    <div class="caption-container">
-                                        <p id="caption"></p>
-                                    </div>
-                                    <!-- Thumbnail image controls -->
-                                    <div class="column" style="display:inline-block">
-                                        <img class="demo" src="../Images/pic02.jpg" onclick="currentSlide(1)" alt="Nature"
-                                             style="width: 50%;height: 50%;">
-                                    </div>
-
-                                </div>
                             </div>
-                            i++;
+                            j++;
                         }
                     }
                 }
             </div>
-        </section>
-        <section class="ftco-section contact-section">
-            <div class="container">
-                <div class="row d-flex mb-5 contact-info">
-                    <div class="col-md-12 mb-4">
-                        <h2 class="h4 font-weight-bold">Contact Information</h2>
-                    </div>
-                    <div class="w-100"></div>
-                    <div class="col-md-3">
-                        <p><span>Address:</span>@Model.Ph_Address</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p><span>Phone:</span> <a href="#">@Model.Ph_PhoneNumber</a></p>
-                    </div>
-                    <div class="col-md-3">
-                        <p><span>Email:</span> <a href="#">@Model.Ph_Name</a></p>
-                    </div>
-                    <div class="col-md-3">
-                        <p><span>Website</span> <a href="#">yoursite.com</a></p>
-                    </div>
+            <!-- The Modal/Lightbox -->
+            @{
+                int i = 0;
+                if (Model.ListAlbum != null)
+                {
+
+
+                    foreach (var item in Model.ListAlbum)
+                    {
+                        <div id="myModal @i" class="modal">
+                            <span class="close cursor" onclick="closeModal('myModal'+' '+ @i)">&times;</span>
+                            <div class="modal-content">
+
+                                @{
+                                    for (int x = 0; x < item.MyProperty.Count(); x++)
+                                    {
+                                        <div class="mySlides @i">
+                                            <div class="numbertext"> @x / @item.MyProperty.Count()</div>
+                                            <img src="@item.MyProperty[x].Img_Path" style="width:100%">
+                                        </div>
+                                    }
+                                }
+
+                                <!-- Next/previous controls -->
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                                <!-- Caption text -->
+                                <div class="caption-container">
+                                    <p id="caption"></p>
+                                </div>
+                                <!-- Thumbnail image controls -->
+                                <div class="column" style="display:inline-block">
+                                    <img class="demo" src="../Images/pic02.jpg" onclick="currentSlide(1)" alt="Nature"
+                                         style="width: 50%;height: 50%;">
+                                </div>
+
+                            </div>
+                        </div>
+                        i++;
+                    }
+                }
+            }
+        </div>
+    </section>
+    <section class="ftco-section contact-section">
+        <div class="container">
+            <div class="row d-flex mb-5 contact-info">
+                <div class="col-md-12 mb-4">
+                    <h2 class="h4 font-weight-bold">Contact Information</h2>
                 </div>
-                <div class="row block-9">
-                    <div class="col-md-6 order-md-last pr-md-5">
-                        <form action="#">
-                            <div class="form-group">
-                                <label>Avilable Dates</label>
-                                <input type="date" class="form-control" placeholder="Avilable Dates">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Email">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Subject">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-                            </div>
-                        </form>
-
-                    </div>
-
-                    <div class="col-md-6">
-                        <div id="map"></div>
-                    </div>
+                <div class="w-100"></div>
+                <div class="col-md-3">
+                    <p><span>Address:</span>@Model.Ph_Address</p>
+                </div>
+                <div class="col-md-3">
+                    <p><span>Phone:</span> <a href="#">@Model.Ph_PhoneNumber</a></p>
+                </div>
+                <div class="col-md-3">
+                    <p><span>Email:</span> <a href="#">@Model.Ph_Name</a></p>
+                </div>
+                <div class="col-md-3">
+                    <p><span>Website</span> <a href="#">yoursite.com</a></p>
                 </div>
             </div>
-        </section>
-    </div>
+            <div class="row block-9">
+                <div class="col-md-6 order-md-last pr-md-5">
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="textDate">Enter your date</label>
+                            <input type='text' class="form-control" id='txtDateAvailable' onfocus="myFun('@Model.TestDate')"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts{
+    <script>
+        var availableDates;
+
+
+        //$(function () {
+        //    $('#txtDateAvailable').datepicker({
+        //        beforeShowDay:
+        //            function (dt) {
+        //                return [available(dt), ""];
+        //            }
+        //        , changeMonth: true, changeYear: false
+        //    });
+        //});
+        function myFun(list) {
+            availableDates = list.split(',');
+            $('#txtDateAvailable').datepicker({
+            beforeShowDay:
+            function (dt) {
+                return [available(dt), ""];
+             }
+                , changeMonth: true, changeYear: false
+            });
+        }
+
+        function available(date) {
+            dmy = date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
+            if ($.inArray(dmy, availableDates) != -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+     
+            
+    </script>
+    <script type="text/javascript" src="~/js/jqueryui/jquery-ui.min.js"></script>
+}

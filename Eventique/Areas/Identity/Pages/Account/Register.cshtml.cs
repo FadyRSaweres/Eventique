@@ -86,7 +86,8 @@ namespace Eventique.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.UserName, Email = Input.Email, PhoneNumber = Input.PhoneNumber};
+
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber};
                
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
@@ -104,16 +105,16 @@ namespace Eventique.Areas.Identity.Pages.Account
                         if (Input.Role == "Photographer")
                         {
                             Photographer photographer = new Photographer();
-                            photographer.Ph_Name = user.UserName;
+                            photographer.Ph_Name = Input.UserName;
                             photographer.Users = user;
                             context.Photographers.Add(photographer);
                             context.SaveChanges();
-                            returnUrl ="~/Photographers/PhoEdit/"+photographer.Ph_Id;
+                            returnUrl ="~/Photographers/TestPhoEdit/"+photographer.Ph_Id;
                         }
                         else if(Input.Role == "User")
                         {
                             Member member = new Member();
-                            member.Name = user.UserName;
+                            member.Name = Input.UserName;
                             member.Users = user;
                             context.Members.Add(member);
                             context.SaveChanges();
@@ -122,7 +123,7 @@ namespace Eventique.Areas.Identity.Pages.Account
                         else if (Input.Role == "Designer")
                         {
                             Designer designer = new Designer();
-                            designer.Name = user.UserName;
+                            designer.Name = Input.UserName;
                             designer.Users = user;
                             context.Designers.Add(designer);
                             context.SaveChanges();
@@ -131,7 +132,7 @@ namespace Eventique.Areas.Identity.Pages.Account
                         else if (Input.Role == "WeddingHall")
                         {
                             WeddingHall wh = new WeddingHall();
-                            wh.Name = user.UserName;
+                            wh.Name = Input.UserName;
                             wh.Users = user;
                             context.Hotels.Add(wh);
                             context.SaveChanges();

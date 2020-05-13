@@ -273,6 +273,9 @@ namespace Eventique.Data.Migrations
                     b.Property<float>("Rate")
                         .HasColumnType("real");
 
+                    b.Property<string>("TestDate")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");
 
@@ -398,6 +401,9 @@ namespace Eventique.Data.Migrations
 
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
+
+                    b.Property<string>("TestDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");

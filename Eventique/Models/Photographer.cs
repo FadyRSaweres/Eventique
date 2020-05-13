@@ -30,9 +30,13 @@ namespace Eventique.Models
         public List<IFormFile> ImageFilePath{ get; set; }
         public List<PhotographerRequest> Ph_Requests { get; set; }
         public IdentityUser Users { get; set; }
+        public string TestDate { get; set; }
         public Photographer()
         {
             ListAlbum = new List<Album>();
+            Ph_AvailableDate = new List<AvailableDate>();
+            Ph_Reviews = new List<Review>();
+            Ph_Requests = new List<PhotographerRequest>();
         }
     }
 }

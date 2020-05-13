@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
 namespace Eventique.Controllers
 {
     [Authorize(Roles = "Photographer")]
@@ -29,16 +28,34 @@ namespace Eventique.Controllers
             return View();
         }
 
-        public IActionResult PhoEdit(int id=7)
+        //public IActionResult PhoEdit(int id)
+        //{
+        //    Photographer p = new Photographer();
+        //    p = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
+        //    context.Albums.ToList();
+        //    context.Images.ToList();
+        //    context.Users.ToList();
+        //    return View(p);
+        //}
+
+        public IActionResult TestPhoEdit(int id)
         {
             Photographer p = new Photographer();
             p = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
             context.Albums.ToList();
             context.Images.ToList();
+            context.Users.ToList();
             return View(p);
         }
-
-        public IActionResult CreateAlbum()
+        //public IActionResult CreateAlbum()
+        //{
+        //    Photographer p = new Photographer();
+        //    //p = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
+        //    context.Albums.ToList();
+        //    context.Images.ToList();
+        //    return View();
+        //}
+        public IActionResult CreateNewAlbum()
         {
             Photographer p = new Photographer();
             //p = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
@@ -47,8 +64,44 @@ namespace Eventique.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //public IActionResult CreateAlbum(int id ,Album b)
+        //{
+        //    string wwwPath = this.Environment.WebRootPath;
+        //    string contentPath = this.Environment.ContentRootPath;
+
+        //    string path = Path.Combine(this.Environment.WebRootPath, "Images");
+        //    if (!Directory.Exists(path))
+        //    {
+        //        Directory.CreateDirectory(path);
+        //    }
+        //    List<Image> imgP = new List<Image>();
+        //    List<string> uploadedFiles = new List<string>();
+        //    foreach (IFormFile postedFile in b.ImageFilePath)
+        //    {
+        //        string fileName = Path.GetFileName(postedFile.FileName);
+        //        using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+        //        {
+        //            postedFile.CopyTo(stream);
+        //            uploadedFiles.Add(fileName);
+        //            imgP.Add(new Image() { Img_Path ="/Images/"+fileName});
+        //        }
+
+        //    }
+        //    b.MyProperty = imgP;
+        //    Photographer po = new Photographer();
+        //    po = context.Photographers.Where(s => s.Ph_Id == id).FirstOrDefault();
+        //    context.Albums.ToList();
+        //    context.Images.ToList();
+        //    context.Albums.Add(b);
+        //    po.ListAlbum.Add(b);
+        //    context.SaveChanges();
+        //    return RedirectToAction("TestPhoEdit" , new { id = id});
+        //}
+
+
         [HttpPost]
-        public IActionResult CreateAlbum(int id ,Album b)
+        public IActionResult CreateNewAlbum(int id, Album b)
         {
             string wwwPath = this.Environment.WebRootPath;
             string contentPath = this.Environment.ContentRootPath;
@@ -58,7 +111,6 @@ namespace Eventique.Controllers
             {
                 Directory.CreateDirectory(path);
             }
-
             List<Image> imgP = new List<Image>();
             List<string> uploadedFiles = new List<string>();
             foreach (IFormFile postedFile in b.ImageFilePath)
@@ -68,9 +120,9 @@ namespace Eventique.Controllers
                 {
                     postedFile.CopyTo(stream);
                     uploadedFiles.Add(fileName);
-                    imgP.Add(new Image() { Img_Path ="/Images/"+fileName});
+                    imgP.Add(new Image() { Img_Path = "/Images/" + fileName });
                 }
-              
+
             }
             b.MyProperty = imgP;
             Photographer po = new Photographer();
@@ -80,20 +132,23 @@ namespace Eventique.Controllers
             context.Albums.Add(b);
             po.ListAlbum.Add(b);
             context.SaveChanges();
-            return RedirectToAction("PhoEdit" , new { id = id});
+            return RedirectToAction("TestPhoEdit", new { id = id });
         }
 
-        public IActionResult Edit(int id = 2)
+
+
+        public IActionResult EditPho(int id)
         {
             Photographer p = new Photographer();
             p = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
             context.Albums.ToList();
             context.Images.ToList();
+            context.Users.ToList();
             return View(p);
         }
 
         [HttpPost]
-        public IActionResult Edit(Photographer p)
+        public IActionResult EditPho(Photographer p)
         {
             if (ModelState != null)
             {
@@ -106,28 +161,56 @@ namespace Eventique.Controllers
                     Directory.CreateDirectory(path);
                 }
                 List<string> uploadedFiles = new List<string>();
-                foreach (IFormFile postedFile in p.ImageFilePath)
+                if (p.ImageFilePath != null)
                 {
-                    string fileName = Path.GetFileName(postedFile.FileName);
-                    using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                    foreach (IFormFile postedFile in p.ImageFilePath)
                     {
-                        postedFile.CopyTo(stream);
-                        uploadedFiles.Add(fileName);
-                        string imgP = "/Images/" + fileName;
-                        Photographer edited = new Photographer();
-                        edited = context.Photographers.Where(po => po.Ph_Id == p.Ph_Id).FirstOrDefault();
-                        edited.Ph_Name = p.Ph_Name;
-                        edited.Rate = p.Rate;
-                        edited.ImagePath = imgP;
-                        context.SaveChanges();
-                        return RedirectToAction("PhoEdit");
+                        string fileName = Path.GetFileName(postedFile.FileName);
+                        using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                        {
+                            postedFile.CopyTo(stream);
+                            uploadedFiles.Add(fileName);
+                            string imgP = "/Images/" + fileName;
+                            Photographer edited = new Photographer();
+                            edited = context.Photographers.Where(po => po.Ph_Id == p.Ph_Id).FirstOrDefault();
+                            edited.Ph_Name = p.Ph_Name;
+                            edited.Ph_PhoneNumber = p.Ph_PhoneNumber;
+                            edited.Ph_Price = p.Ph_Price;
+                            edited.Ph_Address = p.Ph_Address;
+                            edited.Ph_CameraType = p.Ph_CameraType;
+                            edited.Ph_Offers = p.Ph_Offers;
+                            edited.Description = p.Description;
+                            edited.ImagePath = imgP;
+                            edited.TestDate = p.TestDate;
+                            context.SaveChanges();
+                            return RedirectToAction("TestPhoEdit", new { id = p.Ph_Id });
+                        }
+
                     }
                 }
+                else
+                {
+                    Photographer edited = new Photographer();
+                    edited = context.Photographers.Where(po => po.Ph_Id == p.Ph_Id).FirstOrDefault();
+                    edited.Ph_Name = p.Ph_Name;
+                    edited.Ph_PhoneNumber = p.Ph_PhoneNumber;
+                    edited.Ph_Price = p.Ph_Price;
+                    edited.Ph_Address = p.Ph_Address;
+                    edited.Ph_CameraType = p.Ph_CameraType;
+                    edited.Ph_Offers = p.Ph_Offers;
+                    edited.Description = p.Description;
+                    edited.ImagePath = p.ImagePath;
+                    edited.TestDate = p.TestDate;
+                    context.SaveChanges();
+                    return RedirectToAction("TestPhoEdit", new { id = p.Ph_Id });
+
+                }
+
+
             }
 
             return View(p);
         }
-
 
         //[HttpPost]
         //public IActionResult Edit(List<IFormFile> postedFiles, Photographer p)
