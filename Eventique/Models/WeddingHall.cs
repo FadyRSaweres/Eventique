@@ -23,6 +23,7 @@ namespace Eventique.Models
         public string OtherServices { get; set; }
         public string HallType { get; set; }
         public List<AvailableDate> AvailbleDates { get; set; }
+        public string TestDate { get; set; }
         public Album Album { get; set; }
         public List<WeddingHallsRequest> HotelRequest { get; set; }
         public IdentityUser Users { get; set; }
