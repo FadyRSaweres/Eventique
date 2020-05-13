@@ -18,8 +18,9 @@ namespace Eventique.Data
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<InvitationCard> InvitationCards{ get; set; }
-
-
+        public DbSet<PhotographerRequest> PhotographerRequests { get; set; }
+        public DbSet<WeddingHallsRequest> WeddingHallsRequests { get; set; }
+        public DbSet<DesignerRequest> DesignerRequests { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
