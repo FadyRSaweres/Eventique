@@ -4,14 +4,35 @@
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
 
-    <link href="~/css/AllWeddingHallsStyle.css" rel="stylesheet" />
 
+@section Styles{
+    <link href="~/css/AllWeddingHallsStyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+}
 
 
 <br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 <section style="">
     <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(/img/bg-img/16.jpg);">
+        <div class="col-md-8 offset-md-2 mt-5" style="margin-top:100px">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search ......" aria-label="Recipient's username">
+                <div class="input-group-append">
+                    <a href="#"><span class="input-group-text"><i class="fa fa-search" style="font-size:25px"></i></span></a>
+                </div>
+            </div>
+        </div>
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -33,105 +54,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-8">
-                    <!-- Single Room Area -->
-                    <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
-                        <!-- Room Thumbnail -->
-                        <div class="room-thumbnail">
-                            <img src="~/img/bg-img/47.jpg" alt="">
-                        </div>
-                        <!-- Room Content -->
-                        <div class="room-content">
-                            <h2>Room View Sea</h2>
-                            <h4>400$ <span>/ Day</span></h4>
-                            <div class="room-feature">
-                                <h6>Size: <span>30 ft</span></h6>
-                                <h6>Capacity: <span>Max persion 5</span></h6>
-                                <h6>Bed: <span>King beds</span></h6>
-                                <h6>Services: <span>Wifi, television ...</span></h6>
+                    @foreach (var item in Model)
+                    {
+                        <!-- Single Room Area -->
+                        <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="900ms">
+                            <!-- Room Thumbnail -->
+                            <div class="room-thumbnail">
+                                <img src="@item.Hall_ImgPath" alt="">
                             </div>
-                            <a href="#" class="btn view-detail-btn">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                            <!-- Room Content -->
+                            <div class="room-content">
+                                <h2>@item.Name</h2>
+                                <h4>@item.Hall_Price$ <span>/ Day</span></h4>
+                                <div class="room-feature">
+                                    <h6>Type: <span>@item.HallType</span></h6>
+                                    <h6>Capacity: <span>Max persion @item.Capacity</span></h6>
+                                    <h6>Services: <span> @item.OtherServices</span></h6>
+                                </div>
+                                <a href="#" class="btn view-detail-btn" style="background:none;border:none;">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Single Room Area -->
-                    <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="300ms">
-                        <!-- Room Thumbnail -->
-                        <div class="room-thumbnail">
-                            <img src="~/img/bg-img/44.jpg" alt="">
-                        </div>
-                        <!-- Room Content -->
-                        <div class="room-content">
-                            <h2>Small Room</h2>
-                            <h4>400$ <span>/ Day</span></h4>
-                            <div class="room-feature">
-                                <h6>Size: <span>30 ft</span></h6>
-                                <h6>Capacity: <span>Max persion 5</span></h6>
-                                <h6>Bed: <span>King beds</span></h6>
-                                <h6>Services: <span>Wifi, television ...</span></h6>
-                            </div>
-                            <a href="#" class="btn view-detail-btn">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Single Room Area -->
-                    <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="500ms">
-                        <!-- Room Thumbnail -->
-                        <div class="room-thumbnail">
-                            <img src="~/img/bg-img/45.jpg" alt="">
-                        </div>
-                        <!-- Room Content -->
-                        <div class="room-content">
-                            <h2>Premium King Room</h2>
-                            <h4>400$ <span>/ Day</span></h4>
-                            <div class="room-feature">
-                                <h6>Size: <span>30 ft</span></h6>
-                                <h6>Capacity: <span>Max persion 5</span></h6>
-                                <h6>Bed: <span>King beds</span></h6>
-                                <h6>Services: <span>Wifi, television ...</span></h6>
-                            </div>
-                            <a href="#" class="btn view-detail-btn">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Single Room Area -->
-                    <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="700ms">
-                        <!-- Room Thumbnail -->
-                        <div class="room-thumbnail">
-                            <img src="~/img/bg-img/46.jpg" alt="">
-                        </div>
-                        <!-- Room Content -->
-                        <div class="room-content">
-                            <h2>Room Vip King</h2>
-                            <h4>400$ <span>/ Day</span></h4>
-                            <div class="room-feature">
-                                <h6>Size: <span>30 ft</span></h6>
-                                <h6>Capacity: <span>Max persion 5</span></h6>
-                                <h6>Bed: <span>King beds</span></h6>
-                                <h6>Services: <span>Wifi, television ...</span></h6>
-                            </div>
-                            <a href="#" class="btn view-detail-btn">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Single Room Area -->
-                    <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="900ms">
-                        <!-- Room Thumbnail -->
-                        <div class="room-thumbnail">
-                            <img src="~/img/bg-img/47.jpg" alt="">
-                        </div>
-                        <!-- Room Content -->
-                        <div class="room-content">
-                            <h2>Royal Room</h2>
-                            <h4>400$ <span>/ Day</span></h4>
-                            <div class="room-feature">
-                                <h6>Size: <span>30 ft</span></h6>
-                                <h6>Capacity: <span>Max persion 5</span></h6>
-                                <h6>Bed: <span>King beds</span></h6>
-                                <h6>Services: <span>Wifi, television ...</span></h6>
-                            </div>
-                            <a href="#" class="btn view-detail-btn" style="background:none;border:none;">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
+                    }
 
                     <!-- Pagination -->
                     <nav class="roberto-pagination wow fadeInUp mb-100" data-wow-delay="1000ms">
@@ -153,38 +97,11 @@
                                 <div class="input-daterange" id="datepicker">
                                     <div class="row no-gutters">
                                         <div class="col-6">
-                                            <input type="text" class="input-small form-control" id="checkInDate" name="checkInDate" placeholder="Check In">
+                                            <input type="date" class="form-control date" id="checkInDate" name="checkInDate" placeholder="Check In">
                                         </div>
                                         <div class="col-6">
                                             <input type="text" class="input-small form-control" name="checkOutDate" placeholder="Check Out">
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-30">
-                                <label for="guests">Guests</label>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <select name="adults" id="guests" class="form-control">
-                                            <option value="adults">Adults</option>
-                                            <option value="01">01</option>
-                                            <option value="02">02</option>
-                                            <option value="03">03</option>
-                                            <option value="04">04</option>
-                                            <option value="05">05</option>
-                                            <option value="06">06</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-6">
-                                        <select name="children" id="children" class="form-control">
-                                            <option value="children">Children</option>
-                                            <option value="01">01</option>
-                                            <option value="02">02</option>
-                                            <option value="03">03</option>
-                                            <option value="04">04</option>
-                                            <option value="05">05</option>
-                                            <option value="06">06</option>
-                                        </select>
                                     </div>
                                 </div>
                             </div>

@@ -5,6 +5,11 @@
     <UserSecretsId>aspnet-Eventique-C5BC796C-85FE-4F71-A3E1-22BF8E10A0EC</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200512125334_mignewForDate.cs" />
+    <Compile Remove="Data\Migrations\20200512125334_mignewForDate.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.4.1" />

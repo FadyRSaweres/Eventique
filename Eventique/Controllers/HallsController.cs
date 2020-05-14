@@ -24,9 +24,17 @@ namespace Eventique.Controllers.Admin
         {
             return View(await _context.Hotels.ToListAsync());
         }
+<<<<<<< HEAD:Eventique/Controllers/HallsController.cs
 
         // GET: Halls/Details/5
         public async Task<IActionResult> Details(int? id)
+=======
+        public async Task<IActionResult> Widgets()
+        {
+            return View(await _context.Admins.ToListAsync());
+        }
+        public async Task<IActionResult>Details(int? id)
+>>>>>>> 777568de2894e71e0864db20e24e782d104af1f8:Eventique/Controllers/AdminsController.cs
         {
             if (id == null)
             {
@@ -149,5 +157,12 @@ namespace Eventique.Controllers.Admin
         {
             return _context.Hotels.Any(e => e.ID == id);
         }
+      
+
+
+
+
+
+
     }
 }
