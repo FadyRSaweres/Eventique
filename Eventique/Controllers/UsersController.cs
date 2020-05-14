@@ -22,7 +22,7 @@ namespace Eventique.Controllers.Admin
             return View(context.Members.ToList());
         }
         [HttpPost]
-        [Route("AddMember")]
+        [Route("AddUser")]
         public IActionResult AddUser(string Name, int PhoneNumber)
         {
             var member = new Member
@@ -39,7 +39,7 @@ namespace Eventique.Controllers.Admin
 
 
         [HttpPost]
-        [Route("RemoveMember")]
+        [Route("RemoveUser")]
         public IActionResult RemoveUser(int id)
         {
             var member = context.Members.Find(id);
@@ -49,25 +49,28 @@ namespace Eventique.Controllers.Admin
         }
 
         [HttpGet]
-        [Route("Members/FindMembers/{id}")]
+        [Route("Users/FindUser/{id}")]
         public IActionResult FindUser(int id)
         {
             var member = context.Members.Find(id);
-            Dictionary<string, string> DList = new Dictionary<string, string>();
-            DList.Add("ID", member.ID.ToString());
-            DList.Add("Name", member.Name);
-            DList.Add("PhoneNumber", member.PhoneNumber.ToString());
-            return new JsonResult(DList);
+            Dictionary<string, string> UList = new Dictionary<string, string>
+            {
+                { "ID", member.ID.ToString() },
+                { "Name", member.Name },
+                { "PhoneNumber", member.PhoneNumber.ToString() }
+            };
+            return new JsonResult(UList);
         }
 
         [HttpPost]
-        [Route("UpdateMember")]
-        public IActionResult UpdateUser(string ID, string Name, string PhoneNumber, string Address, string ShopName)
+        [Route("UpdateUser")]
+        public IActionResult UpdateUser(int ID, string Name, string PhoneNumber)
         {
-            var member = context.Members.Find(int.Parse(ID));
+            var member = context.Members.Find(ID);
             //designer.ID = ID;
             member.Name = Name;
             member.PhoneNumber = int.Parse(PhoneNumber);
+            
            
             context.SaveChanges();
             return RedirectToAction("Index");

@@ -9,12 +9,15 @@
 
 <input type="button" id="btnShowModal" value="Add New Photographer" class="btn btn-primary" />
 
+
 <table class="table" id="tableDesigner">
     <thead style="color:grey">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">Address</th>
+            <th scope="col">PhoneNumber</th>
+
         </tr>
     </thead>
     <tbody style="color:grey">
@@ -24,8 +27,10 @@
             <td>@item.Ph_Id</td>
             <td>@item.Ph_Name</td>
             <td>@item.Ph_Address</td>
-            
-          
+            <td>@item.Ph_PhoneNumber</td>
+
+
+
             <td>
                 <a href="javascript:void(0);" id="showeditPhotographerModal" class="edit" data-toggle="modal">
                     Edit
@@ -48,15 +53,15 @@
         <div class="modal-content">
             <form method="post" asp-controller="Photoers" asp-action="Create">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Photogragher</h4>
+                    <h4 class="modal-title">Add Photoghrapher</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         ×
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID" required="required" name="Ph_Id" />
-                    </div>
+                    @*<div class="form-group">
+            <input class="form-control" type="text" placeholder="ID" required="required" name="ID" />
+        </div>*@
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
                                type="text" required="required" name="Ph_Name" />
@@ -64,6 +69,10 @@
                     <div class="form-group">
                         <input class="form-control" placeholder="Address"
                                type="text" required="required" name="Ph_Address" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="PhoneNumber"
+                               type="text" required="required" name="Ph_PhoneNumber" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -79,39 +88,44 @@
         <div class="modal-content">
             <form method="post" asp-controller="Photoers" asp-action="Update">
                 <div class="modal-header">
-                    <h4 class="modal-title">Update Photogragher</h4>
+                    <h4 class="modal-title">Update Photoghrapher</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         ×
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID" id="Pho_Id" required="required" name="Pho_Id" />
+                        <input class="form-control" type="text" placeholder="Ph_Id" id="IDpho;" required="required" name="Ph_Id"  />
                     </div>
                     <div class="form-group">
-                        <input class="form-control" placeholder="Name"
-                               type="text" id="Pho_Name" required="required" name="Pho_Name" />
+                        <input class="form-control" placeholder="Ph_Name"
+                               type="text" id="Namepho" required="required" name="Ph_Name" />
                     </div>
                     <div class="form-group">
-                        <input class="form-control" placeholder="Address"
-                               type="text" id="Ph_Address" required="required" name="Ph_Address" />
+                        <input class="form-control" placeholder="Ph_Address"
+                               type="text" id="Addresspho" required="required" name="Ph_Address" />
                     </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Ph_PhoneNumber"
+                               type="text" id="PhoneNumberpho" required="required" name="Ph_PhoneNumber" />
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-success" value="Save" />
-                    <input type="hidden" name="Pho_Id" id="Pho_Id" />
+                    <input type="hidden" name="ID" id="id" />
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="deletePhotographerModal">
+<div class="modal fade" id="ModalDelete">
     <div class="modal-dialog">
         <div class="modal-content">
             <form method="post" asp-controller="Photoers" asp-action="Remove">
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete Photographer</h4>
+                    <h4 class="modal-title">Delete Photoghrapher</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         ×
                     </button>
@@ -131,42 +145,38 @@
 </div>
 
 @section scripts2{
-    @*popup Modal*@
     <script type="text/javascript">
-
         $(document).ready(function () {
             $("#btnShowModal").click(function () {
                 $("#ModalCreate").modal('show');
             });
 
             $(".delete").click(function () {
-                $("#deletePhotographerModal").modal('show');
+                $("#ModalDelete").modal('show');
             });
 
             $(".edit").click(function () {
-                //debugger;
                 $("#ModalUpdate").modal('show');
             });
 
             $('table .delete').on('click', function () {
                 var id = $(this).parent().find('.id').val();
-                $("#deletePhotographerModal #idhh").val(id);
+                $("#ModalDelete #idhh").val(id);
             });
 
             $('table .edit').on('click', function () {
-                //debugger;
                 var id = $(this).parent().find('.id').val();
                 $.ajax({
                     type: 'GET',
-                    url: '/PhotographerBack/find/' + id,
-                    success: function (photogapher) {
-                        //debugger;
-                        $('#ModalUpdate #Pho_Id').val(photogapher.Ph_Id);
-                        $('#ModalUpdate #Pho_Name').val(photogapher.Ph_Name);
+                    url: '/Photoers/find/' + id,
+                    success: function (pho) {
+                        $('#ModalUpdate #IDpho').val(pho.Ph_Id);
+                        $('#ModalUpdate #Namepho').val(pho.Ph_Name);
+                        $('#ModalUpdate #Addresspho').val(pho.Ph_Address);
+                        $('#ModalUpdate #PhoneNumberpho').val(pho.Ph_PhoneNumber); 
                     }
                 });
             });
         });
     </script>
 }
-

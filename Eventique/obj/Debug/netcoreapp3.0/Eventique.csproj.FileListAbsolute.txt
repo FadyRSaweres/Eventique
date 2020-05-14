@@ -238,7 +238,6 @@ E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\TestDes
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\TestPhoView.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\TestView.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\Upload.cshtml.g.cs
-E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\PhotographerBack\Index.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\photographerfront\PhoView.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\CreateAlbum.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\Edit.cshtml.g.cs
@@ -277,10 +276,14 @@ E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Halls\Delete
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Halls\Details.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Halls\Edit.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Halls\Index.cshtml.g.cs
-E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photoers\Index.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Users\Create.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Users\Delete.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Users\Details.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Users\Edit.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Users\Index.cshtml.g.cs
+E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photoers\Create.cshtml.g.cs
+E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photoers\Delete.cshtml.g.cs
+E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photoers\Details.cshtml.g.cs
+E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photoers\Edit.cshtml.g.cs
+E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photoers\Index.cshtml.g.cs
 E:\final9-5\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache

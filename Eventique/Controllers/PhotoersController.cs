@@ -8,12 +8,15 @@ using Microsoft.EntityFrameworkCore;
 using Eventique.Data;
 using Eventique.Models;
 using System.Collections;
+using Microsoft.AspNetCore.Authorization;
 
-namespace Eventique.Controllers.Admin
+namespace Eventique.Controllers
 {
+   
     public class PhotoersController : Controller
     {
         ApplicationDbContext context;
+
         public PhotoersController(ApplicationDbContext _context)
         {
             context = _context;
@@ -25,15 +28,14 @@ namespace Eventique.Controllers.Admin
         }
 
         [HttpPost]
-        [Route("CreatePhotographer")]
-        public IActionResult Create(string Ph_Name  ,string Ph_Address  )
+        [Route("Create")]
+        public IActionResult Create(string Ph_Name , string Ph_Address , string Ph_PhoneNumber)
         {
             Photographer p = new Photographer()
             {
                 Ph_Name = Ph_Name,
-                Ph_Address= Ph_Address,
-                
-
+                Ph_Address=Ph_Address,
+                Ph_PhoneNumber=Ph_PhoneNumber
             };
             context.Photographers.Add(p);
             context.SaveChanges();
@@ -41,7 +43,7 @@ namespace Eventique.Controllers.Admin
         }
 
         [HttpPost]
-        [Route("RemovePhotographer")]
+        [Route("Remove")]
         public IActionResult Remove(int id)
         {
             var photographer = context.Photographers.Find(id);
@@ -51,30 +53,34 @@ namespace Eventique.Controllers.Admin
         }
 
         [HttpGet]
-        [Route("Photographers/FindPhotographer/{id}")]
+        [Route("Photoers/Find/{id}")]
         public IActionResult Find(int id)
         {
             var Photographer = context.Photographers.Find(id);
-            ArrayList li = new ArrayList();
-            li.Add(Photographer.Ph_Id);
-            li.Add(Photographer.Ph_Name);
+            //ArrayList li = new ArrayList();
+            //li.Add(Photographer.Ph_Id);
+            //li.Add(Photographer.Ph_Name);
+            //li.Add(Photographer.Ph_Address);
+            //li.Add(Photographer.Ph_PhoneNumber);
             Dictionary<string, string> EmployeeList = new Dictionary<string, string>();
             EmployeeList.Add("Ph_Id", Photographer.Ph_Id.ToString());
             EmployeeList.Add("Ph_Name", Photographer.Ph_Name);
+            EmployeeList.Add("Ph_Address", Photographer.Ph_Address);
+            EmployeeList.Add("Ph_PhoneNumber", Photographer.Ph_PhoneNumber);
+
             return new JsonResult(EmployeeList);
         }
 
 
         [HttpPost]
-        [Route("Updatephotographer")]
-        public IActionResult Update(string Pho_Id, string Name , string Address)
+        [Route("Update")]
+        public IActionResult Update(int Ph_Id, string Ph_Name , string Ph_Address , string Ph_Phone)
         {
-            var photographer = context.Photographers.Find(int.Parse(Pho_Id));
-           //photographer.Ph_Id = Ph_Id;
-            photographer.Ph_Name= Name;
-            photographer.Ph_Address = Address;
-            
-           
+            var photographer = context.Photographers.Find(Ph_Id);
+            //photographer.Ph_Id = Ph_Id;
+            photographer.Ph_Name = Ph_Name;
+            photographer.Ph_Address = Ph_Address;
+            photographer.Ph_PhoneNumber = Ph_Phone;
             context.SaveChanges();
             return RedirectToAction("Index");
         }

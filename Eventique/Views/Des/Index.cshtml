@@ -55,9 +55,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID" required="required" name="ID" />
-                    </div>
+                    @*<div class="form-group">
+                        <input class="form-control" type="text" placeholder="ID"  name="ID" />
+                    </div>*@
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
                                type="text" required="required" name="Name" />
@@ -95,7 +95,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID" id="IDDesigner;" required="required" name="ID" />
+                        <input class="form-control" type="text" placeholder="ID" id="IDDesigner" required="required" name="ID" readonly />
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
@@ -171,11 +171,14 @@
                 var id = $(this).parent().find('.id').val();
                 $.ajax({
                     type: 'GET',
-                    url: '/Designers/FindDesigner/' + id,
-                    success: function (Designer) {
-                        $('#ModalUpdate #IDDesigner').val(Designer.ID);
-                        $('#ModalUpdate #NameDesigner').val(Designer.Name);
-                        $('#ModalUpdate #PhoneNumberDesigner').val(Designer.PhoneNumber);
+                    url: '/Des/FindDesigner/' + id,
+                    success: function (Des) {
+                        $('#ModalUpdate #IDDesigner').val(Des.ID);
+                        $('#ModalUpdate #NameDesigner').val(Des.Name);
+                        $('#ModalUpdate #PhoneNumberDesigner').val(Des.PhoneNumber);
+                        $('#ModalUpdate #AddressDesigner').val(Des.Address);
+                        $('#ModalUpdate #ShopNameDesigner').val(Des.ShopName);
+                        
                     }
                 });
             });

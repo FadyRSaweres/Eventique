@@ -13,7 +13,7 @@ namespace Eventique.Controllers.Admin
 {
     public class DesController : Controller
     {
-        
+
 
         ApplicationDbContext context;
         public DesController(ApplicationDbContext _context)
@@ -26,15 +26,15 @@ namespace Eventique.Controllers.Admin
         }
         [HttpPost]
         [Route("AddDesigner")]
-        public IActionResult AddDesigner(string Name, int PhoneNumber , string Address ,string ShopName)
+        public IActionResult AddDesigner(string Name, int PhoneNumber, string Address, string ShopName)
         {
             var designer = new Designer
             {
 
                 Name = Name,
                 PhoneNumber = PhoneNumber,
-                Address= Address,
-                ShopName= ShopName
+                Address = Address,
+                ShopName = ShopName
             };
             context.Designers.Add(designer);
             context.SaveChanges();
@@ -53,7 +53,7 @@ namespace Eventique.Controllers.Admin
         }
 
         [HttpGet]
-        [Route("Designers/FindDesigner/{id}")]
+        [Route("Des/FindDesigner/{id}")]
         public IActionResult FindDesigner(int id)
         {
             var designer = context.Designers.Find(id);
@@ -61,14 +61,17 @@ namespace Eventique.Controllers.Admin
             DList.Add("ID", designer.ID.ToString());
             DList.Add("Name", designer.Name);
             DList.Add("PhoneNumber", designer.PhoneNumber.ToString());
+            DList.Add("Address", designer.Address);
+            DList.Add("ShopName", designer.ShopName);
             return new JsonResult(DList);
         }
 
         [HttpPost]
         [Route("UpdateDesigner")]
-        public IActionResult UpdateDesigner(string ID, string Name, string PhoneNumber , string Address, string ShopName)
+        public IActionResult UpdateDesigner(int ID, string Name, string PhoneNumber, string Address, string ShopName)
         {
-            var designer = context.Designers.Find(int.Parse(ID));
+            //var designer = context.Designers.Where(d => d.ID == ID).FirstOrDefault();
+            var designer = context.Designers.Find(ID);
             //designer.ID = ID;
             designer.Name = Name;
             designer.PhoneNumber = int.Parse(PhoneNumber);
@@ -76,6 +79,7 @@ namespace Eventique.Controllers.Admin
             designer.ShopName = ShopName;
             context.SaveChanges();
             return RedirectToAction("Index");
+
         }
     }
 }
