@@ -1,24 +1,7 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "E:\\Final project EVENTIQUE\\Eventique\\Eventique\\Eventique.csproj": {}
-=======
-<<<<<<< HEAD
-    "E:\\finial\\Eventique\\Eventique\\Eventique.csproj": {}
-  },
-  "projects": {
-    "E:\\finial\\Eventique\\Eventique\\Eventique.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "E:\\finial\\Eventique\\Eventique\\Eventique.csproj",
-        "projectName": "Eventique",
-        "projectPath": "E:\\finial\\Eventique\\Eventique\\Eventique.csproj",
-        "packagesPath": "C:\\Users\\magdy\\.nuget\\packages\\",
-        "outputPath": "E:\\finial\\Eventique\\Eventique\\obj\\",
-=======
-    "D:\\Courses\\ITI\\projects\\Graduation Project\\Eventique\\Eventique\\Eventique.csproj": {}
->>>>>>> 25838f3c5e3048a82b8dd96e55b7daa66b1e125d
   },
   "projects": {
     "E:\\Final project EVENTIQUE\\Eventique\\Eventique\\Eventique.csproj": {
@@ -26,30 +9,12 @@
       "restore": {
         "projectUniqueName": "E:\\Final project EVENTIQUE\\Eventique\\Eventique\\Eventique.csproj",
         "projectName": "Eventique",
-<<<<<<< HEAD
         "projectPath": "E:\\Final project EVENTIQUE\\Eventique\\Eventique\\Eventique.csproj",
         "packagesPath": "C:\\Users\\Qasem\\.nuget\\packages\\",
         "outputPath": "E:\\Final project EVENTIQUE\\Eventique\\Eventique\\obj\\",
-=======
-        "projectPath": "D:\\Courses\\ITI\\projects\\Graduation Project\\Eventique\\Eventique\\Eventique.csproj",
-        "packagesPath": "C:\\Users\\Fady Ragaa\\.nuget\\packages\\",
-        "outputPath": "D:\\Courses\\ITI\\projects\\Graduation Project\\Eventique\\Eventique\\obj\\",
->>>>>>> 8e7f89a021640d4a84943d5a54455e17959c8ec0
->>>>>>> 25838f3c5e3048a82b8dd96e55b7daa66b1e125d
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\Qasem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-<<<<<<< HEAD
-          "C:\\Users\\magdy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\Fady Ragaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 8e7f89a021640d4a84943d5a54455e17959c8ec0
->>>>>>> 25838f3c5e3048a82b8dd96e55b7daa66b1e125d
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

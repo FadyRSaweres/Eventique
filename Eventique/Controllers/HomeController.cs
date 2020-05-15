@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Policy;
+using System.Security.Claims;
 
 namespace Eventique.Controllers
 {
@@ -19,14 +21,17 @@ namespace Eventique.Controllers
         List<string> picList = new List<string>();
         private IHostingEnvironment Environment;
         private readonly ApplicationDbContext context;
-        
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public HomeController(ApplicationDbContext _context , IHostingEnvironment _environment)
+
+        public HomeController(ApplicationDbContext _context , IHostingEnvironment _environment, UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager)
         {
             context = _context;
             Environment = _environment;
-            
-
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         public IActionResult Index()
         {
@@ -42,14 +47,16 @@ namespace Eventique.Controllers
             return View(p);
         }
 
-        public IActionResult MyDeals(string id)
+        public IActionResult MyDeals()
         {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            context.Users.ToList();
             context.Photographers.ToList();
             context.Hotels.ToList();
             context.Designers.ToList();
-            ViewData["phoRequest"]= context.PhotographerRequests.Where(p => p.RequestUser.Users.Id == id).ToList();
-            ViewData["WeddRequest"] = context.WeddingHallsRequests.Where(w => w.RequestUser.Users.Id == id).ToList();
-            ViewData["DesiRequest"] = context.DesignerRequests.Where(d => d.RequestUser.Users.Id == id).ToList();
+            ViewData["phoRequest"] = context.PhotographerRequests.Where(p => p.RequestUser.Users.Id == user.Value).ToList();
+            ViewData["WeddRequest"] = context.WeddingHallsRequests.Where(w => w.RequestUser.Users.Id == user.Value).ToList();
+            ViewData["DesiRequest"] = context.DesignerRequests.Where(d => d.RequestUser.Users.Id == user.Value).ToList();
             return View();
         }
 
@@ -98,6 +105,16 @@ namespace Eventique.Controllers
         {
             return View(context.Photographers.ToList());
         }
+        
+        public IActionResult TestWeddView(int id)
+        {
+            WeddingHall hall = new WeddingHall();
+            hall = context.Hotels.Where(h => h.ID == id).FirstOrDefault();
+            context.Albums.ToList();
+            context.Images.ToList();
+            context.Users.ToList();
+            return View(hall);
+        }
 
         public IActionResult TestDesiView(int id)
         {
@@ -116,6 +133,32 @@ namespace Eventique.Controllers
             context.Albums.ToList();
             context.Images.ToList();
             return View(p);
+        }
+
+        
+        [HttpPost]
+        public IActionResult PostReview(int id,Review review)
+        {
+            Photographer photographer = context.Photographers.Where(p => p.Ph_Id== id).FirstOrDefault();
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            context.Users.ToList();
+            Member member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
+            if (ModelState.IsValid)
+            {
+                photographer.Ph_Reviews.Add(new Review()
+                {
+                    Quality = review.Quality,
+                    DeleverTime = review.DeleverTime,
+                    TimeManagement = review.TimeManagement,
+                    ReviewMessage = review.ReviewMessage,
+                    ReviewDate = DateTime.Now,
+                    ReviewedMember = member
+                }) ;                
+                context.SaveChanges();
+                return RedirectToAction("TestPhoView", new { id = photographer.Ph_Id });
+            }
+            return View(photographer);
+            
         }
 
         public IActionResult PhoView(int id)
