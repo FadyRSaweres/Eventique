@@ -7,6 +7,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
     @RenderSection("Styles", required: false)
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
@@ -32,15 +39,14 @@
     <div id="colorlib-page">
         <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
         <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-            <h1 id="colorlib-logo"><img src="~/Images/LogoE.png" style="width:70%"/></h1>
+            <h1 id="colorlib-logo"><img src="~/Images/LogoE.png" style="width:70%" /></h1>
             <nav id="colorlib-main-menu" role="navigation">
                 <ul>
-                    <li class="colorlib-active"><a href="index.html">Home</a></li>
-                    <li><a href="photography.html">About</a></li>
-                    <li><a href="travel.html">Gallery</a></li>
-                    <li><a href="fashion.html">Offers</a></li>
-                    <li><a href="about.html">Reviews</a></li>
-                    <li><a href="contact.html">Contact & Request</a></li>
+                    <li class="colorlib-active"><a href="#AboutSEC">About</a></li>
+                    <li class=""><a href="#GallerySEC">Gallery</a></li>
+                    <li class=""><a href="#OfferSEC">Offers</a></li>
+                    <li class=""><a href="#ReviewSEC">Reviews</a></li>
+                    <li class=""><a href="#ContactSEC">Contact & Request</a></li>
                 </ul>
             </nav>
 
@@ -79,9 +85,8 @@
     <script src="~/js/js/jquery.animateNumber.min.js"></script>
     <script src="~/js/js/bootstrap-datepicker.js"></script>
     <script src="~/js/js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="~/js/js/google-map.js"></script>
     <script src="~/js/js/main.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 
 </body>

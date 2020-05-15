@@ -127,7 +127,7 @@ namespace Eventique.Areas.Identity.Pages.Account
                             designer.Users = user;
                             context.Designers.Add(designer);
                             context.SaveChanges();
-                            returnUrl = "~/Home/TestView";
+                            returnUrl = "~/Designers/TestDesiEdit/"+designer.ID;
                         }
                         else if (Input.Role == "WeddingHall")
                         {

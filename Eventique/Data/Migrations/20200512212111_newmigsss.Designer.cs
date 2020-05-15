@@ -4,14 +4,16 @@ using Eventique.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Eventique.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200512212111_newmigsss")]
+    partial class newmigsss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -273,9 +275,6 @@ namespace Eventique.Data.Migrations
                     b.Property<float>("Rate")
                         .HasColumnType("real");
 
-                    b.Property<string>("TestDate")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");
 
@@ -401,9 +400,6 @@ namespace Eventique.Data.Migrations
 
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
-
-                    b.Property<string>("TestDate")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");

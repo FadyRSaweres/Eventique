@@ -1,7 +1,7 @@
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\appsettings.Development.json
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\appsettings.json
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\libman.json
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\appsettings.json
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Eventique.StaticWebAssets.xml
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Eventique.exe
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Eventique.deps.json
@@ -229,11 +229,9 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Details.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Edit.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Index.cshtml.g.cs
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\Index.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllDesigners.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllPhotographers.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllWeddingHalls.cshtml.g.cs
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\designerShow.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\MyDeals.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\PhotoghrapherShow.cshtml.g.cs
@@ -246,6 +244,9 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\PhotographerBack\Index.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\photographerfront\PhoView.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\CreateAlbum.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\CreateNewAlbum.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\EditPho.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\TestPhoEdit.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_BackLayout.cshtml.g.cs
@@ -270,6 +271,6 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csproj.CopyComplete
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.pdb
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\TestPhoEdit.cshtml.g.cs
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\EditPho.cshtml.g.cs
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\CreateNewAlbum.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\TestDesiEdit.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\CreateNewInvitation.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\EditDesi.cshtml.g.cs

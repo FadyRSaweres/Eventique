@@ -17,6 +17,7 @@ namespace Eventique.Controllers
         private readonly ApplicationDbContext context;
         private IHostingEnvironment Environment; 
 
+
         public PhotographersController(ApplicationDbContext _context , IHostingEnvironment _environment)
         {
             context = _context;
@@ -124,6 +125,7 @@ namespace Eventique.Controllers
                 }
 
             }
+           
             b.MyProperty = imgP;
             Photographer po = new Photographer();
             po = context.Photographers.Where(s => s.Ph_Id == id).FirstOrDefault();

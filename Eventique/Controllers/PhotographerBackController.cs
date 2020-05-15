@@ -19,7 +19,7 @@ namespace Eventique.Controllers
         {
             context = _context;
         }
-        
+
         public IActionResult Index()
         {
             return View(context.Photographers.ToList());
@@ -63,15 +63,15 @@ namespace Eventique.Controllers
         }
 
 
-        [HttpPost]
-        [Route("Update")]
-        public IActionResult Update(string Pho_Id, string Pho_Name)
-        {
-            var photographer = context.Photographers.Find(int.Parse(Pho_Id));
-            //photographer.Ph_Id = Ph_Id;
-            photographer.Ph_Name = Pho_Name;
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //[Route("Update")]
+        //public IActionResult Update(string Pho_Id, string Pho_Name)
+        //{
+        //    var photographer = context.Photographers.Find(int.Parse(Pho_Id));
+        //    //photographer.Ph_Id = Ph_Id;
+        //    photographer.Ph_Name = Pho_Name;
+        //    context.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
     }
 }
