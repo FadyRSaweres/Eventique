@@ -163,6 +163,8 @@ namespace Eventique.Controllers
 
         
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         public IActionResult PostReview(int id,Review review)
         {
             Photographer photographer = context.Photographers.Where(p => p.Ph_Id== id).FirstOrDefault();
@@ -184,7 +186,17 @@ namespace Eventique.Controllers
                 return RedirectToAction("TestPhoView", new { id = photographer.Ph_Id });
             }
             return View(photographer);
-            
+        }
+
+        [Authorize(Roles = "User")]
+
+        public IActionResult GetAllReviews(int id)
+        {
+            context.Reviews.ToList();
+            Photographer photographer = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
+            List<Review> reviews = photographer.Ph_Reviews;
+            context.Members.ToList();
+            return View(reviews);
         }
 
         public IActionResult PhoView(int id)
@@ -202,6 +214,7 @@ namespace Eventique.Controllers
 
         //function for photographer requests 
         [HttpPost]
+        [Authorize(Roles = "User")]
         public IActionResult PhoRequest(int id , PhotographerRequest p)
         {
             PhotographerRequest pr = new PhotographerRequest();

@@ -1,15 +1,7 @@
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebassets\Eventique.StaticWebAssets.Manifest.cache
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebassets\Eventique.StaticWebAssets.xml
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cs
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cache
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorAssemblyInfo.cache
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorAssemblyInfo.cs
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.AssemblyInfoInputs.cache
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.AssemblyInfo.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\appsettings.Development.json
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\appsettings.json
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\libman.json
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\appsettings.json
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Eventique.StaticWebAssets.xml
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Eventique.exe
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Eventique.deps.json
@@ -176,6 +168,15 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebassets\Eventique.StaticWebAssets.Manifest.cache
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebassets\Eventique.StaticWebAssets.xml
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cache
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorAssemblyInfo.cache
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorAssemblyInfo.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.AssemblyInfoInputs.cache
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.AssemblyInfo.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.TagHelpers.input.cache
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.TagHelpers.output.cache
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorCoreGenerate.cache
@@ -237,6 +238,7 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllDesigners.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllPhotographers.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllWeddingHalls.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\GetAllReviews.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\MyDeals.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\PhotoghrapherShow.cshtml.g.cs
@@ -286,4 +288,3 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csproj.CopyComplete
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.pdb
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache

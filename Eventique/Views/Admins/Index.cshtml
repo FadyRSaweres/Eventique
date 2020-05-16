@@ -20,8 +20,9 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">230</span></div>
-                                    <div class="stat-heading">Requst</div>
+
+                                    @ViewBag.desCount
+                                    <div class="stat-heading">Requst desinger</div>
                                 </div>
                             </div>
                         </div>
@@ -40,10 +41,8 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                   
-                                        @Model.Sum(i=>i.ID)
-                                   
-                                    <div class="stat-heading">Requst ACCEPT</div>
+                                    @ViewBag.PhotographersCount
+                                    <div class="stat-heading">Requst photographer</div>
                                 </div>
                             </div>
                         </div>
@@ -60,8 +59,8 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">498</span></div>
-                                    <div class="stat-heading">All Requst</div>
+                                    @ViewBag.usercount
+                                    <div class="stat-heading">Users</div>
                                 </div>
                             </div>
                         </div>
@@ -156,25 +155,21 @@
 
                                 @foreach (var item in Model)
                                 {
-                                <tr>
-                                    <td>@item.ID</td>
-                                    <td>@item.Name</td>
+                                    <tr>
+                                        <td>@item.ID</td>
+                                        <td>@item.Name</td>
 
-
-                                    <td>
-                                        <a href="javascript:void(0);" id="showeditPhotographerModal" class="edit" data-toggle="modal">
-                                            Edit
-                                        </a>
-                                        <input type="hidden" class="id" value="@item.ID" />
-                                    </td>
-                                    <td>
-                                        <a href="javascript:void(0);" id="showdeletePhotographerModal" class="delete" data-toggle="modal">
-                                            Delete
-                                        </a>
-
-                                    <input type="hidden" class="id" value="@item.ID" />
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <a href="" onclick="getAdmin('@item.ID')" id="showeditPhotographerModal" class="edit" data-toggle="modal">
+                                                Edit
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="" onclick="deleteAdmin('@item.ID')" id="showdeletePhotographerModal" class="delete" data-toggle="modal">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
                                 }
 
                             </tbody>
@@ -208,15 +203,9 @@
                     </div>
                 </div>
             </div>
-        </div> <!-- /.col-md-4 -->
+        </div> 
     </div>
 </div>
-
-
-
-
-
-
 
 <div class="col-lg-12 col-md-12">
     <div class="card ov-h">
@@ -228,13 +217,12 @@
 </div>
 
 
-/////////////////////////////////////////
-
+@*///////////////////////////MOdel/////////////////*@
 
 <div class="modal fade" tabindex="-1" id="ModalCreate" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form method="post" asp-controller="Admins" asp-action="Create">
+            <form method="post" asp-controller="Admins" asp-action="AddAdmin">
                 <div class="modal-header">
                     <h4 class="modal-title">Add admin</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -242,9 +230,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID" required="required" name="Name" />
-                    </div>
+                    @*<div class="form-group">
+                            <input class="form-control" type="text" placeholder="ID" required="required" name="Name" />
+                        </div>*@
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
                                type="text" required="required" name="Name" />
@@ -261,7 +249,7 @@
 <div class="modal fade" tabindex="-1" id="ModalUpdate" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form method="post" asp-controller="Admins" asp-action="Edit">
+            <form method="post" asp-controller="Admins" asp-action="UpdateAdmin">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Admin</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -270,11 +258,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID" id="ID" required="required" name="Name" />
+                        <input class="form-control" type="text" name="ID"  placeholder="ID" id="IDadmin" required="required" readonly/>
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
-                               type="text" id="Name" required="required" name="Name" />
+                               type="text" id="Nameadmin" required="required" name="Name" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -286,10 +274,10 @@
     </div>
 </div>
 
-@*<div class="modal fade" id="deletePhotographerModal">
+<div class="modal fade" id="deletePhotographerModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" asp-controller="Admins" asp-action="Delete">
+            <form method="post" asp-controller="Admins" asp-action="RemoveAdmin">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete admin</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -302,24 +290,15 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="cancel" />
-                    <input type="submit" class="btn btn-danger" value="Delete" />
                     <input type="hidden" id="ID" name="ID" />
+                    <input type="submit" class="btn btn-danger" value="Delete" />
                 </div>
             </form>
         </div>
     </div>
-</div>*@
-
-
-
-
-
-
-
-
+</div>
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
-
 
 @section script{
     <script>
@@ -517,7 +496,6 @@
 }
 
 @section script3{
-    @*popup Modal*@
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -525,35 +503,26 @@
                 $("#ModalCreate").modal('show');
             });
 
-            $(".delete").click(function () {
-                $("#deletePhotographerModal").modal('show');
-            });
-
-            $(".edit").click(function () {
-                //debugger;
-                $("#ModalUpdate").modal('show');
-            });
-
-            $('table .delete').on('click', function () {
-                var ID = $(this).parent().find('.ID').val();
-                $("#deletePhotographerModal #ID").val(ID);
-            });
-
-            $('table .edit').on('click', function () {
-                //debugger;
-                var ID = $(this).parent().find('.ID').val();
+            getAdmin = function (id) {
                 $.ajax({
-                    type: 'GET',
-                    url: '/PhotographerBack/find/' + ID,
-                    success: function (photogapher) {
-                        //debugger;
-                        $('#ModalUpdate #ID').val(photogapher.ID);
-                        $('#ModalUpdate #ID').val(photogapher.ID);
+                    type: 'get',
+                    url: '/admin/findadmin/' + id,
+                    success: function (admin) {
+                        $("#ModalUpdate").modal('show');
+                        $('#ModalUpdate #IDadmin').val(admin.id);
+                        $('#ModalUpdate #Nameadmin').val(admin.name);
                     }
                 });
-            });
+            }
+
+            deleteAdmin = function (id) {
+
+                $("#deletePhotographerModal").modal('show');
+                $('#deletePhotographerModal #ID').val(id);
+            }
+
         });
-    </script>
+    </script>    
 }
 
 
