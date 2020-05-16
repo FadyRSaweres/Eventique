@@ -158,7 +158,15 @@ namespace Eventique.Controllers
                 return RedirectToAction("TestPhoView", new { id = photographer.Ph_Id });
             }
             return View(photographer);
-            
+        }
+
+        public IActionResult GetAllReviews(int id)
+        {
+            context.Reviews.ToList();
+            Photographer photographer = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
+            List<Review> reviews = photographer.Ph_Reviews;
+            context.Members.ToList();
+            return View(reviews);
         }
 
         public IActionResult PhoView(int id)
