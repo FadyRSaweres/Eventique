@@ -18,141 +18,208 @@ namespace Eventique.Controllers
         {
             _context = context;
         }
-
-        // GET: Admins
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Admins.ToListAsync());
+            ViewBag.usercount = _context.Users.ToList().Count();
+            
+
+            Photographer photo = new Photographer();
+            ViewBag.PhotographersCount = _context.Photographers.Count(x=>x.Ph_Requests.Count!=0);
+            Designer des = new Designer();
+            ViewBag.desCount = _context.Designers.Count(x => x.DesignerRequest.Count != 0);
+            ViewBag.photographer = _context.Photographers.ToList().Count();
+            ViewBag.desiner = _context.Designers.ToList().Count();
+
+            return View(_context.Admins.ToList());
         }
-        public async Task<IActionResult>Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var admin = await _context.Admins
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (admin == null)
-            {
-                return NotFound();
-            }
-
-            return View(admin);
-        }
-
-        // GET: Admins/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Admins/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name")] Admin admin)
+        [Route("AddAdmin")]
+        public IActionResult AddAdmin( int ID,string Name)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(admin);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(admin);
+            var admin = new Admin
+            { 
+
+                Name = Name,
+                 ID=ID
+             
+            };
+            _context.Admins.Add(admin);
+           _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        // GET: Admins/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var admin = await _context.Admins.FindAsync(id);
-            if (admin == null)
-            {
-                return NotFound();
-            }
-            return View(admin);
-        }
-
-        // POST: Admins/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name")] Admin admin)
+        [Route("RemoveAdmin")]
+        public IActionResult RemoveAdmin(int ID)
         {
-            if (id != admin.ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(admin);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AdminExists(admin.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(admin);
-        }
-
-        // GET: Admins/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var admin = await _context.Admins
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (admin == null)
-            {
-                return NotFound();
-            }
-
-            return View(admin);
-        }
-
-        // POST: Admins/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var admin = await _context.Admins.FindAsync(id);
+            Admin admin = _context.Admins.Find(ID);
             _context.Admins.Remove(admin);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        private bool AdminExists(int id)
+        [HttpGet]
+        [Route("Admin/FindAdmin/{id}")]
+        public JsonResult FindAdmin(int ID)
         {
-            return _context.Admins.Any(e => e.ID == id);
+            Admin admin = _context.Admins.Find(ID);
+            return Json(admin);
         }
-      
 
+        [HttpPost]
+        [Route("UpdateAdmin")]
+        public IActionResult UpdateAdmin(int ID, string Name)
+        {
 
+            var admin = _context.Admins.Find(ID);
+            admin.ID = ID;
+            admin.Name = Name;
+            _context.SaveChanges();
+            return RedirectToAction("Index");
 
-
-
-
+        }
     }
 }
+
+//        // GET: Admins
+//        public async Task<IActionResult> Index()
+//        {
+
+
+//            Photographer photo = new Photographer();
+//            ViewBag.PhotographersCount = _context.Photographers.Count(x=>x.Ph_Requests.Count!=0);
+//            return View(await _context.Admins.ToListAsync());
+//        }
+//        public async Task<IActionResult>Details(int? id)
+//        {
+//            if (id == null)
+//            {
+//                return NotFound();
+//            }
+
+//            var admin = await _context.Admins
+//                .FirstOrDefaultAsync(m => m.ID == id);
+//            if (admin == null)
+//            {
+//                return NotFound();
+//            }
+
+//            return View(admin);
+//        }
+
+//        // GET: Admins/Create
+//        public IActionResult Create()
+//        {
+//            return View();
+//        }
+
+//        // POST: Admins/Create
+//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+//        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public async Task<IActionResult> Create([Bind("ID,Name")] Admin admin)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                _context.Add(admin);
+//                await _context.SaveChangesAsync();
+//                return RedirectToAction(nameof(Index));
+//            }
+//            return View(admin);
+//        }
+
+//        // GET: Admins/Edit/5
+//        public async Task<IActionResult> Edit(int? id)
+//        {
+//            if (id == null)
+//            {
+//                return NotFound();
+//            }
+
+//            var admin = await _context.Admins.FindAsync(id);
+//            if (admin == null)
+//            {
+//                return NotFound();
+//            }
+//            return View(admin);
+//        }
+
+//        // POST: Admins/Edit/5
+//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+//        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public async Task<IActionResult> Edit(int id, [Bind("ID,Name")] Admin admin)
+//        {
+//            if (id != admin.ID)
+//            {
+//                return NotFound();
+//            }
+
+//            if (ModelState.IsValid)
+//            {
+//                try
+//                {
+//                    _context.Update(admin);
+//                    await _context.SaveChangesAsync();
+//                }
+//                catch (DbUpdateConcurrencyException)
+//                {
+//                    if (!AdminExists(admin.ID))
+//                    {
+//                        return NotFound();
+//                    }
+//                    else
+//                    {
+//                        throw;
+//                    }
+//                }
+//                return RedirectToAction(nameof(Index));
+//            }
+//            return View(admin);
+//        }
+
+//        // GET: Admins/Delete/5
+//        public async Task<IActionResult> Delete(int? id)
+//        {
+//            if (id == null)
+//            {
+//                return NotFound();
+//            }
+
+//            var admin = await _context.Admins
+//                .FirstOrDefaultAsync(m => m.ID == id);
+//            if (admin == null)
+//            {
+//                return NotFound();
+//            }
+
+//            return View(admin);
+//        }
+
+//        // POST: Admins/Delete/5
+//        [HttpPost, ActionName("Delete")]
+//        [ValidateAntiForgeryToken]
+//        public async Task<IActionResult> DeleteConfirmed(int id)
+//        {
+//            var admin = await _context.Admins.FindAsync(id);
+//            _context.Admins.Remove(admin);
+//            await _context.SaveChangesAsync();
+//            return RedirectToAction(nameof(Index));
+//        }
+
+//        private bool AdminExists(int id)
+//        {
+//            return _context.Admins.Any(e => e.ID == id);
+//        }
+
+
+
+
+
+
+
+//    }
+//}

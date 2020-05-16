@@ -193,7 +193,8 @@
         }
 
         function available(date) {
-            dmy = date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
+            debugger;   //11-05-2020
+            dmy = "0"+ date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
             if ($.inArray(dmy, availableDates) != -1) {
                 return true;
             } else {
