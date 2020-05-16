@@ -153,31 +153,69 @@
                             <p><span>Website</span> <a href="#">yoursite.com</a></p>
                         </div>
                     </div>
+                    <!----------------------------------------------------------popup Section Hidden------------------------------------------------------>
+                    <div class="modal fade" tabindex="-1" id="ModalStatus" data-keyboard="false" data-backdrop="static" style="z-index:2000">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <form method="post" asp-controller="Photographers" asp-action="Update">
+                                    <input type="hidden" name="Inv_Id" id="Inv_Id" />
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Post a Request</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p> Are you sure you want to accept that deal?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Accept</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!------------------------------------------------------------------End popup Section Hidden---------------------------------------------------------------------->
+
                     <div class="row block-9">
                         <div class="col-md-6 order-md-last pr-md-5">
-                            <form action="#">
-                                <div class="form-group">
-                                    <label>Avilable Dates</label>
-                                    <input type="date" class="form-control" placeholder="Avilable Dates">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Email">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Subject">
-                                </div>
-                                <div class="form-group">
-                                    <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-                                </div>
-                            </form>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="serial">Request ID</th>
+                                        <th class="avatar">Avatar</th>
+                                        <th>Name</th>
+                                        <th>Date</th>
+                                        <th>Price</th>
+                                        <th>Message</th>
+                                        <th>Status</th>
+                                        <th>Reply</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        foreach (var item in Model.Ph_Requests)
+                                        {
+                                            <tr>
+                                                <td>@item.ID</td>
+                                                <td>@item.RequestUser.Name</td>
+                                                <td>@item.Date</td>
+                                                <td>@Model.Ph_Price</td>
+                                                <td>@item.Message</td>
+                                                <td>@item.Status</td>
+                                                <td>
+                                                    <a href="#ModalStatus" id="btnShowModal" class="btn btn-success edit" data-toggle="modal">
+                                                        Accept
+                                                    </a>
+                                                    <a href="javascript:void(0);" id="showeditPhotographerModal" class="btn btn-danger edit" data-toggle="modal">
+                                                        Cancel
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
 
-                        </div>
+                                </tbody>
+                            </table>
 
-                        <div class="col-md-6">
-                            <div id="map"></div>
                         </div>
                     </div>
                 </div>
@@ -190,39 +228,10 @@
 @section Scripts{
     @*popup Modal*@
     <script type="text/javascript">
-
+        
         $(document).ready(function () {
             $("#btnShowModal").click(function () {
-                $("#ModalCreate").modal('show');
+                $("#ModalStatus").modal('show');
             });
-
-            $(".delete").click(function () {
-                $("#deletePhotographerModal").modal('show');
-            });
-
-            $(".edit").click(function () {
-                //debugger;
-                $("#ModalUpdate").modal('show');
-            });
-
-            $('table .delete').on('click', function () {
-                var id = $(this).parent().find('.id').val();
-                $("#deletePhotographerModal #idhh").val(id);
-            });
-
-            $('table .edit').on('click', function () {
-                //debugger;
-                var id = $(this).parent().find('.id').val();
-                $.ajax({
-                    type: 'GET',
-                    url: '/PhotographerBack/find/' + id,
-                    success: function (photogapher) {
-                        //debugger;
-                        $('#ModalUpdate #Pho_Id').val(photogapher.Ph_Id);
-                        $('#ModalUpdate #Pho_Name').val(photogapher.Ph_Name);
-                    }
-                });
-            });
-        });
     </script>
 }

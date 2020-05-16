@@ -46,6 +46,9 @@ namespace Eventique.Controllers
             context.Albums.ToList();
             context.Images.ToList();
             context.Users.ToList();
+            context.PhotographerRequests.ToList();
+            context.Members.ToList();
+
             return View(p);
         }
         //public IActionResult CreateAlbum()

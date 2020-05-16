@@ -43,8 +43,6 @@
     <section class="ftco-section-2" id="GallerySEC">
         <div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
             <div class="col-md-7 heading-section text-center ftco-animate">
-                <a href="~/Designers/EditDes/@Model.ID" class="btn btn-danger">Edit Your Personal Informations</a>
-                <a href="~/Designers/AddInvitation/@Model.ID" class="btn btn-danger">Add new Invitations </a>
                 <h2 class="mb-4">Alubms</h2>
                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
                 <h3>Press on invitation Phoho To Request it</h3>
@@ -53,7 +51,8 @@
         <div class="photograhy">
             <div class="row no-gutters">
                 @{
-
+                  if (Model.Invitations != null)
+                    {
                     @foreach (var item in Model.Invitations)
                     {
                         <div class="col-md-3">
@@ -68,8 +67,14 @@
                         </div>
 
                     }
+                    }
+                    else
+                    {
+                        <h3>No Invitations cards inserted yet ..</h3>
+                    }
 
-                }
+                    }
+                
 
             </div>
         </div>

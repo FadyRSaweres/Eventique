@@ -31,6 +31,7 @@
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="~/css/sty.css">
+    
 </head>
 <body>
 
@@ -64,6 +65,39 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                         <ul class="sub-menu children dropdown-menu">
+                            <li>
+                                <i class="fa fa-table"></i>
+                                <a class="link" asp-area="" asp-controller="Photoers" asp-action="Index">
+                                    Photographers
+                                </a>
+                            </li>
+
+                            <li>
+                                <i class="fa fa-table"></i>
+                                <a class="link" asp-area="" asp-controller="Des" asp-action="Index">
+                                    Desiners
+                                </a>
+                            </li>
+
+                            <li>
+                                <i class="fa fa-table"></i>
+                                <a class="link" asp-area="" asp-controller="Halls" asp-action="Index">
+                                    Halls
+                                </a>
+                            </li>
+
+                            <li>
+                                <i class="fa fa-table"></i>
+                                <a class="link" asp-area="" asp-controller="Users" asp-action="Index">
+                                    Users
+                                </a>
+                            </li>
+
+
+
+                            @*<li><i class="fa fa-table"></i><a href="#des">Basic Table</a></li>
+                                <li><i class="fa fa-table"></i><a href="#users">Data Table</a></li>*@
+
 
 
                             <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
@@ -88,7 +122,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
+                        <a  asp-area="" asp-controller="Admins" asp-action="Widgets" ><i class="menu-icon ti-email"></i> Widgets</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
@@ -277,9 +311,14 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
     <script src="assets/js/init/fullcalendar-init.js"></script>
+    @RenderSection("scripts2", required: false)
+
+
+</body>
+</html>
     @RenderSection("script", required: false)
     @RenderSection("script3", required: false)
 
 
-</body>
-</html class="no-js">
+
+

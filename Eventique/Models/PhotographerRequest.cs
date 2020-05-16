@@ -11,7 +11,7 @@ namespace Eventique.Models
     {
         [Key]
         public int ID { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public Member RequestUser { get; set; }
         public Photographer RequestPhotographer { get; set; }
         public string Status { get; set; }

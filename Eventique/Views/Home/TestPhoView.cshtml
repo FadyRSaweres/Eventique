@@ -78,35 +78,35 @@
                     {
 
 
-                    foreach (var item in Model.ListAlbum)
-                    {
-                        <div id="myModal @i" class="modal">
-                            <span class="close cursor" onclick="closeModal('myModal'+' '+ @i)">&times;</span>
-                            <div class="modal-content">
+                        foreach (var item in Model.ListAlbum)
+                        {
+                            <div id="myModal @i" class="modal">
+                                <span class="close cursor" onclick="closeModal('myModal'+' '+ @i)">&times;</span>
+                                <div class="modal-content">
 
-                                @{
-                                    for (int x = 0; x < item.MyProperty.Count(); x++)
-                                    {
-                                        <div class="mySlides @i">
-                                            <div class="numbertext"> @x / @item.MyProperty.Count()</div>
-                                            <img src="@item.MyProperty[x].Img_Path" style="width:100%">
-                                        </div>
+                                    @{
+                                        for (int x = 0; x < item.MyProperty.Count(); x++)
+                                        {
+                                            <div class="mySlides @i">
+                                                <div class="numbertext"> @x / @item.MyProperty.Count()</div>
+                                                <img src="@item.MyProperty[x].Img_Path" style="width:100%">
+                                            </div>
+                                        }
                                     }
-                                }
 
-                                <!-- Next/previous controls -->
-                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                                    <!-- Next/previous controls -->
+                                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-                                <!-- Caption text -->
-                                <div class="caption-container">
-                                    <p id="caption"></p>
-                                </div>
-                                <!-- Thumbnail image controls -->
-                                <div class="column" style="display:inline-block">
-                                    <img class="demo" src="../Images/pic02.jpg" onclick="currentSlide(1)" alt="Nature"
-                                         style="width: 50%;height: 50%;">
-                                </div>
+                                    <!-- Caption text -->
+                                    <div class="caption-container">
+                                        <p id="caption"></p>
+                                    </div>
+                                    <!-- Thumbnail image controls -->
+                                    <div class="column" style="display:inline-block">
+                                        <img class="demo" src="../Images/pic02.jpg" onclick="currentSlide(1)" alt="Nature"
+                                             style="width: 50%;height: 50%;">
+                                    </div>
 
                                 </div>
                             </div>
@@ -116,7 +116,45 @@
                 }
             </div>
         </section>
-        <section class="ftco-section contact-section">
+
+        <section class="ftco-section-2" id="OfferSEC">
+            <div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2 class="mb-4">Offers</h2>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-5 pb-2">
+                <p>@Model.Ph_Offers</p>
+            </div>
+        </section>
+
+        <section class="ftco-section-2" id="ReviewSEC">
+            <div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2 class="mb-4">Review</h2>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                </div>
+            </div>
+            <form method="post" action="~/Home/PostReview/@Model.Ph_Id" enctype="multipart/form-data">
+                <div class="form-group row justify-content-center">
+                    <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Quality" name="Quality">
+                </div>
+                <div class="form-group row justify-content-center">
+                    <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Time Commitment" name="TimeManagement">
+                </div>
+                <div class="form-group row justify-content-center">
+                    <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Deliver Commitmnent" name="DeleverTime">
+                </div>
+                <div class="form-group row justify-content-center">
+                    <textarea name="ReviewMessage" id="" cols="15" rows="4" class="form-control col-md-4" placeholder="Comment"></textarea>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <input type="submit" value="Post Your Review" class="btn btn-primary py-3 px-5">
+                </div>
+            </form>
+        </section>
+        <section class="ftco-section contact-section" id="ContactSEC">
             <div class="container">
                 <div class="row d-flex mb-5 contact-info">
                     <div class="col-md-12 mb-4">
@@ -138,34 +176,27 @@
                 </div>
                 <div class="row block-9">
                     <div class="col-md-6 order-md-last pr-md-5">
-                        <form action="#">
+                        <form method="post" action="~/Home/PhoRequest/@Model.Ph_Id" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="textDate">Enter your date</label>
-                                <input type='text' class="form-control" id='txtDateAvailable' onfocus="myFun('@Model.TestDate')" />
+                                <label for="Date">Enter your date</label>
+                                <input type='text' class="form-control" id='txtDateAvailable' name="Date" onmousedown="myFun('@Model.TestDate')" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Email">
+                                <textarea name="Message" id="Message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Subject">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                                <input type="submit" value="Send Request" class="btn btn-primary py-3 px-5">
                             </div>
                         </form>
-
                     </div>
 
-                <div class="col-md-6">
-                    <div id="map"></div>
+                    <div class="col-md-6">
+                        <div id="map"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 
 @section Scripts{
     <script>
