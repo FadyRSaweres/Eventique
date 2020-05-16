@@ -161,7 +161,7 @@ namespace Eventique.Data.Migrations
 
                     b.HasIndex("RequestUserID");
 
-                    b.ToTable("DesignerRequest");
+                    b.ToTable("DesignerRequests");
                 });
 
             modelBuilder.Entity("Eventique.Models.Image", b =>
@@ -314,7 +314,7 @@ namespace Eventique.Data.Migrations
 
                     b.HasIndex("RequestUserID");
 
-                    b.ToTable("PhotographerRequest");
+                    b.ToTable("PhotographerRequests");
                 });
 
             modelBuilder.Entity("Eventique.Models.Review", b =>
@@ -445,7 +445,7 @@ namespace Eventique.Data.Migrations
 
                     b.HasIndex("RequestUserID");
 
-                    b.ToTable("WeddingHallsRequest");
+                    b.ToTable("WeddingHallsRequests");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

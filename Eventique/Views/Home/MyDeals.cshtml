@@ -18,106 +18,125 @@
     <link rel="stylesheet" href="~/myDeals/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="~/myDeals/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="~/myDeals/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="~/myDeals/css/style.css" type="text/css">
+    @*<link rel="stylesheet" href="~/myDeals/css/style.css" type="text/css">*@
+    <link rel="stylesheet" href="~/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="~/assets/css/style.css" />
+    "
     <!-- Stylesheets -->
 }
 
-<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg" style="position:relative;margin-top:400px">
+<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg" style="position:relative;margin-top:250px">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Shopping Cart</h2>
+                    <h2>My Deals</h2>
                     <div class="breadcrumb__option">
                         <a href="./index.html">Home</a>
-                        <span>Shopping Cart</span>
+                        <span>My Deals</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
-<!-- Shoping Cart Section Begin -->
-<section class="shoping-cart spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Deal From</th>
-                                <th scope="col">Deal Message</th>
-                                <th scope="col"> Price Deal</th>
-                                <th scope="col">Deal Status</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="~/Images/person2.jpg" style="width:50px;height:50px" alt="">
-                                    <h5>Ahmed Khaled</h5>
-                                </td>
-                                <td>
-                                    your booking date is <date>12/12/2020</date>
-                                </td>
-                                <td>
-                                    1500 LE
-                                </td>
-                                <td>
-                                    Pendeing ...
-                                </td>
-                                <td>
-                                    <span><i class="fa fa-close"></i></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="~/Images/person2.jpg" style="width:50px;height:50px" alt="">
-                                    <h5>Ahmed Khaled</h5>
-                                </td>
-                                <td>
-                                    your booking date is <date>12/12/2020</date>
-                                </td>
-                                <td>
-                                    1500 LE
-                                </td>
-                                <td>
-                                    Pendeing ...
-                                </td>
-                                <td>
-                                    <span><i class="fa fa-close"></i></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="~/Images/person2.jpg" style="width:50px;height:50px" alt="">
-                                    <h5>Ahmed Khaled</h5>
-                                </td>
-                                <td>
-                                    your booking date is <date>12/12/2020</date>
-                                </td>
-                                <td>
-                                    1500 LE
-                                </td>
-                                <td>
-                                    Pendeing ...
-                                </td>
-                                <td>
-                                    <span><i class="fa fa-close"></i></span>
-                                </td>
-                            </tr>
 
-                        </tbody>
-                    </table>
-                </div>
+<div class="row justify-content-center mb-5 pb-2">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Deals With Photographers</strong>
+            </div>
+            <div class="table-stats order-table ov-h">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th class="serial">Request ID</th>
+                            <th class="avatar">Avatar</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Price</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{ foreach (var item in ViewData["phoRequest"] as List<Eventique.Models.PhotographerRequest>)
+                            {
+                                <tr>
+                                    <td class="serial">@item.ID</td>
+                                    <td class="avatar">
+                                        <div class="round-img">
+                                            <a href="#"><img class="rounded-circle" src="@item.RequestPhotographer.ImagePath" alt=""></a>
+                                        </div>
+                                    </td>
+                                    <td>@item.RequestPhotographer.Ph_Name</td>
+                                    <td>  <span class="name">@item.Date</span> </td>
+                                    <td> <span class="product">@item.RequestPhotographer.Ph_Price</span> </td>
+                                    <td><span class="count">@item.Message</span></td>
+                                    <td>
+                                        <span class="badge badge-complete">@item.Status</span>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
-
     </div>
-</section>
+</div>
+
+<div class="row justify-content-center mb-5 pb-2">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Deals With Wedding Halls</strong>
+            </div>
+            <div class="table-stats order-table ov-h">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th class="serial">Request ID</th>
+                            <th class="avatar">Avatar</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Price</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{ foreach (var item in ViewData["WeddRequest"] as List<Eventique.Models.WeddingHallsRequest>)
+                            {
+                                <tr>
+                                    <td class="serial">@item.ID</td>
+                                    <td class="avatar">
+                                        <div class="round-img">
+                                            <a href="#"><img class="rounded-circle" src="@item.RequestHotel.Hall_ImgPath" alt=""></a>
+                                        </div>
+                                    </td>
+                                    <td>@item.RequestHotel.Name</td>
+                                    <td>  <span class="name">@item.Date</span> </td>
+                                    <td> <span class="product">@item.RequestHotel.Hall_Price</span> </td>
+                                    <td><span class="count">@item.Message</span></td>
+                                    <td>
+                                        <span class="badge badge-complete">@item.Status</span>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@*Breadcrumb Section End
+    Shoping Cart Section Begin*@
+
 <!-- Shoping Cart Section End -->
 
 @section Scripts {

@@ -20,31 +20,27 @@ namespace Eventique.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.usercount = _context.Users.ToList().Count();
-            
+            //Photographer photo = new Photographer();
+            //ViewBag.PhotographersCount = _context.Photographers.Count(x => x.Ph_Requests.Count != 0);
+            //Designer des = new Designer();
+            //ViewBag.desCount = _context.Designers.Count(x => x.DesignerRequest.Count != 0);
 
-            Photographer photo = new Photographer();
-            ViewBag.PhotographersCount = _context.Photographers.Count(x=>x.Ph_Requests.Count!=0);
-            Designer des = new Designer();
-            ViewBag.desCount = _context.Designers.Count(x => x.DesignerRequest.Count != 0);
-            ViewBag.photographer = _context.Photographers.ToList().Count();
-            ViewBag.desiner = _context.Designers.ToList().Count();
 
             return View(_context.Admins.ToList());
         }
         [HttpPost]
         [Route("AddAdmin")]
-        public IActionResult AddAdmin( int ID,string Name)
+        public IActionResult AddAdmin(int ID, string Name)
         {
-            var admin = new Admin
-            { 
+            var admin = new Eventique.Models.Admin
+            {
 
                 Name = Name,
-                 ID=ID
-             
+                ID = ID
+
             };
             _context.Admins.Add(admin);
-           _context.SaveChanges();
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -53,7 +49,7 @@ namespace Eventique.Controllers
         [Route("RemoveAdmin")]
         public IActionResult RemoveAdmin(int ID)
         {
-            Admin admin = _context.Admins.Find(ID);
+            Eventique.Models.Admin admin = _context.Admins.Find(ID);
             _context.Admins.Remove(admin);
             _context.SaveChanges();
             return RedirectToAction("Index");
@@ -63,7 +59,7 @@ namespace Eventique.Controllers
         [Route("Admin/FindAdmin/{id}")]
         public JsonResult FindAdmin(int ID)
         {
-            Admin admin = _context.Admins.Find(ID);
+            Eventique.Models.Admin admin = _context.Admins.Find(ID);
             return Json(admin);
         }
 
