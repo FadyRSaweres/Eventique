@@ -1,0 +1,193 @@
+﻿@model Eventique.Models.WeddingHall
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "TestWeddEdit";
+    Layout = "~/Views/Shared/_phoViewLayout.cshtml";
+}
+
+<style>
+    .form-control {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+@if (SignInManager.IsSignedIn(User))
+{
+    if (User.Identity.Name != Model.Users.Email)
+    {
+        <div id="colorlib-main">
+            <section class="ftco-section contact-section">
+                <div class="container">
+                    <div class="row block-9" style="text-align:center">
+                        <h1>You Tried to Access page not found </h1>
+                        <h2>if you entered agian you will be blocked </h2>
+                    </div>
+                </div>
+            </section>
+        </div>
+    }
+    else
+    {
+        <div id="colorlib-main">              
+            <section class="home-slider js-fullheight owl-carousel" id="AboutSEC">
+                <div class="slider-item js-fullheight" style="background-image: url(@Model.Hall_ImgPath);">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row no-gutters slider-text slider-text-2 js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+                            <div class="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                                <a href="~/WeddingHalls/EditWedd/@Model.ID" class="btn btn-danger" style="font-size:20px">Edit Your Personal Informations</a>
+                                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">@Model.Name</h1>
+                                <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-item js-fullheight" style="background-image:url(/Images/bg_3.jpg);">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row no-gutters slider-text slider-text-2 js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+                            <div class="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                                <a href="~/WeddingHalls/EditWedd/@Model.ID" class="btn btn-danger" style="font-size:20px">Edit Your Personal Informations</a>
+                                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Explore and travel</h1>
+                                <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ftco-section-2" id="GallerySEC">
+                <div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
+                    <div class="col-md-7 heading-section text-center ftco-animate">
+                        <a href="~/WeddingHalls/CreateNew/@Model.ID" class="btn btn-danger" style="font-size:20px">Edit your Invitation</a>
+                        <h2 class="mb-4">Alubms</h2>
+                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                    </div>
+                </div>
+                <div class="photograhy">
+                    <div class="row no-gutters">
+                        @{
+                            if (Model.Album != null)
+                            {
+
+                                @foreach (var item in Model.Album.MyProperty)
+                                {
+                                    <div class="col-md-3">
+                                        <a href="#" id="ShowPopupModal" data-toggle="modal" data-target="#myModal" class="photography-entry img d-flex justify-content-center align-items-center" style="background-image: url(@item.Img_Path);">
+                                            <div class="overlay"></div>
+                                            <div class="text text-center">
+                                                <h3>@item.Img_Name</h3>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                }
+
+                            }
+                            else
+                            {
+                                <h3 style="color:white;">There is no Album uploaded yet..</h3>
+                            }
+                        }
+                    </div>
+                </div>
+            </section>
+
+            <section class="ftco-section-2" id="OfferSEC">
+                <div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
+                    <div class="col-md-7 heading-section text-center ftco-animate">
+                        <h2 class="mb-4">Offers</h2>
+                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-5 pb-2">
+                    <p>@Model.Offers</p>
+                </div>
+            </section>
+
+            <section class="ftco-section-2" id="ReviewSEC">
+                <div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
+                    <div class="col-md-7 heading-section text-center ftco-animate">
+                        <h2 class="mb-4">Review</h2>
+                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                    </div>
+                </div>
+                <form action="#">
+                    <div class="form-group row justify-content-center">
+                        <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Quality">
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Time Commitment">
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <input type="number" class="form-control col-md-4" placeholder="Deliver Commitmnent">
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <textarea name="" id="" cols="15" rows="4" class="form-control col-md-4" placeholder="Comment"></textarea>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <input type="submit" value="Post Your Review" class="btn btn-primary py-3 px-5">
+                    </div>
+                </form>
+
+            </section>
+
+            <section class="ftco-section contact-section" id="ContactSEC">
+                <div class="container">
+                    <div class="row d-flex mb-5 contact-info">
+                        <div class="col-md-12 mb-4">
+                            <h2 class="h4 font-weight-bold">Contact Information</h2>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-3">
+                            <p><span>Address:</span>@Model.Address</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><span>Phone:</span> <a href="#">@Model.PhoneNumber</a></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><span>Email:</span> <a href="#">@Model.Users.Email</a></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                        </div>
+                    </div>
+                    <div class="row block-9">
+                        <div class="col-md-6 order-md-last pr-md-5">
+                            <form action="#">
+                                <div class="form-group">
+                                    <label>Avilable Dates</label>
+                                    <input type="date" class="form-control" placeholder="Avilable Dates">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Subject">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+        </div>
+
+
+
+    }     
+                            }

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Policy;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Collections;
 
 namespace Eventique.Controllers
 {
@@ -86,23 +87,7 @@ namespace Eventique.Controllers
             return View();
         }
 
-        //public IActionResult getOneDesigner(int id)
-        //{
-        //    Designer p = new Designer();
-        //    p = context.Designers.Where(p => p.ID == id).FirstOrDefault();
-        //    context.Reviews.ToList();
-        //    context.InvitationCards.ToList();
-        //    return View(p);
-        //}
-        //public IActionResult DedignerProfile()
-        //{
-        //    return View(context.Photographers.ToList());
-        //}
-        //public IActionResult designerShow()
-        //{
 
-        //    return View(context.Designers.ToList());
-        //}
 
         public IActionResult PhotoghrapherShow()
         {
@@ -276,10 +261,71 @@ namespace Eventique.Controllers
             return RedirectToAction("TestPhoView", new { id = id }); 
         }
 
+
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        public IActionResult WeddRequest(int id, WeddingHallsRequest wd)
+        {
+            WeddingHallsRequest wdr = new WeddingHallsRequest();
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            WeddingHall w = context.Hotels.Where(p => p.ID == id).FirstOrDefault();
+            context.Users.ToList();
+            var member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
+            wdr.RequestHotel = w;
+            wdr.Date = wd.Date;
+            wdr.RequestUser = member;
+            wdr.Message = wd.Message;
+            wdr.Status = "Pending";
+            context.WeddingHallsRequests.Add(wdr);
+            context.SaveChanges();
+            return RedirectToAction("TestWeddView", new { id = id });
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        [HttpGet]
+        [Route("Home/find/{id}")]
+        public IActionResult Find(int id)
+        {
+            var invitation = context.InvitationCards.Find(id);
+            ArrayList li = new ArrayList();
+            li.Add(invitation.Inv_Id.ToString());
+            li.Add(invitation.Inv_Title);
+            li.Add(invitation.Inv_Price);
+            Dictionary<string, string> EmployeeList = new Dictionary<string, string>();
+            EmployeeList.Add("Inv_Id", invitation.Inv_Id.ToString());
+            EmployeeList.Add("Inv_Title", invitation.Inv_Title);
+            EmployeeList.Add("Inv_Price", invitation.Inv_Price.ToString());
+            return new JsonResult(EmployeeList);
+        }
+
+
+        [HttpPost]
+        [Route("UpdateRequest")]
+        public IActionResult Update(int id,string Inv_Id , string Message , int Quantity , string Date)
+        {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            var member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
+            var invitation = context.InvitationCards.Find(int.Parse(Inv_Id));
+            Designer d = context.Designers.Where(des => des.ID == id).FirstOrDefault();
+            DesignerRequest dr = new DesignerRequest();
+            dr.InvitationStyle = invitation;
+            dr.Message = Message;
+            dr.Quantity = Quantity;
+            dr.RequestHotel = d;
+            dr.RequestUser = member;
+            dr.Date = Date;
+            dr.Status = "pending";
+            context.DesignerRequests.Add(dr);
+            context.SaveChanges();
+            return RedirectToAction("TestDesiView", new { id = d.ID });
+        }
     }
 }
+

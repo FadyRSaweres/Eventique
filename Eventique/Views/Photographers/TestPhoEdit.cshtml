@@ -153,68 +153,11 @@
                             <p><span>Website</span> <a href="#">yoursite.com</a></p>
                         </div>
                     </div>
-                    <!----------------------------------------------------------popup Section Hidden------------------------------------------------------>
-                    <div class="modal fade" tabindex="-1" id="ModalStatus" data-keyboard="false" data-backdrop="static" style="z-index:2000">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <form method="post" asp-controller="Photographers" asp-action="Update">
-                                    <input type="hidden" name="Inv_Id" id="Inv_Id" />
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Post a Request</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p> Are you sure you want to accept that deal?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success">Accept</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!------------------------------------------------------------------End popup Section Hidden---------------------------------------------------------------------->
+                    
 
                     <div class="row block-9">
-                        <div class="col-md-6 order-md-last pr-md-5">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="serial">Request ID</th>
-                                        <th class="avatar">Avatar</th>
-                                        <th>Name</th>
-                                        <th>Date</th>
-                                        <th>Price</th>
-                                        <th>Message</th>
-                                        <th>Status</th>
-                                        <th>Reply</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @{
-                                        foreach (var item in Model.Ph_Requests)
-                                        {
-                                            <tr>
-                                                <td>@item.ID</td>
-                                                <td>@item.RequestUser.Name</td>
-                                                <td>@item.Date</td>
-                                                <td>@Model.Ph_Price</td>
-                                                <td>@item.Message</td>
-                                                <td>@item.Status</td>
-                                                <td>
-                                                    <a href="#ModalStatus" id="btnShowModal" class="btn btn-success edit" data-toggle="modal">
-                                                        Accept
-                                                    </a>
-                                                    <a href="javascript:void(0);" id="showeditPhotographerModal" class="btn btn-danger edit" data-toggle="modal">
-                                                        Cancel
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        }
-                                    }
-
-                                </tbody>
-                            </table>
+                        <div class="container-fluid">
+                            
 
                         </div>
                     </div>
