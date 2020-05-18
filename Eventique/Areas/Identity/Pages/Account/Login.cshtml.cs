@@ -115,6 +115,12 @@ namespace Eventique.Areas.Identity.Pages.Account
                         returnUrl = "~/Designers/TestDesiEdit/"+D.ID;
 
                     }
+                    else if (role.Contains("WeddingHall"))
+                    {
+                        Designer D = context.Designers.Where(me => me.Users.Id == user.Id).FirstOrDefault();
+                        returnUrl = "~/WeddingHalls/TestWeddEdit";
+
+                    }
                     else if(role.Contains("Admin"))
                     {
                         returnUrl = "~/PhotographerBack/Index";

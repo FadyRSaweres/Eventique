@@ -203,17 +203,6 @@
 @section Scripts{
     <script>
         var availableDates;
-
-
-        //$(function () {
-        //    $('#txtDateAvailable').datepicker({
-        //        beforeShowDay:
-        //            function (dt) {
-        //                return [available(dt), ""];
-        //            }
-        //        , changeMonth: true, changeYear: false
-        //    });
-        //});
         function myFun(list) {
             availableDates = list.split(',');
             $('#txtDateAvailable').datepicker({
@@ -226,16 +215,15 @@
         }
 
         function available(date) {
-<<<<<<< HEAD
             dmy = date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
             var li = dmy.split('-');
             if (li[0].length == 1) {
                 dmy = `0${li[0]}-${li[1]}-${li[2]}`;
             }
-=======
-            debugger;   //11-05-2020
-            dmy = "0"+ date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
->>>>>>> f1951ee850fdc38a3633e03be9946b77efa7d858
+            else {
+                //11-05-2020
+                dmy = date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
+            }
             if ($.inArray(dmy, availableDates) != -1) {
                 return true;
             } else {

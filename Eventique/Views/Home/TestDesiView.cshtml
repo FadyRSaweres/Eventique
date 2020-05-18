@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_phoViewLayout.cshtml";
 }
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
@@ -51,56 +51,75 @@
         <div class="photograhy">
             <div class="row no-gutters">
                 @{
-                  if (Model.Invitations != null)
+                    if (Model.Invitations != null)
                     {
-                    @foreach (var item in Model.Invitations)
-                    {
-                        <div class="col-md-3">
-                            <a href="#" id="ShowPopupModal" data-toggle="modal" data-target="#myModal" class="photography-entry img d-flex justify-content-center align-items-center" style="background-image: url(@item.Img.Img_Path);">
-                                <div class="overlay"></div>
-                                <div class="text text-center">
-                                    <h3>@item.Inv_Price $ / Piece </h3>
-                                    <span>@item.Inv_Title</span>
-                                    <span></span>
-                                </div>
-                            </a>
-                        </div>
-
-                    }
+                        @foreach (var item in Model.Invitations)
+                        {
+                            <div class="col-md-3">
+                                <a href="javascript:void(0);" id="ShowPopupModal" data-toggle="modal" class="photography-entry img d-flex justify-content-center align-items-center edit" style="background-image: url(@item.Img.Img_Path);">
+                                    <div class="overlay"></div>
+                                    <div class="text text-center">
+                                        <h3>@item.Inv_Price $ / Piece </h3>
+                                        <span>@item.Inv_Title</span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <input type="hidden" name="Inv_Id" id="Inv_Id" class="id" value="@item.Inv_Id" />
+                            </div>
+                        }
                     }
                     else
                     {
                         <h3>No Invitations cards inserted yet ..</h3>
                     }
 
-                    }
-                
+                }
+
 
             </div>
         </div>
     </section>
 
     <!----------------------------------------------------------popup Section Hidden------------------------------------------------------>
-    <div class="modal fade" id="myModal" role="dialog" tabindex="-1">
+    <div class="modal fade" id="myModal" role="dialog" tabindex="-1" style="z-index:2000;">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Post a Request</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Quantity</label>
-                        <input class="form-control" type="number" min="1" placeholder="Quantity" required="required" name="Request" />
+                <form method="post" asp-controller="Home" asp-action="Update" asp-route-id="@Model.ID">
+                    <input type="hidden" name="Inv_Id" id="Inv_Id" />
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Post a Request</h4>
                     </div>
-                    <div class="form-group">
-                        <label> Deliver Date</label>
-                        <input class="form-control" type="date" placeholder="Deliver Date" required="required" name="Request" />
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Price per pice</label>
+                            <input class="form-control" min="1" placeholder="Price" disabled name="Inv_Price" id="Inv_Price" />
+                        </div>
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input class="form-control" min="1" placeholder="Title" disabled name="Inv_Title" id="Inv_Title" />
+                        </div>
+                        <div class="form-group">
+                            <label>Your Quantity</label>
+                            <input class="form-control" min="1" placeholder="Your Quantity" required type="number" name="Quantity" id="Quantity" onkeyup="total(`${document.getElementById('Inv_Price').value}` , this)">
+                        </div>
+                        <div class="form-group">
+                            <label>Total price</label>
+                            <input class="form-control" min="1" placeholder="total price" disabled type="number" name="totalPrice" id="totalPrice"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Message</label>
+                            <input class="form-control" min="1" placeholder="Your Message" name="Message" id="Message" />
+                        </div>
+                        <div class="form-group">
+                            <label>Your arrival date</label>
+                            <input class="form-control" min="1" placeholder="Your Message" name="Date" id="Date" type="date" />
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -194,10 +213,52 @@
             </div>
         </div>
     </section>
-
-
-
 </div>
+@section Scripts
+{
+    <script type="text/javascript">
 
+        $(document).ready(function () {
+            $("#btnShowModal").click(function () {
+                $("#ModalCreate").modal('show');
+            });
+
+            $(".delete").click(function () {
+                $("#deletePhotographerModal").modal('show');
+            });
+
+            $(".edit").click(function () {
+                //debugger;
+                $("#myModal").modal('show');
+            });
+
+            $('table .delete').on('click', function () {
+                var id = $(this).parent().find('.id').val();
+                $("#deletePhotographerModal #idhh").val(id);
+            });
+
+            $('.edit').on('click', function () {
+                //debugger;
+                var id = $(this).parent().find('.id').val();
+                $.ajax({
+                    type: 'GET',
+                    url: '/Home/find/' + id,
+                    success: function (invitation) {
+                        //debugger;
+                        $('#myModal #Inv_Id').val(invitation.Inv_Id);
+                        $('#myModal #Inv_Title').val(invitation.Inv_Title);
+                        $('#myModal #Inv_Price').val(invitation.Inv_Price);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        function total(price, quantity) {
+      
+            document.getElementById('totalPrice').value = price * quantity.value; 
+        }
+    </script>
+}
 
 

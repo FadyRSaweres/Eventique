@@ -288,3 +288,8 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csproj.CopyComplete
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.pdb
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\TestweddEdit.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\AccessDeniedPage.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\EditWedd.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\Deals.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\Deals.cshtml.g.cs
