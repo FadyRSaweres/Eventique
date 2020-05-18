@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Courses\\ITI\\projects\\Graduation Project\\Eventique\\Eventique\\Eventique.csproj": {}
+    "E:\\Final final project\\Eventique\\Eventique\\Eventique.csproj": {}
   },
   "projects": {
-    "D:\\Courses\\ITI\\projects\\Graduation Project\\Eventique\\Eventique\\Eventique.csproj": {
+    "E:\\Final final project\\Eventique\\Eventique\\Eventique.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Courses\\ITI\\projects\\Graduation Project\\Eventique\\Eventique\\Eventique.csproj",
+        "projectUniqueName": "E:\\Final final project\\Eventique\\Eventique\\Eventique.csproj",
         "projectName": "Eventique",
-        "projectPath": "D:\\Courses\\ITI\\projects\\Graduation Project\\Eventique\\Eventique\\Eventique.csproj",
-        "packagesPath": "C:\\Users\\Fady Ragaa\\.nuget\\packages\\",
-        "outputPath": "D:\\Courses\\ITI\\projects\\Graduation Project\\Eventique\\Eventique\\obj\\",
+        "projectPath": "E:\\Final final project\\Eventique\\Eventique\\Eventique.csproj",
+        "packagesPath": "C:\\Users\\Qasem\\.nuget\\packages\\",
+        "outputPath": "E:\\Final final project\\Eventique\\Eventique\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Fady Ragaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Qasem\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -103,6 +103,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.0.3, 3.0.3]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -111,7 +129,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

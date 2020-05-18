@@ -17,5 +17,14 @@ namespace Eventique.Models
         public string Message { get; set; }
         public int Quantity { get; set; }
         public InvitationCard InvitationStyle{ get; set; }
+
+        public float price()
+        {
+            float x = Quantity;
+            float y = InvitationStyle.Inv_Price;
+            float p = (x * y);
+            return p;
+        }
     }
+
 }

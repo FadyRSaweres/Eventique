@@ -28,5 +28,11 @@ namespace Eventique.Models
         public List<WeddingHallsRequest> HotelRequest { get; set; }
         public IdentityUser Users { get; set; }
 
+        public WeddingHall()
+        {
+            HallsReview = new List<Review>();
+            HotelRequest = new List<WeddingHallsRequest>();
+        }
+
     }
 }

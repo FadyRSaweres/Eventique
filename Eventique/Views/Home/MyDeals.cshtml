@@ -42,7 +42,7 @@
 </section>
 
 <div class="row justify-content-center mb-5 pb-2">
-    <div class="col-lg-6">
+    <div class="col-lg-8">
         <div class="card">
             <div class="card-header">
                 <strong class="card-title">Deals With Photographers</strong>
@@ -73,7 +73,7 @@
                                     </td>
                                     <td>@item.RequestPhotographer.Ph_Name</td>
                                     <td>  <span class="name">@item.Date</span> </td>
-                                    <td> <span class="product">@item.RequestPhotographer.Ph_Price</span> </td>
+                                    <td> <span class="product">@item.RequestPhotographer.Ph_Price $</span> </td>
                                     <td><span class="count">@item.Message</span></td>
                                     <td>
                                         <span class="badge badge-complete">@item.Status</span>
@@ -89,7 +89,7 @@
 </div>
 
 <div class="row justify-content-center mb-5 pb-2">
-    <div class="col-lg-6">
+    <div class="col-lg-8">
         <div class="card">
             <div class="card-header">
                 <strong class="card-title">Deals With Wedding Halls</strong>
@@ -120,8 +120,60 @@
                                     </td>
                                     <td>@item.RequestHotel.Name</td>
                                     <td>  <span class="name">@item.Date</span> </td>
-                                    <td> <span class="product">@item.RequestHotel.Hall_Price</span> </td>
+                                    <td> <span class="product">@item.RequestHotel.Hall_Price $</span> </td>
                                     <td><span class="count">@item.Message</span></td>
+                                    <td>
+                                        <span class="badge badge-complete">@item.Status</span>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center mb-5 pb-2">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Deals With Photographers</strong>
+            </div>
+            <div class="table-stats order-table ov-h">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th class="serial">Request ID</th>
+                            <th class="avatar">Avatar</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Quantitiy</th>
+                            <th>Price</th>
+                            <th>Message</th>
+                            <th>Invition Style</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{ foreach (var item in ViewData["DesiRequest"] as List<Eventique.Models.DesignerRequest>)
+                            {                        
+                                <tr>
+                                    <td class="serial">@item.ID</td>
+                                    <td class="avatar">
+                                        <div class="round-img">
+                                            <a href="#"><img class="rounded-circle" src="@item.RequestHotel.Designer_ImgPath" alt=""></a>
+                                        </div>
+                                    </td>
+                                    <td>@item.RequestHotel.ShopName</td>
+                                    <td>  <span class="name">@item.Date</span> </td>
+                                    <td>@item.Quantity</td>
+                                    <td> <span class="product">@item.price() $</span> </td>
+                                    <td><span class="count">@item.Message</span></td>
+                                    <td class="">
+                                        <img src="@item.InvitationStyle.ImageFilePath" style="width:10px; height:15px;">
+                                    </td>
                                     <td>
                                         <span class="badge badge-complete">@item.Status</span>
                                     </td>
