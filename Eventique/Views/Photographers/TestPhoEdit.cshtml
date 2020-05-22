@@ -4,8 +4,11 @@
 @inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "TestPhoView";
-    Layout = "~/Views/Shared/_phoViewLayout.cshtml";
+    Layout = "~/Views/Shared/_BackViewLayout.cshtml";
 }
+    <link href="~/css/GetAllReviews.css" rel="stylesheet" />
+
+
 @if (SignInManager.IsSignedIn(User))
 {
     if (User.Identity.Name != Model.Users.Email)
@@ -24,21 +27,23 @@
     else
     {
         <div id="colorlib-main">
-            <div class="hero-wrap js-fullheight" style="background-image: url(/Images/bg_1.jpg);" data-stellar-background-ratio="0.5">
-                <div class="overlay"></div>
-                <div class="js-fullheight d-flex justify-content-center align-items-center">
-                    <div class="col-md-8 text text-center">
-                        <div class="img mb-4" style="background-image: url(@Model.ImagePath);"></div>
-                        <div class="desc">
-                            <h2 class="subheading">Hello I'm</h2>
-                            <h1 class="mb-4">@Model.Ph_Name</h1>
-                            <p class="mb-4">I am A Blogger Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                            <a href="~/Photographers/EditPho/@Model.Ph_Id" class="btn btn-danger">Edit your Personal Infornations</a>
+            <div id="AbouSec">
+                <div class="hero-wrap js-fullheight" style="background-image: url(/Images/bg_1.jpg);" data-stellar-background-ratio="0.5">
+                    <div class="overlay"></div>
+                    <div class="js-fullheight d-flex justify-content-center align-items-center">
+                        <div class="col-md-8 text text-center">
+                            <div class="img mb-4" style="background-image: url(@Model.ImagePath);"></div>
+                            <div class="desc">
+                                <h2 class="subheading">Hello I'm</h2>
+                                <h1 class="mb-4">@Model.Ph_Name</h1>
+                                <p class="mb-4">I am A Blogger Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                                <a href="~/Photographers/EditPho/@Model.Ph_Id" class="btn btn-danger">Edit your Personal Infornations</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <section class="ftco-section">
+            <section class="ftco-section" id="GallerySEC">
                 <div class="container">
                     <div class="row justify-content-center mb-5 pb-2">
                         <div class="col-md-7 heading-section text-center ftco-animate">
@@ -133,7 +138,47 @@
                     }
                 </div>
             </section>
-            <section class="ftco-section contact-section">
+            <section class="ftco-section-2" id="OfferSEC">
+                <div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
+                    <div class="col-md-7 heading-section text-center ftco-animate">
+                        <h2 class="mb-4">Offers</h2>
+                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-5 pb-2">
+                    <p>@Model.Ph_Offers</p>
+                </div>
+            </section>
+
+            <section class="ftco-section-2" id="ReviewSEC">
+                <div class="row justify-content-center mb-5 pb-2" style="margin-top:50px;">
+                    <div class="col-md-12">
+                        <div class="blog-comment">
+                            <h4>All Reviews</h4>
+                            <hr />
+                            <ul class="comments">
+                                @{
+                                    @foreach (var item in Model.Ph_Reviews)
+                                    {
+
+                                        <li class="clearfix">
+                                            <img src="@item.ReviewedMember.ImagePath" class="avatar" alt="">
+                                            <div class="post-comments">
+                                                <p class="meta">@item.ReviewDate.Day/@item.ReviewDate.Month/@item.ReviewDate.Year <a href="#">@item.ReviewedMember.Name </a>   says : <i class="pull-right" style="margin-right:100px"><a href="#"><small>sss</small></a></i></p>
+                                                <p>
+                                                    @item.ReviewMessage
+                                                </p>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ftco-section contact-section" id="ConatactSec">
                 <div class="container">
                     <div class="row d-flex mb-5 contact-info">
                         <div class="col-md-12 mb-4">
@@ -153,11 +198,11 @@
                             <p><span>Website</span> <a href="#">yoursite.com</a></p>
                         </div>
                     </div>
-                    
+
 
                     <div class="row block-9">
                         <div class="container-fluid">
-                            
+
 
                         </div>
                     </div>
@@ -171,7 +216,7 @@
 @section Scripts{
     @*popup Modal*@
     <script type="text/javascript">
-        
+
         $(document).ready(function () {
             $("#btnShowModal").click(function () {
                 $("#ModalStatus").modal('show');

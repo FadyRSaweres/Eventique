@@ -45,6 +45,8 @@ namespace Eventique.Controllers
             Photographer p = new Photographer();
             p = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
             context.Albums.ToList();
+            context.Reviews.ToList();
+            context.Members.ToList();
             context.Images.ToList();
             context.Users.ToList();
             context.PhotographerRequests.ToList();

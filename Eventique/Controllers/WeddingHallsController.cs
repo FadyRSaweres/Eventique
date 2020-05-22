@@ -35,6 +35,7 @@ namespace Eventique.Controllers
                 if (wh != null)
                 {
                     context.Users.ToList();
+                    context.Members.ToList();
                     context.Reviews.ToList();
                     context.WeddingHallsRequests.ToList();
                     context.Images.ToList();

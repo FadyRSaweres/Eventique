@@ -169,7 +169,6 @@ E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\unix
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csproj.CoreCompileInputs.cache
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cache
@@ -254,7 +253,6 @@ E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\P
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photoers\Edit.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photoers\Index.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\photographerfront\PhoView.cshtml.g.cs
-E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\CreateAlbum.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\CreateNewAlbum.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\Deals.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\EditPho.cshtml.g.cs
@@ -297,3 +295,7 @@ E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebasse
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.dll
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.pdb
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.genruntimeconfig.cache
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\EditUser\EditUser.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\EditUser\ChangePassword.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_DealsPartial.cshtml.g.cs

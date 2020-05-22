@@ -149,6 +149,7 @@ namespace Eventique.Controllers
             context.Images.ToList();
             context.Reviews.ToList();
             context.Members.ToList();
+            context.Users.ToList();
             return View(p);
         }
 

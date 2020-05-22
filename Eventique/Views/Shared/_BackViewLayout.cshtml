@@ -39,16 +39,23 @@
     <div id="colorlib-page">
         <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
         <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-            <h1 id="colorlib-logo"><img src="~/Images/LogoE.png" style="width:70%" /></h1>
+            <div class="px-xl-3">
+                <a asp-area="Identity" asp-page="/Account/Login">
+                    <button class="btn btn-block btn-secondary">
+                        <span>Log Out</span>
+                    </button>
+                </a>
+            </div>
+        <br />
+            <h1 id="colorlib-logo"><a href=""><img src="~/Images/LogoE.png" style="width:70%" /></a></h1>
             <nav id="colorlib-main-menu" role="navigation">
                 <ul>
-                    <li class="colorlib-active"><a href="#AboutSEC">About</a></li>
+                    <li class="colorlib-active"><a href="#AbouSec">About</a></li>
                     <li class=""><a href="#GallerySEC">Gallery</a></li>
-                    <li class=""><a href="#OfferSEC">Offers</a></li>
-                    <li class=""><a href="#ReviewSEC">Reviews</a></li>
-                    <li class=""><a href="#ContactSEC">My Deals</a></li>
-                    <li class=""><a href="#ContactSEC">Contact & Request</a></li>
-
+                    <li class=""><a href="#OfferSEC">Offer</a></li>
+                    <li class=""><a href="#ReviewSEC">Review</a></li>
+                    <li class=""><a href="#ConatactSec">Conatct</a></li>
+                    <partial name="_DealsPartial" />
                 </ul>
             </nav>
 
