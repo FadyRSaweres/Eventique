@@ -168,11 +168,8 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebassets\Eventique.StaticWebAssets.Manifest.cache
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebassets\Eventique.StaticWebAssets.xml
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cs
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cache
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorAssemblyInfo.cache
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorAssemblyInfo.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.AssemblyInfoInputs.cache
@@ -293,3 +290,11 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\EditWedd.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\Deals.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\Deals.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\UnconfirmedEmail.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\MailKit.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\MimeKit.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\BouncyCastle.Crypto.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cache
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\CheckEmail.cshtml.g.cs

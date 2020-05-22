@@ -12,18 +12,13 @@
     <link rel="stylesheet" type="text/css" href="~/pato/css/main.css">
     <link rel="icon" type="image/png" href="~/Images/newLogo.png" />
     <link rel="stylesheet" type="text/css" href="~/css/CardDesigner.css">
+    <link href="~/search/css/main.css" rel="stylesheet" />
+
 }
-<section style="margin-top:400px;position:relative" class="container">
+<section style="margin-top:200px;position:relative" class="container">
     <div class="col-lg-12 text-center mt-5">
     </div>
-    <div class="col-md-8 offset-md-2 mt-5">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search ......" aria-label="Recipient's username">
-            <div class="input-group-append">
-                <a href="#"><span class="input-group-text"><i class="fa fa-search" style="font-size:25px"></i></span></a>
-            </div>
-        </div>
-    </div>
+
     @{
         foreach (var item in Model)
         {
@@ -47,6 +42,98 @@
 
         }
     }
+    <div class="s007">
+        <form>
+            <div class="inner-form">
+                <div class="basic-search">
+                    <div class="input-field">
+                        <div class="icon-wrap">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+                                <path d="M18.869 19.162l-5.943-6.484c1.339-1.401 2.075-3.233 2.075-5.178 0-2.003-0.78-3.887-2.197-5.303s-3.3-2.197-5.303-2.197-3.887 0.78-5.303 2.197-2.197 3.3-2.197 5.303 0.78 3.887 2.197 5.303 3.3 2.197 5.303 2.197c1.726 0 3.362-0.579 4.688-1.645l5.943 6.483c0.099 0.108 0.233 0.162 0.369 0.162 0.121 0 0.242-0.043 0.338-0.131 0.204-0.187 0.217-0.503 0.031-0.706zM1 7.5c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5-6.5-2.916-6.5-6.5z"></path>
+                            </svg>
+                        </div>
+                        <input id="search" type="text" placeholder="Search..." />
+                        <div class="result-count">
+                            <span>108 </span>results
+                        </div>
+                    </div>
+                </div>
+                <div class="advance-search">
+                    <span class="desc">Advanced Search</span>
+                    <div class="row">
+                        <div class="input-field">
+                            <div class="input-select">
+                                <select data-trigger="" name="choices-single-defaul">
+                                    <option placeholder="" value="">ACCESSORIES</option>
+                                    <option>ACCESSORIES</option>
+                                    <option>SUBJECT B</option>
+                                    <option>SUBJECT C</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <div class="input-select">
+                                <select data-trigger="" name="choices-single-defaul">
+                                    <option placeholder="" value="">COLOR</option>
+                                    <option>GREEN</option>
+                                    <option>SUBJECT B</option>
+                                    <option>SUBJECT C</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <div class="input-select">
+                                <select data-trigger="" name="choices-single-defaul">
+                                    <option placeholder="" value="">SIZE</option>
+                                    <option>SIZE</option>
+                                    <option>SUBJECT B</option>
+                                    <option>SUBJECT C</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row second">
+                        <div class="input-field">
+                            <div class="input-select">
+                                <select data-trigger="" name="choices-single-defaul">
+                                    <option placeholder="" value="">SALE</option>
+                                    <option>SALE</option>
+                                    <option>SUBJECT B</option>
+                                    <option>SUBJECT C</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <div class="input-select">
+                                <select data-trigger="" name="choices-single-defaul">
+                                    <option placeholder="" value="">TIME</option>
+                                    <option>THIS WEEK</option>
+                                    <option>SUBJECT B</option>
+                                    <option>SUBJECT C</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <div class="input-select">
+                                <select data-trigger="" name="choices-single-defaul">
+                                    <option placeholder="" value="">TYPE</option>
+                                    <option>TYPE</option>
+                                    <option>SUBJECT B</option>
+                                    <option>SUBJECT C</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row third">
+                        <div class="input-field">
+                            <button class="btn-search">Search</button>
+                            <button class="btn-delete" id="delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </section>
 @section Scripts {
     <script type="text/javascript" src="~/pato/vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -65,4 +152,41 @@
     <script type="text/javascript" src="~/pato/vendor/countdowntime/countdowntime.js"></script>
     <script type="text/javascript" src="~/pato/vendor/lightbox2/js/lightbox.min.js"></script>
     <script src="~/pato/js/main.js"></script>
+
+    @*---------------------for search bar -----------------------*@
+    <script src="~/search/js/extention/choices.js"></script>
+    <script>
+        const customSelects = document.querySelectorAll("select");
+        const deleteBtn = document.getElementById('delete')
+        const choices = new Choices('select',
+            {
+                searchEnabled: false,
+                removeItemButton: true,
+                itemSelectText: '',
+            });
+        for (let i = 0; i < customSelects.length; i++) {
+            customSelects[i].addEventListener('addItem', function (event) {
+                if (event.detail.value) {
+                    let parent = this.parentNode.parentNode
+                    parent.classList.add('valid')
+                    parent.classList.remove('invalid')
+                }
+                else {
+                    let parent = this.parentNode.parentNode
+                    parent.classList.add('invalid')
+                    parent.classList.remove('valid')
+                }
+            }, false);
+        }
+        deleteBtn.addEventListener("click", function (e) {
+            e.preventDefault()
+            const deleteAll = document.querySelectorAll('.choices__button')
+            for (let i = 0; i < deleteAll.length; i++) {
+                deleteAll[i].click();
+            }
+        });
+
+    </script>
+    @*---------------------for search bar -----------------------*@
+
 }

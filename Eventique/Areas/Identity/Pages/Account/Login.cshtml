@@ -57,6 +57,10 @@
                     <a class="txt2" href="~/Identity/Account/Register">
                         Sign Up
                     </a>
+                    <br />
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
                 </div>
             </form>
         </div>
@@ -66,6 +70,15 @@
         <section>
             <h4>Use another service to log in.</h4>
             <hr />
+            @*@{
+                if (Model.ShowResend)
+                {
+                    <p>
+                        <a asp-page="./UnconfirmedEmail"
+                           asp-route-userId="@Model.UserId">Resend verification?</a>
+                    </p>
+                }
+            }*@
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
