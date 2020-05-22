@@ -9,7 +9,7 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 </style>
-
+<link href="~/css/GetAllReviews.css" rel="stylesheet" />
 
 <div id="colorlib-main">
     <section class="home-slider js-fullheight owl-carousel" id="AboutSEC">
@@ -92,26 +92,52 @@
                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
             </div>
         </div>
-        <form action="#">
+        <form method="post" action="~/Home/PostHallReview/@Model.ID" enctype="multipart/form-data">
             <div class="form-group row justify-content-center">
-                <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Quality">
+                <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Quality" name="Quality">
             </div>
             <div class="form-group row justify-content-center">
-                <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Time Commitment">
+                <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Time Commitment" name="TimeManagement">
             </div>
             <div class="form-group row justify-content-center">
-                <input type="number" class="form-control col-md-4" placeholder="Deliver Commitmnent">
+                <input type="number" min="1" max="5" class="form-control col-md-4" placeholder="Deliver Commitmnent" name="DeleverTime">
             </div>
             <div class="form-group row justify-content-center">
-                <textarea name="" id="" cols="15" rows="4" class="form-control col-md-4" placeholder="Comment"></textarea>
+                <textarea name="ReviewMessage" id="" cols="15" rows="4" class="form-control col-md-4" placeholder="Comment"></textarea>
             </div>
             <div class="form-group row justify-content-center">
                 <input type="submit" value="Post Your Review" class="btn btn-primary py-3 px-5">
             </div>
         </form>
-
     </section>
 
+    <section class="ftco-section-2">
+        <div class="row justify-content-center mb-5 pb-2" style="margin-top:50px;">
+            <div class="col-md-12">
+                <div class="blog-comment">
+                    <h4>All Reviews</h4>
+                    <hr />
+                    <ul class="comments">
+                        @{
+                            @foreach (var item in Model.HallsReview)
+                            {
+
+                                <li class="clearfix">
+                                    <img src="https://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="">
+                                    <div class="post-comments">
+                                        <p class="meta">@item.ReviewDate.Day/@item.ReviewDate.Month/@item.ReviewDate.Year <a href="#"> </a>   says: <i class="pull-right" style="margin-right:100px"><a href="#"><small>Rate: @item.Avg() </small></a></i></p>
+                                        <p>
+                                            @item.ReviewMessage
+                                        </p>
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="ftco-section contact-section" id="ContactSEC">
         <div class="container">
             <div class="row d-flex mb-5 contact-info">

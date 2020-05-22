@@ -58,7 +58,9 @@ namespace Eventique.Controllers
             context.Users.ToList();
             context.Photographers.ToList();
             context.Hotels.ToList();
+            context.InvitationCards.ToList();
             context.Designers.ToList();
+            
             try
             {
                 ViewData["phoRequest"] = context.PhotographerRequests.Where(p => p.RequestUser.Users.Id == user.Value)?.ToList();
@@ -155,6 +157,8 @@ namespace Eventique.Controllers
             context.Albums.ToList();
             context.Images.ToList();
             context.Users.ToList();
+            context.Reviews.ToList();
+            context.Members.ToList();
             return View(hall);
         }
 
@@ -165,7 +169,9 @@ namespace Eventique.Controllers
             context.Albums.ToList();
             context.Images.ToList();
             context.InvitationCards.ToList();
+            context.Reviews.ToList();
             context.Users.ToList();
+            context.Members.ToList();
             return View(D);
         }
         public IActionResult TestPhoView(int id)
@@ -174,16 +180,16 @@ namespace Eventique.Controllers
             p = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
             context.Albums.ToList();
             context.Images.ToList();
+            context.Reviews.ToList();
+            context.Members.ToList();
             return View(p);
         }
 
-        
         [HttpPost]
         [Authorize(Roles = "User")]
-
-        public IActionResult PostReview(int id,Review review)
+        public IActionResult PostReview(int id, Review review)
         {
-            Photographer photographer = context.Photographers.Where(p => p.Ph_Id== id).FirstOrDefault();
+            Photographer photographer = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             context.Users.ToList();
             Member member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
@@ -197,22 +203,61 @@ namespace Eventique.Controllers
                     ReviewMessage = review.ReviewMessage,
                     ReviewDate = DateTime.Now,
                     ReviewedMember = member
-                }) ;                
+                });
                 context.SaveChanges();
-                return RedirectToAction("TestPhoView", new { id = photographer.Ph_Id });
+                return RedirectToAction("TestPhoView", new { id = photographer.Ph_Id } );
             }
             return View(photographer);
         }
 
+        [HttpPost]
         [Authorize(Roles = "User")]
-
-        public IActionResult GetAllReviews(int id)
+        public IActionResult PostDesReview(int id , Review review)
         {
-            context.Reviews.ToList();
-            Photographer photographer = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
-            List<Review> reviews = photographer.Ph_Reviews;
-            context.Members.ToList();
-            return View(reviews);
+            Designer designer = context.Designers.Where(d => d.ID == id).FirstOrDefault();
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            context.Users.ToList();
+            Member member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
+            if (ModelState.IsValid)
+            {
+                designer.Reviews.Add(new Review()
+                {
+                    Quality = review.Quality,
+                    DeleverTime = review.DeleverTime,
+                    TimeManagement = review.TimeManagement,
+                    ReviewMessage = review.ReviewMessage,
+                    ReviewDate = DateTime.Now,
+                    ReviewedMember = member
+                });
+                context.SaveChanges();
+                return RedirectToAction("TestDesiView", new { id = designer.ID });
+            }
+            return View(designer);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        public IActionResult PostHallReview(int id, Review review)
+        {
+            WeddingHall hall = context.Hotels.Where(d => d.ID == id).FirstOrDefault();
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            context.Users.ToList();
+            Member member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
+            if (ModelState.IsValid)
+            {
+                hall.HallsReview.Add(new Review()
+                {
+                    Quality = review.Quality,
+                    DeleverTime = review.DeleverTime,
+                    TimeManagement = review.TimeManagement,
+                    ReviewMessage = review.ReviewMessage,
+                    ReviewDate = DateTime.Now,
+                    ReviewedMember = member
+                });
+                context.SaveChanges();
+                return RedirectToAction("TestweddView", new { id = hall.ID });
+            }
+            return View(hall);
         }
 
         public IActionResult PhoView(int id)
@@ -223,6 +268,7 @@ namespace Eventique.Controllers
             context.Images.ToList();
             return View(p);
         }
+
         public IActionResult Privacy()
         {
             return View();
