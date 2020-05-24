@@ -28,8 +28,8 @@
             <img src="~/Images/slider-10-1600x800 copy.jpg" class="ls-bg" alt="" />
 
             <div class="slider-content ls-l" style="top:60%; left:30%;" data-ls="offsetyin:100%; offsetxout:-50%; durationin:800; delayin:100; durationout:400; parallaxlevel:0;">
-                <a class="btn" href="#">More</a>
-                <h3 class="title"><b>More, Love, Live</b></h3>
+                <a class="btn" href="" data-toggle="modal" data-target="#ModalRecommendation">Recommendations</a>
+                <h3 class="title"><b>More, Wedding, Planning </b></h3>
                 <h6>29 October, 2017</h6>
             </div>
 
@@ -57,7 +57,97 @@
 
     </div><!-- slider -->
 </div><!-- main-slider -->
+@*********************************************popup modal**************************************@
+<div class="modal fade" tabindex="-1" id="ModalRecommendation" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form method="post" asp-controller="Home" asp-action="Recommendation">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Admin</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="Budget">Enter your Budget in LE</label>
+                        <input type="number" id="Budget" name="Budget" class="form-control" placeholder="Enter your Date" />
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Your Wedding date</label>
+                        <input type="date" id="date" name="date" required pattern="\d{2}-\d{2}-\d{4}" class="form-control" placeholder="Enter your Date" />
+                    </div>
+                    <div class="form-group">
+                        <label for="InvNumber">Your Invitation cards number</label>
+                        <input type="number" id="InvNumber" name="InvNumber" class="form-control" placeholder="Enter your Invitation Nunber" />
+                    </div>
+                    <div class="form-group">
+                        <label for="City">Your Wedding City</label>
+                        <input type="text" id="City" name="City" class="form-control" placeholder="Enter your Wedding City" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Save" />
+                    @*<input type="hidden" name="Name" id="ID" />*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
+@*************************************************************************************************@
+
+@*****************************************************************************************************@
+@{
+    var list = ViewData["rec"] as List<Recommendation>;
+    if (list.Count() != 0)
+    {
+        <div class="container">
+            <div class="row block-9">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Wedding Hall</th>
+                            <th>Wedding Hall Price</th>
+                            <th>Photographer</th>
+                            <th>Photographer price</th>
+                            <th>Designer Shop</th>
+                            <th>Invitation number</th>
+                            <th>Save</th>
+                            <th>Book</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var item in ViewData["rec"] as List<Recommendation>)
+                            {
+                                <tr>
+                                    <td><a href="~/Home/TestWeddView/@item.RecommendedWeddingHall.ID" class="btn btn-primary">@item.RecommendedWeddingHall.Name</a></td>
+                                    <td>@item.RecommendedWeddingHall.Hall_Price</td>
+                                    <td><a href="~/Home/TestPhoView/@item.RecommendedPhotographer.Ph_Id" class="btn btn-primary"> @item.RecommendedPhotographer.Ph_Name</a></td>
+                                    <td>@item.RecommendedPhotographer.Ph_Price</td>
+                                    <td><a href="~/Home/TestDesiView/@item.RecommendedDesigner.ID" class="btn btn-primary"> @item.RecommendedDesigner.ShopName</a></td>
+                                    <td>@item.RecommendedInvitation.Inv_Title</td>
+                                    <td>@item.Save</td>
+                                    <td>
+                                        <form method="post" action="~/Home/AcceptReco/@item.ID">
+                                            <button type="submit" id="btnaccept" class="btn btn-success edit" onclick="disable()">
+                                                Accept
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+}
+
+@*****************************************************************************************************@
 <section class="container" style="margin-top:100px">
     <div class="row">
         @{
