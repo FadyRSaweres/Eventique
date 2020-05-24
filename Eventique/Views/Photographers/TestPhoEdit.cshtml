@@ -164,7 +164,7 @@
                                         <li class="clearfix">
                                             <img src="@item.ReviewedMember.ImagePath" class="avatar" alt="">
                                             <div class="post-comments">
-                                                <p class="meta">@item.ReviewDate.Day/@item.ReviewDate.Month/@item.ReviewDate.Year <a href="#">@item.ReviewedMember.Name </a>   says : <i class="pull-right" style="margin-right:100px"><a href="#"><small>sss</small></a></i></p>
+                                                <p class="meta">@item.ReviewDate.Day/@item.ReviewDate.Month/@item.ReviewDate.Year <a href="#">@item.ReviewedMember.Name </a>   says : <i class="pull-right" style="margin-right:100px"><a href="#"><small>Rate: @item.Avg() </small></a></i></p>
                                                 <p>
                                                     @item.ReviewMessage
                                                 </p>
@@ -178,38 +178,8 @@
                 </div>
             </section>
 
-            <section class="ftco-section contact-section" id="ConatactSec">
-                <div class="container">
-                    <div class="row d-flex mb-5 contact-info">
-                        <div class="col-md-12 mb-4">
-                            <h2 class="h4 font-weight-bold">Contact Information</h2>
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="col-md-3">
-                            <p><span>Address:</span>@Model.Ph_Address</p>
-                        </div>
-                        <div class="col-md-3">
-                            <p><span>Phone:</span> <a href="#">@Model.Ph_PhoneNumber</a></p>
-                        </div>
-                        <div class="col-md-3">
-                            <p><span>Email:</span> <a href="#">@Model.Ph_Name</a></p>
-                        </div>
-                        <div class="col-md-3">
-                            <p><span>Website</span> <a href="#">yoursite.com</a></p>
-                        </div>
-                    </div>
-
-
-                    <div class="row block-9">
-                        <div class="container-fluid">
-
-
-                        </div>
-                    </div>
-                </div>
-            </section>
+           
         </div>
-
     }
 }
 

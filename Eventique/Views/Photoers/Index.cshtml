@@ -35,13 +35,13 @@
                 <a href="javascript:void(0);" id="showeditPhotographerModal" class="edit" data-toggle="modal">
                     Edit
                 </a>
-                <input type="hidden" class="id" value="@item.Ph_Id" />
+                <input type="hidden" class="id" name="Ph_Id" value="@item.Ph_Id" />
             </td>
             <td>
                 <a href="javascript:void(0);" id="showdeletePhotographerModal" class="delete" data-toggle="modal">
                     Delete
                 </a>
-                <input type="hidden" class="id" value="@item.Ph_Id" />
+                <input type="hidden"  name="Ph_Id" value="@item.Ph_Id" />
             </td>
         </tr>
         }
@@ -95,7 +95,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Ph_Id" id="IDpho;" required="required" name="Ph_Id"  />
+                        <input class="form-control" type="text" placeholder="Ph_Id" id="IDpho" required="required" name="Ph_Id"  />
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="Ph_Name"
@@ -113,7 +113,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-success" value="Save" />
-                    <input type="hidden" name="ID" id="id" />
+                    <input type="hidden" name="Ph_Id" id="id" />
                 </div>
             </form>
         </div>
@@ -164,7 +164,7 @@
                 $("#ModalDelete #idhh").val(id);
             });
 
-            $('table .edit').on('click', function () {
+            $('.edit').on('click', function () {
                 var id = $(this).parent().find('.id').val();
                 $.ajax({
                     type: 'GET',

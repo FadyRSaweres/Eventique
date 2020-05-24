@@ -75,7 +75,11 @@
                                     {
                                         <tr>
                                             <td>@item.ID</td>
-                                            <td>@item.RequestUser.Name</td>
+                                            <td>
+                                                <div class="round-img">
+                                                    <a href="#"><img class="rounded-circle" width="60" height="60" src="@item.RequestUser.ImagePath" alt=""></a>
+                                                </div>
+                                            </td>
                                             <td>@item.RequestUser.Name</td>
                                             <td>@item.Date</td>
                                             <td>@Model.Hall_Price</td>

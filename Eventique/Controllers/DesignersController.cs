@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Eventique.Data;
 using Eventique.Models;
+using Eventique.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Eventique.Controllers
 {
@@ -16,11 +20,20 @@ namespace Eventique.Controllers
     {
         private readonly ApplicationDbContext context;
         private IHostingEnvironment Environment;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<DesignersController> _logger;
 
-        public DesignersController(ApplicationDbContext _context, IHostingEnvironment _environment)
+        public DesignersController(ApplicationDbContext _context, IHostingEnvironment _environment,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            ILogger<DesignersController> logger)
         {
             context = _context;
             Environment = _environment;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _logger = logger;
         }
 
 
@@ -32,6 +45,7 @@ namespace Eventique.Controllers
             context.Reviews.ToList();
             context.InvitationCards.ToList();
             context.Users.ToList();
+            context.Members.ToList();
             return View(d);
         }
 
@@ -78,43 +92,44 @@ namespace Eventique.Controllers
             context.InvitationCards.Add(b);
             po.Invitations.Add(b);
             context.SaveChanges();
+            context.Reviews.ToList();
             return RedirectToAction("TestDesiEdit", new { id = id });
         }
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
-//using Eventique.Data;
-//using Eventique.Models;
-//using Microsoft.AspNetCore.Mvc;
+        //using System;
+        //using System.Collections.Generic;
+        //using System.Linq;
+        //using System.Threading.Tasks;
+        //using Eventique.Data;
+        //using Eventique.Models;
+        //using Microsoft.AspNetCore.Mvc;
 
-//namespace Eventique.Controllers
-//{
-//    public class DesignersController : Controller
-//    {
-//        ApplicationDbContext context;
-//        public DesignersController(ApplicationDbContext _context)
-//        {
-//            context = _context;
-//        }
-//        public IActionResult Index()
-//        {
-//            return View(context.Designers.ToList());
-//        }
-//        [HttpPost]
-//        [Route("AddDesigner")]
-//        public IActionResult AddDesigner(string Name, int PhoneNumber)
-//        {
-//            var designer = new Designer
-//            {
+        //namespace Eventique.Controllers
+        //{
+        //    public class DesignersController : Controller
+        //    {
+        //        ApplicationDbContext context;
+        //        public DesignersController(ApplicationDbContext _context)
+        //        {
+        //            context = _context;
+        //        }
+        //        public IActionResult Index()
+        //        {
+        //            return View(context.Designers.ToList());
+        //        }
+        //        [HttpPost]
+        //        [Route("AddDesigner")]
+        //        public IActionResult AddDesigner(string Name, int PhoneNumber)
+        //        {
+        //            var designer = new Designer
+        //            {
 
-//                Name = Name,
-//                PhoneNumber = PhoneNumber
-//            };
-//            context.Designers.Add(designer);
-//            context.SaveChanges();
-//            return RedirectToAction("Index");
-//        }
+        //                Name = Name,
+        //                PhoneNumber = PhoneNumber
+        //            };
+        //            context.Designers.Add(designer);
+        //            context.SaveChanges();
+        //            return RedirectToAction("Index");
+        //        }
 
         public IActionResult EditDesi(int id)
         {
@@ -201,7 +216,7 @@ namespace Eventique.Controllers
 
 
         [HttpPost]
-        [Route("Update")]
+        [Route("UpdateDes")]
 
         public IActionResult Update(string Inv_Id, string Inv_Title, string Inv_Price)
         {
@@ -212,9 +227,90 @@ namespace Eventique.Controllers
             context.SaveChanges();
             return RedirectToAction("TestDesiEdit", new { id = des.ID });
         }
+
+        public IActionResult Deals()
+        {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            Designer ph = context.Designers.Where(h => h.Users.Id == user.Value).FirstOrDefault();
+            //p = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
+            context.Images.ToList();
+            context.Users.ToList();
+            context.Designers.ToList();
+            context.DesignerRequests.ToList();
+            context.InvitationCards.ToList();
+            context.Members.ToList();
+            return View(ph);
+        }
+
+        [HttpPost]
+        public IActionResult AcceptDeal(int id)
+        {
+            DesignerRequest pr = context.DesignerRequests.Where(fr => fr.ID == id).FirstOrDefault();
+            pr.Status = "Accepted";
+            context.SaveChanges();
+            //GMailer.GmailUsername = "fady.ragaa48@gmail.com";
+            //GMailer.GmailPassword = "fady2020";
+
+            //GMailer mailer = new GMailer();
+            //mailer.ToEmail = "bahersaweres@gmail.com";
+            //mailer.Subject = "Eventique Website";
+            //mailer.Body = "Thanks for Registering your Booking .<br> your booking accepted now</a>";
+            //mailer.IsHtml = false;
+            //mailer.Send();
+            return RedirectToAction("Deals");
+        }
+
+        [HttpPost]
+        public IActionResult CancelDeal(int id)
+        {
+            DesignerRequest pr = context.DesignerRequests.Where(fr => fr.ID == id).FirstOrDefault();
+            pr.Status = "Canceled";
+            context.SaveChanges();
+            //GMailer.GmailUsername = "fady.ragaa48@gmail.com";
+            //GMailer.GmailPassword = "fady2020";
+
+            //GMailer mailer = new GMailer();
+            //mailer.ToEmail = "bahersaweres@gmail.com";
+            //mailer.Subject = "Eventique Website";
+            //mailer.Body = "Thanks for Registering your Booking .<br> your booking accepted now</a>";
+            //mailer.IsHtml = false;
+            //mailer.Send();
+            return RedirectToAction("Deals");
+        }
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePassVM passVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return RedirectToAction("");
+                }
+
+                var result = await _userManager.ChangePasswordAsync(user, passVM.CurrentPassword, passVM.NewPassword);
+                if (!result.Succeeded)
+                {
+                    foreach (var Error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, Error.Description);
+                    }
+                    return View();
+                }
+                await _signInManager.RefreshSignInAsync(user);
+                return View("ChangePassword");
+            }
+            return View(passVM);
+        }
     }
 
 }
+
 
 
 //        [HttpPost]

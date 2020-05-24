@@ -25,6 +25,7 @@ namespace Eventique.Controllers
         private readonly ApplicationDbContext context;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly List<WeddingHall> halls = new List<WeddingHall>();
 
 
         public HomeController(ApplicationDbContext _context , IHostingEnvironment _environment, UserManager<IdentityUser> userManager,
@@ -34,6 +35,7 @@ namespace Eventique.Controllers
             Environment = _environment;
             _userManager = userManager;
             _signInManager = signInManager;
+            halls = context.Hotels.ToList();
         }
         public IActionResult Index()
         {
@@ -102,19 +104,56 @@ namespace Eventique.Controllers
         }
         public IActionResult TestView()
         {
-            return View(context.Photographers.ToList());
+
+            context.Members.ToList();
+            ViewData["photo"] = context.Photographers.ToList();
+            ViewData["halls"] = context.Hotels.ToList();
+            ViewData["designers"] = context.Designers.ToList();
+            ViewData["Reviews"] = context.Reviews.ToList();
+            return View();
         }
 
-        public IActionResult AllWeddingHalls()
+        public IActionResult AllWeddingHalls(int Price = 5000, string HallType = null, string OtherServices = null, int Capacity = 100, string Regon = null, string Date = null)
         {
             context.Albums.ToList();
             context.Images.ToList();
-            return View(context.Hotels.ToList());
+            List<WeddingHall> wedHalls = new List<WeddingHall>();
+            if(Date == "Next Month")
+            {
+                wedHalls = context.Hotels.Where(h => h.Hall_Price <= Price && h.HallType == HallType && h.OtherServices == OtherServices && h.Capacity <= Capacity && h.Address.Contains(Regon) && h.TestDate.Contains("-06-")).ToList();
+            }
+            else if(Date == "This Month")
+            {
+                wedHalls = context.Hotels.Where(h => h.Hall_Price <= Price && h.HallType == HallType && h.OtherServices == OtherServices && h.Capacity <= Capacity && h.Address.Contains(Regon) && h.TestDate.Contains("-05-")).ToList();
+            }
+            else if(Price == 5000 && HallType == null && OtherServices == null && Capacity == 100 && Regon == null && Date == null)
+            {
+                wedHalls = context.Hotels.ToList();
+            }
+            return View(wedHalls);
         }
 
-        public IActionResult AllPhotographers()
+        //public IActionResult Search(string Price , string HallType , string OtherServices , string Capacity , string Regon , string Date)
+        //{
+        //    return 
+        //}
+
+        public IActionResult AllPhotographers(int Price = 1000, string CameraType = null, string Regon = null, string Date = null)
         {
-            return View(context.Photographers.ToList());
+            List<Photographer> photographers = new List<Photographer>();
+            if (Date == "Next Month")
+            {
+                photographers = context.Photographers.Where(h => h.Ph_Price <= Price && h.Ph_CameraType == CameraType && h.Ph_Address.Contains(Regon) && h.TestDate.Contains("-06-")).ToList();
+            }
+            else if (Date == "This Month")
+            {
+                photographers = context.Photographers.Where(h => h.Ph_Price <= Price && h.Ph_CameraType == CameraType && h.Ph_Address.Contains(Regon) && h.TestDate.Contains("-05-")).ToList();
+            }
+            else
+            {
+                photographers = context.Photographers.ToList();
+            }
+            return View(photographers);
         }
         
         public IActionResult TestWeddView(int id)

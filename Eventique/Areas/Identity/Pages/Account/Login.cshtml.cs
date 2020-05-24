@@ -42,7 +42,8 @@ namespace Eventique.Areas.Identity.Pages.Account
 
         [BindProperty]
         public InputModel Input { get; set; }
-
+        public bool ShowResend { get; set; }
+        public string UserId { get; set; }
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
         public string ReturnUrl { get; set; }
@@ -127,6 +128,16 @@ namespace Eventique.Areas.Identity.Pages.Account
                     }
                     return LocalRedirect(returnUrl);
                 }
+
+                //if (result.IsNotAllowed)
+                //{
+                //    _logger.LogWarning("User email is not confirmed.");
+                //    ModelState.AddModelError(string.Empty, "Email is not confirmed.");
+                //    var user = await _userManager.FindByNameAsync(Input.Email);
+                //    UserId = user.Id;
+                //    ShowResend = true;
+                //    return Page();
+                //}
                 if (result.RequiresTwoFactor)
                 {
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });

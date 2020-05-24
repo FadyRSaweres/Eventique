@@ -271,16 +271,12 @@
             if (li[0].length == 1) {
                 dmy = `0${li[0]}-${li[1]}-${li[2]}`;
             }
-<<<<<<< HEAD
 
-            debugger;   //11-05-2020
-            dmy = "0" + date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
-=======
+               //11-05-2020
             else {
                 //11-05-2020
                 dmy = date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
             }
->>>>>>> 9d66e1129bd90393b8c1666ce7fb3830b8fc3b22
             if ($.inArray(dmy, availableDates) != -1) {
                 return true;
             } else {

@@ -6,23 +6,37 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Eventique.Data;
 using Eventique.Models;
+using Eventique.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
 namespace Eventique.Controllers
 {
     [Authorize(Roles = "Photographer")]
     public class PhotographersController : Controller
     {
         private readonly ApplicationDbContext context;
-        private IHostingEnvironment Environment; 
+        private IHostingEnvironment Environment;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<PhotographersController> _logger;
 
 
-        public PhotographersController(ApplicationDbContext _context , IHostingEnvironment _environment)
+        public PhotographersController(ApplicationDbContext _context , IHostingEnvironment _environment,
+             UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            ILogger<PhotographersController> logger)
         {
             context = _context;
             Environment = _environment;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _logger = logger;
+
         }
         public IActionResult Index()
         {
@@ -228,6 +242,37 @@ namespace Eventique.Controllers
             //mailer.IsHtml = false;
             //mailer.Send();
             return RedirectToAction("Deals");
+        }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePassVM passVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return RedirectToAction("");
+                }
+
+                var result = await _userManager.ChangePasswordAsync(user, passVM.CurrentPassword, passVM.NewPassword);
+                if (!result.Succeeded)
+                {
+                    foreach (var Error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, Error.Description);
+                    }
+                    return View();
+                }
+                await _signInManager.RefreshSignInAsync(user);
+                return PartialView("ChangePassword");
+            }
+            return View(passVM);
         }
 
 

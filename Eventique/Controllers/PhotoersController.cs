@@ -84,7 +84,7 @@ namespace Eventique.Controllers
         //}
         [HttpPost]
         [Route("Update")]
-        public IActionResult Update(int Ph_Id, string Ph_Name , string Ph_Address , string Ph_Phone)
+        public IActionResult Update(int Ph_Id, string Ph_Name  , string Ph_Phone, string Ph_Address)
         {
             var photographer = context.Photographers.Find(Ph_Id);
             //photographer.Ph_Id = Ph_Id;

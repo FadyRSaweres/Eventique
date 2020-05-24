@@ -11,8 +11,10 @@ E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Eventique.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Eventique.pdb
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Eventique.Views.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Eventique.Views.pdb
+E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Castle.Core.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\EntityFramework.SqlServer.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\EntityFramework.dll
+E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\MailKit.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
@@ -59,8 +61,11 @@ E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.Vis
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.Win32.Registry.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\MimeKit.dll
+E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Moq.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\NuGet.Frameworks.dll
+E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\BouncyCastle.Crypto.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\SQLitePCLRaw.batteries_v2.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\SQLitePCLRaw.nativelibrary.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\SQLitePCLRaw.core.dll
@@ -180,6 +185,7 @@ E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.Tag
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.TagHelpers.output.cache
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorCoreGenerate.cache
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\CheckEmail.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\ConfirmEmailChange.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\ExternalLogin.cshtml.g.cs
@@ -204,6 +210,7 @@ E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\I
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\ShowRecoveryCodes.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\TwoFactorAuthentication.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\UnconfirmedEmail.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\_StatusMessage.cshtml.g.cs
@@ -229,6 +236,8 @@ E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\D
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\Index.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\TestDesiEdit.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Des\Index.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\EditUser\ChangePassword.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\EditUser\EditUser.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Halls\Create.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Halls\Delete.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Halls\Details.cshtml.g.cs
@@ -264,6 +273,7 @@ E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\S
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CustomLayout.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CustomPhotographer.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_DealsPartial.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_designerLayout.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LoginLayout.cshtml.g.cs
@@ -295,7 +305,8 @@ E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebasse
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.dll
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.pdb
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.genruntimeconfig.cache
-E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\EditUser\EditUser.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\ChangePassword.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\ChangePassword.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\ChangePassword.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\Deals.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
-E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\EditUser\ChangePassword.cshtml.g.cs
-E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_DealsPartial.cshtml.g.cs

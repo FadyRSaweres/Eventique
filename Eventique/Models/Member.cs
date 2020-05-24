@@ -21,5 +21,11 @@ namespace Eventique.Models
         public List<IFormFile> ImageFilePath { get; set; }
         public string About { get; set; }
         public IdentityUser Users{ get; set; }
+
+
+        public Member()
+        {
+            ImagePath = "/Images/user_avatar.jpg";
+        }
     }
 }
