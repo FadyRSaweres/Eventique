@@ -4,14 +4,16 @@ using Eventique.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Eventique.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200523185300_fa")]
+    partial class fa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -222,12 +224,6 @@ namespace Eventique.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("About")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
@@ -321,47 +317,6 @@ namespace Eventique.Data.Migrations
                     b.HasIndex("RequestUserID");
 
                     b.ToTable("PhotographerRequests");
-                });
-
-            modelBuilder.Entity("Eventique.Models.Recommendation", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Date")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("InvQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RecommendedDesignerID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RecommendedInvitationInv_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RecommendedPhotographerPh_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RecommendedWeddingHallID")
-                        .HasColumnType("int");
-
-                    b.Property<float>("Save")
-                        .HasColumnType("real");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("RecommendedDesignerID");
-
-                    b.HasIndex("RecommendedInvitationInv_Id");
-
-                    b.HasIndex("RecommendedPhotographerPh_Id");
-
-                    b.HasIndex("RecommendedWeddingHallID");
-
-                    b.ToTable("Recommendations");
                 });
 
             modelBuilder.Entity("Eventique.Models.Review", b =>
@@ -783,25 +738,6 @@ namespace Eventique.Data.Migrations
                     b.HasOne("Eventique.Models.Member", "RequestUser")
                         .WithMany()
                         .HasForeignKey("RequestUserID");
-                });
-
-            modelBuilder.Entity("Eventique.Models.Recommendation", b =>
-                {
-                    b.HasOne("Eventique.Models.Designer", "RecommendedDesigner")
-                        .WithMany()
-                        .HasForeignKey("RecommendedDesignerID");
-
-                    b.HasOne("Eventique.Models.InvitationCard", "RecommendedInvitation")
-                        .WithMany()
-                        .HasForeignKey("RecommendedInvitationInv_Id");
-
-                    b.HasOne("Eventique.Models.Photographer", "RecommendedPhotographer")
-                        .WithMany()
-                        .HasForeignKey("RecommendedPhotographerPh_Id");
-
-                    b.HasOne("Eventique.Models.WeddingHall", "RecommendedWeddingHall")
-                        .WithMany()
-                        .HasForeignKey("RecommendedWeddingHallID");
                 });
 
             modelBuilder.Entity("Eventique.Models.Review", b =>

@@ -11,15 +11,15 @@
     IList<string> role = await UserManager.GetRolesAsync(user);
     if (role.Contains("Photographer"))
     {
-        <li class=""><a asp-controller="Photographers" asp-action="Deals">My Deals</a></li>
+        <li class="test"><a asp-controller="Photographers" asp-action="Deals">My Deals</a></li>
     }
     else if (role.Contains("Designer"))
     {
-        <li class=""><a asp-controller="Designers" asp-action="Deals">My Deals</a></li>
+        <li class="test"><a asp-controller="Designers" asp-action="Deals">My Deals</a></li>
     }
     else if (role.Contains("WeddingHall"))
     {
-        <li class=""><a asp-controller="WeddingHalls" asp-action="Deals">My Deals</a></li>
+        <li class="test"><a asp-controller="WeddingHalls" asp-action="Deals">My Deals</a></li>
     }
 }
 

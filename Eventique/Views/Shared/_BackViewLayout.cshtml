@@ -46,16 +46,18 @@
                     </button>
                 </a>
             </div>
-        <br />
+            <br />
             <h1 id="colorlib-logo"><a href=""><img src="~/Images/LogoE.png" style="width:70%" /></a></h1>
             <nav id="colorlib-main-menu" role="navigation">
-                <ul>
-                    <li class="colorlib-active"><a href="#AbouSec">About</a></li>
-                    <li class=""><a href="#GallerySEC">Gallery</a></li>
-                    <li class=""><a href="#OfferSEC">Offer</a></li>
-                    <li class=""><a href="#ReviewSEC">Review</a></li>
-                    <partial name="_DealsPartial" />
-                </ul>
+                <div id="myDiv">
+                    <ul>
+                        <li class="test colorlib-active"><a href="#AbouSec">About</a></li>
+                        <li class="test"><a href="#GallerySEC">Gallery</a></li>
+                        <li class="test"><a href="#OfferSEC">Offer</a></li>
+                        <li class="test"><a href="#ReviewSEC">Review</a></li>
+                        <partial name="_DealsPartial" />
+                    </ul>
+                </div>
             </nav>
 
             <div class="colorlib-footer">
@@ -95,6 +97,18 @@
     <script src="~/js/js/scrollax.min.js"></script>
     <script src="~/js/js/main.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("myDiv");
+        var btns = header.getElementsByClassName("test");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("colorlib-active");
+                current[0].className = current[0].className.replace(" colorlib-active", "");
+                this.className += " colorlib-active";
+            });
+        }
+    </script>
     @RenderSection("Scripts", required: false)
 
 </body>

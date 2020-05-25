@@ -7,9 +7,10 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    
     <title>_NewLayout</title>
     @RenderSection("Styles", required: false)
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
@@ -30,10 +31,8 @@
             <div class="right-area">
 
                 <div class="src-area">
-                    <form action="post">
-                        <input class="src-input" type="text" placeholder="Search">
+                        <a href="~/Home/LastReco">Find our Recommendations</a>
                         <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
-                    </form>
                 </div><!-- src-area -->
 
                 <ul class="social-icons">
@@ -53,22 +52,21 @@
         <div class="bottom-area">
 
             <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
-
-            <ul class="main-menu visible-on-click" id="main-menu">
-                <li><a asp-controller="Home" asp-action="TestView">Home</a></li>
-                <li><a asp-controller="Home" asp-action="AllPhotographers">Photographers</a></li>
-                <li><a asp-controller="Home" asp-action="AllWeddingHalls">Wedding Halls</a></li>
-                <li><a asp-controller="Home" asp-action="AllDesigners">Designer Shop</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <li id="notification_li">
-                    <span id="notification_count">3</span>
-                    <a asp-controller="Home" asp-action="MyDeals"><i class="fa fa-handshake-o" style="color:black !important;font-size:35px"></i></a>
-                </li>
-            </ul><!-- main-menu -->
-
-
-
-        </div><!-- conatiner -->
+            <div id="myDiv" >
+                <ul class="main-menu visible-on-click" id="main-menu">
+                    <li><a asp-controller="Home" asp-action="TestView">Home</a></li>
+                    <li><a asp-controller="Home" asp-action="AllPhotographers">Photographers</a></li>
+                    <li><a asp-controller="Home" asp-action="AllWeddingHalls">Wedding Halls</a></li>
+                    <li><a asp-controller="Home" asp-action="AllDesigners">Designer Shop</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                    <li id="notification_li">
+                        <span id="notification_count">3</span>
+                        <a asp-controller="Home" asp-action="MyDeals"><i class="fa fa-handshake-o" style="color:black !important;font-size:35px"></i></a>
+                    </li>
+                </ul>
+            </div>
+    <!-- main-menu -->
+        </div>
     </header>
     <div class="">
         <main role="main" class="pb-3">
@@ -214,6 +212,7 @@
 
     </div>
 
+
     <script src="~/js/common-js/jquery-3.1.1.min.js"></script>
     <script src="~/js/common-js/tether.min.js"></script>
     <script src="~/js/common-js/bootstrap.js"></script>
@@ -227,6 +226,16 @@
     <script type="text/javascript" src="~/notifications_css/js/main.js"></script>
 
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnShowModal").click(function () {
+                $("#ModalCreate").modal('show');
+            });
+        });
+    </script>
+
     @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>

@@ -41,15 +41,6 @@ namespace Eventique.Controllers
         {
             return View(context.Photographers.ToList());
         }
-        public IActionResult designerShow(int id)
-        {
-
-            Designer p = new Designer();
-            p = context.Designers.Where(p => p.ID == id).FirstOrDefault();
-            context.Reviews.ToList();
-            context.InvitationCards.ToList();
-            return View(p);
-        }
 
         [Authorize(Roles = "User")]
         public IActionResult MyDeals()
@@ -102,15 +93,24 @@ namespace Eventique.Controllers
             return View(context.Designers.ToList());
 
         }
+
+        public IActionResult LastReco()
+        {
+            context.Hotels.ToList();
+            context.Designers.ToList();
+            context.Photographers.ToList();
+            context.InvitationCards.ToList();
+            return View(context.Recommendations.ToList());
+        }
         public IActionResult TestView()
         {
-
             context.Members.ToList();
             ViewData["photo"] = context.Photographers.ToList();
             ViewData["halls"] = context.Hotels.ToList();
             ViewData["designers"] = context.Designers.ToList();
             ViewData["Reviews"] = context.Reviews.ToList();
             return View();
+            
         }
 
         public IActionResult AllWeddingHalls(int Price = 5000, string HallType = null, string OtherServices = null, int Capacity = 100, string Regon = null, string Date = null)
@@ -366,6 +366,70 @@ namespace Eventique.Controllers
             context.SaveChanges();
             return RedirectToAction("TestDesiView", new { id = d.ID });
         }
+
+
+        [HttpPost]
+        public IActionResult Recommendation(float Budget, string date, int InvNumber , string City)
+        {
+            if(context.Recommendations.ToList().Count != 0)
+            {
+                foreach (var item in context.Recommendations.ToList())
+                {
+                    context.Recommendations.Remove(item);
+                    context.SaveChanges();
+                }
+            }
+            var newdate = date.Split('-');
+            string dateNew = $"{newdate[2]}-{newdate[1]}-{newdate[0]}";
+            List<Recommendation> recommendations = new List<Recommendation>();
+            List<Photographer> ph = new List<Photographer>();
+            List<WeddingHall> wd = new List<WeddingHall>();
+            List<Designer> d = new List<Designer>();
+            context.InvitationCards.ToList();
+            d = context.Designers.ToList();
+            wd = context.Hotels.Where(w => w.Address.Contains(City) && w.TestDate.Contains(dateNew)).ToList();
+            ph = context.Photographers.Where(p => p.TestDate.Contains(dateNew) && p.Ph_Address.Contains(City)).ToList();
+            for (int i = 0; i < wd.Count(); i++)
+            {
+                for (int j = 0; j < ph.Count(); j++)
+                {
+                    for (int x = 0; x < d.Count(); x++)
+                    {
+                        for (int z = 0; z < d[x].Invitations.Count(); z++)
+                        {
+                            float totalCardPrice = InvNumber * d[x].Invitations[0].Inv_Price;
+                            if((wd[i].Hall_Price + ph[j].Ph_Price + totalCardPrice) < Budget)
+                            {
+                                context.Recommendations.Add(new Recommendation() { RecommendedWeddingHall = wd[i], RecommendedPhotographer = ph[j], RecommendedDesigner = d[x], RecommendedInvitation = d[x].Invitations[z] , Save = Budget - (wd[i].Hall_Price + ph[j].Ph_Price + totalCardPrice) , Date = dateNew , InvQuantity = InvNumber});
+                                context.SaveChanges();
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            return RedirectToAction("LastReco");    
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        public IActionResult AcceptReco(int id)
+        {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            Member m = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
+            context.Photographers.ToList();
+            context.Designers.ToList();
+            context.Hotels.ToList();
+            context.InvitationCards.ToList();
+            Recommendation reco = context.Recommendations.Where(r => r.ID == id).FirstOrDefault();
+            context.WeddingHallsRequests.Add(new WeddingHallsRequest() { Date = reco.Date, Message = "Recomendation", RequestHotel = reco.RecommendedWeddingHall, RequestUser = m, Status = "Pending" });
+            context.PhotographerRequests.Add(new PhotographerRequest() { Date = reco.Date, Message = "Recommendation", RequestPhotographer = reco.RecommendedPhotographer, RequestUser = m, Status = "Prnding" });
+            context.DesignerRequests.Add(new DesignerRequest() { Date = reco.Date, Message = "Recommendation", RequestHotel = reco.RecommendedDesigner, InvitationStyle = reco.RecommendedInvitation, Quantity = reco.InvQuantity, RequestUser = m, Status = "Pending" });
+            context.SaveChanges();
+            return RedirectToAction("TestView");
+        }
     }
+
+
 }
 
