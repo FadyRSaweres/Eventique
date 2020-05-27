@@ -5,7 +5,7 @@
 
 @{
     ViewData["Title"] = "Deals";
-    Layout = "~/Views/Shared/_phoViewLayout.cshtml";
+    Layout = "~/Views/Shared/_BackViewLayout.cshtml";
 }
 
 @section Styles{
@@ -65,6 +65,7 @@
                                     <th>Date</th>
                                     <th>Price</th>
                                     <th>Message</th>
+                                    <th>Request Time</th>
                                     <th>Status</th>
                                     <th>Reply</th>
                                 </tr>
@@ -75,11 +76,16 @@
                                     {
                                         <tr>
                                             <td>@item.ID</td>
-                                            <td>@item.RequestUser.Name</td>
+                                            <td>
+                                                <div class="round-img">
+                                                    <a href="#"><img class="rounded-circle" width="60" height="60" src="@item.RequestUser.ImagePath" alt=""></a>
+                                                </div>
+                                            </td>
                                             <td>@item.RequestUser.Name</td>
                                             <td>@item.Date</td>
                                             <td>@Model.Hall_Price</td>
                                             <td>@item.Message</td>
+                                            <td>@item.Time</td>
                                             <td>@item.Status</td>
                                             <td>
                                                 <form method="post" action="~/WeddingHalls/AcceptDeal/@item.ID" >

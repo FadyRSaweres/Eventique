@@ -123,9 +123,9 @@
                             {
 
                                 <li class="clearfix">
-                                    <img src="https://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="">
+                                    <img src="@item.ReviewedMember.ImagePath" class="avatar" alt="">
                                     <div class="post-comments">
-                                        <p class="meta">@item.ReviewDate.Day/@item.ReviewDate.Month/@item.ReviewDate.Year <a href="#"> </a>   says: <i class="pull-right" style="margin-right:100px"><a href="#"><small>Rate: @item.Avg() </small></a></i></p>
+                                        <p class="meta">@item.ReviewDate.Day/@item.ReviewDate.Month/@item.ReviewDate.Year <a href="#"> </a> @item.ReviewedMember.Name  says: <i class="pull-right" style="margin-right:100px"><a href="#"><small>Rate: @item.Avg() </small></a></i></p>
                                         <p>
                                             @item.ReviewMessage
                                         </p>

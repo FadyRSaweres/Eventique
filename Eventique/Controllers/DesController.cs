@@ -8,33 +8,43 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Eventique.Data;
 using Eventique.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Eventique.Controllers.Admin
 {
     public class DesController : Controller
     {
-
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
         ApplicationDbContext context;
-        public DesController(ApplicationDbContext _context)
+        public DesController(ApplicationDbContext _context, UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager)
         {
             context = _context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         public IActionResult Index()
         {
+            context.Users.ToList();
             return View(context.Designers.ToList());
         }
         [HttpPost]
         [Route("AddDesigner")]
-        public IActionResult AddDesigner(string Name, int PhoneNumber, string Address, string ShopName)
+        public async Task<IActionResult> AddDesigner(string Name, int PhoneNumber, string Address, string ShopName ,string _Email,string _password )
         {
+            var user = new IdentityUser { Email = _Email, UserName = _Email, NormalizedUserName = _Email.ToUpper()  };
+            var result = await _userManager.CreateAsync(user,_password);
+            await _userManager.AddToRoleAsync(user, "Designer");
+            await _signInManager.SignInAsync(user, isPersistent: false);
             var designer = new Designer
             {
-
                 Name = Name,
                 PhoneNumber = PhoneNumber,
                 Address = Address,
-                ShopName = ShopName
+                ShopName = ShopName,
+                Users = user
             };
             context.Designers.Add(designer);
             context.SaveChanges();

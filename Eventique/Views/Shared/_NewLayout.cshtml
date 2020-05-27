@@ -7,9 +7,10 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    
     <title>_NewLayout</title>
     @RenderSection("Styles", required: false)
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
@@ -26,7 +27,7 @@
             width: 100%;
             display: block;
             transition: top 0.3s;
-}
+        }
     </style>
 </head>
 <body class="">
@@ -36,10 +37,8 @@
             <div class="right-area">
 
                 <div class="src-area">
-                    <form action="post">
-                        <input class="src-input" type="text" placeholder="Search">
-                        <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
-                    </form>
+                    <a href="~/Home/LastReco">Find our Recommendations</a>
+                    <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
                 </div><!-- src-area -->
                 <ul class="social-icons">
                     <li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
@@ -72,10 +71,8 @@
             <div class="right-area">
 
                 <div class="src-area">
-                    <form action="post">
-                        <input class="src-input" type="text" placeholder="Search">
-                        <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
-                    </form>
+                    <a href="~/Home/LastReco">Find our Recommendations</a>
+                    <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
                 </div><!-- src-area -->
                 <ul class="social-icons">
                     <li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
@@ -199,7 +196,6 @@
                     <h4 class="txt13 m-b-33">
                         Our Services
                     </h4>
-
                     <div class="m-b-25">
                         <a href="#" class="txt10">
                             Choose your Wedding Hall now
@@ -244,6 +240,18 @@
     <div>
 
     </div>
+    <script>
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
+                document.getElementById("navbar").style.top = "0";
+                document.getElementById('basicNav').style.visibility = "hidden";
+            } else {
+                document.getElementById("navbar").style.top = "-110px";
+                document.getElementById('basicNav').style.visibility = "visible";
+            }
+        }
+    </script>
     <script src="~/js/common-js/jquery-3.1.1.min.js"></script>
     <script src="~/js/common-js/tether.min.js"></script>
     <script src="~/js/common-js/bootstrap.js"></script>
@@ -255,20 +263,8 @@
     <script src="~/js/ph.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/notifications_css/js/main.js"></script>
-    <script>
-        // When the user scrolls down 20px from the top of the document, slide down the navbar
-        window.onscroll = function () { scrollFunction() };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-                document.getElementById("navbar").style.top = "0";
-                document.getElementById('basicNav').style.visibility = "hidden";
-            } else {
-                document.getElementById("navbar").style.top = "-110px";
-                document.getElementById('basicNav').style.visibility = "visible";
-            }
-        }
-    </script>
     @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>

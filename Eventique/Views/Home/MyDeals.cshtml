@@ -21,19 +21,25 @@
     @*<link rel="stylesheet" href="~/myDeals/css/style.css" type="text/css">*@
     <link rel="stylesheet" href="~/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="~/assets/css/style.css" />
-    "
+    <link href="~/css/AllWeddingHallsStyle.css" rel="stylesheet" />
     <!-- Stylesheets -->
 }
 
 <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg" style="position:relative;margin-top:250px">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="breadcrumb__text">
-                    <h2>My Deals</h2>
-                    <div class="breadcrumb__option">
-                        <a href="./index.html">Home</a>
-                        <span>My Deals</span>
+    <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(/Images/pic20.jpg);">
+        <div class="col-md-8 offset-md-2 mt-5" style="">
+        </div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="page-title">My Deals</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">My Deals</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -41,7 +47,7 @@
     </div>
 </section>
 
-<div class="row justify-content-center mb-5 pb-2">
+<div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
     <div class="col-lg-8">
         <div class="card">
             <div class="card-header">
@@ -57,6 +63,7 @@
                             <th>Date</th>
                             <th>Price</th>
                             <th>Message</th>
+                            <th>Request Time</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -75,6 +82,7 @@
                                     <td>  <span class="name">@item.Date</span> </td>
                                     <td> <span class="product">@item.RequestPhotographer.Ph_Price $</span> </td>
                                     <td><span class="count">@item.Message</span></td>
+                                    <td><span class="count">@item.Time</span></td>
                                     <td>
                                         <span class="badge badge-complete">@item.Status</span>
                                     </td>
@@ -104,6 +112,7 @@
                             <th>Date</th>
                             <th>Price</th>
                             <th>Message</th>
+                            <th>Request Time</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -122,6 +131,8 @@
                                     <td>  <span class="name">@item.Date</span> </td>
                                     <td> <span class="product">@item.RequestHotel.Hall_Price $</span> </td>
                                     <td><span class="count">@item.Message</span></td>
+                                    <td><span class="count">@item.Time</span></td>
+
                                     <td>
                                         <span class="badge badge-complete">@item.Status</span>
                                     </td>
@@ -151,6 +162,7 @@
                             <th>Quantitiy</th>
                             <th>Price</th>
                             <th>Message</th>
+                            <th>Request Time</th>
                             <th>Invition Style</th>
                             <th>Status</th>
                         </tr>
@@ -171,6 +183,7 @@
                                     <td>@item.Quantity</td>
                                     <td> <span class="product">@item.price() $</span> </td>
                                     <td><span class="count">@item.Message</span></td>
+                                    <td><span class="count">@item.Time</span></td>
                                     <td class="">
                                         <img src="@item.InvitationStyle.ImageFilePath" style="width:10px; height:15px;">
                                     </td>

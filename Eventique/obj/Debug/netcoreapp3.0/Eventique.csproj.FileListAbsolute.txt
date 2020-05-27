@@ -15,6 +15,12 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\EntityFramework.SqlServer.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\EntityFramework.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\MailKit.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.Mvc.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.Razor.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.Helpers.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.WebPages.Deployment.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.WebPages.Razor.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.WebPages.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
@@ -59,6 +65,7 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.Web.Infrastructure.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.Win32.Registry.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\MimeKit.dll
@@ -176,6 +183,8 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebassets\Eventique.StaticWebAssets.Manifest.cache
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebassets\Eventique.StaticWebAssets.xml
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cache
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorAssemblyInfo.cache
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorAssemblyInfo.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.AssemblyInfoInputs.cache
@@ -230,11 +239,15 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Details.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Edit.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Index.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\ChangePassword.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\CreateNewInvitation.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\Deals.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\EditDesi.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\Index.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Designers\TestDesiEdit.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Des\Index.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\EditUser\ChangePassword.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\EditUser\EditUser.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Halls\Create.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Halls\Delete.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Halls\Details.cshtml.g.cs
@@ -244,6 +257,7 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllPhotographers.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\AllWeddingHalls.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\LastReco.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\MyDeals.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\PhotoghrapherShow.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\Privacy.cshtml.g.cs
@@ -259,7 +273,7 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photoers\Edit.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photoers\Index.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\photographerfront\PhoView.cshtml.g.cs
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\CreateAlbum.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\ChangePassword.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\CreateNewAlbum.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\Deals.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Photographers\EditPho.cshtml.g.cs
@@ -271,6 +285,7 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CustomLayout.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CustomPhotographer.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_DealsPartial.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_designerLayout.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LoginLayout.cshtml.g.cs
@@ -288,6 +303,7 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Users\Widgets.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\View.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\AccessDeniedPage.cshtml.g.cs
+D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\ChangePassword.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\Deals.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\EditWedd.cshtml.g.cs
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\WeddingHalls\TestweddEdit.cshtml.g.cs
@@ -299,13 +315,3 @@ D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcore
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csproj.CopyComplete
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.dll
 D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.pdb
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\Recommendation.cshtml.g.cs
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.Mvc.dll
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.Razor.dll
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.Helpers.dll
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.WebPages.Deployment.dll
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.WebPages.Razor.dll
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\System.Web.WebPages.dll
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.Web.Infrastructure.dll
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cs
-D:\Courses\ITI\projects\Graduation Project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cache

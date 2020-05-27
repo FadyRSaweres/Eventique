@@ -5,7 +5,7 @@
 
 @{
     ViewData["Title"] = "EditPho";
-    Layout = "~/Views/Shared/_phoViewLayout.cshtml";
+    Layout = "~/Views/Shared/_BackViewLayout.cshtml";
 }
 
 @section Styles{
@@ -94,6 +94,14 @@
                                 <!-- Message -->
                                 <label asp-for="Ph_Offers">Enter your Offer Description</label>
                                 <textarea asp-for="Ph_Offers" class="form-control" placeholder="Enter your Offer Description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <!-- Message -->
+                                <a asp-controller="Photographers" asp-action="ChangePassword">
+                                    <button type="button" class="btn btn-danger">
+                                        Chang password
+                                    </button>
+                                </a>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">

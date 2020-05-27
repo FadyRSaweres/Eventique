@@ -17,6 +17,12 @@ namespace Eventique.Models
         public string Message { get; set; }
         public int Quantity { get; set; }
         public InvitationCard InvitationStyle{ get; set; }
+        public DateTime Time { get; set; }
+
+        public DesignerRequest()
+        {
+            Time = DateTime.Now;
+        }
 
         public float price()
         {

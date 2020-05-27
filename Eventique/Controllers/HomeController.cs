@@ -93,19 +93,25 @@ namespace Eventique.Controllers
             return View(context.Designers.ToList());
 
         }
-        public IActionResult TestView()
+        [Authorize(Roles = "User")]
+        public IActionResult LastReco()
         {
-            List<string> Choises = new List<string>();
-            Choises.Add("Photographer");
-            Choises.Add("Designer");
-            Choises.Add("Wedding Hall");
-            ViewData["Choise"] = Choises;
             context.Hotels.ToList();
             context.Designers.ToList();
             context.Photographers.ToList();
             context.InvitationCards.ToList();
-            ViewData["rec"] = context.Recommendations.ToList();
-            return View(context.Photographers.ToList());
+            return View(context.Recommendations.ToList());
+        }
+        public IActionResult TestView()
+        {
+            context.Members.ToList();
+            ViewData["photo"] = context.Photographers.ToList();
+            ViewData["halls"] = context.Hotels.ToList();
+            ViewData["designers"] = context.Designers.ToList();
+            ViewData["Reviews"] = context.Reviews.ToList();
+            context.PriceOffers.ToList();
+            return View();
+            
         }
 
         public IActionResult AllWeddingHalls(int Price = 5000, string HallType = null, string OtherServices = null, int Capacity = 100, string Regon = null, string Date = null)
@@ -183,6 +189,8 @@ namespace Eventique.Controllers
             context.Images.ToList();
             context.Reviews.ToList();
             context.Members.ToList();
+            context.Users.ToList();
+            context.PriceOffers.ToList();
             return View(p);
         }
 
@@ -278,14 +286,16 @@ namespace Eventique.Controllers
         //function for photographer requests 
         [HttpPost]
         [Authorize(Roles = "User")]
-        public IActionResult PhoRequest(int id , PhotographerRequest p)
+        public IActionResult PhoRequest(int id , PhotographerRequest p , string Offer)
         {
+            PriceOffer prof = context.PriceOffers.Where(o => o.OfferTitle == Offer).FirstOrDefault();
             PhotographerRequest pr = new PhotographerRequest();
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             Photographer po = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
             context.Users.ToList();
             var member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
             pr.RequestPhotographer = po;
+            pr.PriceOffer = prof;
             pr.Date = p.Date;
             pr.RequestUser = member;
             pr.Message = p.Message;
@@ -402,13 +412,14 @@ namespace Eventique.Controllers
                     }
                 }
             }
-            return RedirectToAction("TestView");    
+            return RedirectToAction("LastReco");    
         }
 
         [HttpPost]
         [Authorize(Roles = "User")]
         public IActionResult AcceptReco(int id)
         {
+            context.Users.ToList();
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             Member m = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
             context.Photographers.ToList();

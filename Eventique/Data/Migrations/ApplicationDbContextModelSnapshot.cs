@@ -153,6 +153,9 @@ namespace Eventique.Data.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("ID");
 
                     b.HasIndex("InvitationStyleInv_Id");
@@ -221,6 +224,12 @@ namespace Eventique.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(50)")
@@ -299,6 +308,9 @@ namespace Eventique.Data.Migrations
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PriceOfferOf_ID")
+                        .HasColumnType("int");
+
                     b.Property<int?>("RequestPhotographerPh_Id")
                         .HasColumnType("int");
 
@@ -308,13 +320,50 @@ namespace Eventique.Data.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("PriceOfferOf_ID");
 
                     b.HasIndex("RequestPhotographerPh_Id");
 
                     b.HasIndex("RequestUserID");
 
                     b.ToTable("PhotographerRequests");
+                });
+
+            modelBuilder.Entity("Eventique.Models.PriceOffer", b =>
+                {
+                    b.Property<int>("Of_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("OfferDetails")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OfferEndDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OfferImgPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OfferTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OffersPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PhotographerPh_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Of_ID");
+
+                    b.HasIndex("PhotographerPh_Id");
+
+                    b.ToTable("PriceOffers");
                 });
 
             modelBuilder.Entity("Eventique.Models.Recommendation", b =>
@@ -479,6 +528,9 @@ namespace Eventique.Data.Migrations
 
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
@@ -770,6 +822,10 @@ namespace Eventique.Data.Migrations
 
             modelBuilder.Entity("Eventique.Models.PhotographerRequest", b =>
                 {
+                    b.HasOne("Eventique.Models.PriceOffer", "PriceOffer")
+                        .WithMany()
+                        .HasForeignKey("PriceOfferOf_ID");
+
                     b.HasOne("Eventique.Models.Photographer", "RequestPhotographer")
                         .WithMany("Ph_Requests")
                         .HasForeignKey("RequestPhotographerPh_Id");
@@ -777,6 +833,13 @@ namespace Eventique.Data.Migrations
                     b.HasOne("Eventique.Models.Member", "RequestUser")
                         .WithMany()
                         .HasForeignKey("RequestUserID");
+                });
+
+            modelBuilder.Entity("Eventique.Models.PriceOffer", b =>
+                {
+                    b.HasOne("Eventique.Models.Photographer", null)
+                        .WithMany("OffersList")
+                        .HasForeignKey("PhotographerPh_Id");
                 });
 
             modelBuilder.Entity("Eventique.Models.Recommendation", b =>

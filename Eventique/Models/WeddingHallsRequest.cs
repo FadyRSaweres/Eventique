@@ -15,5 +15,11 @@ namespace Eventique.Models
         public WeddingHall RequestHotel { get; set; }
         public string Status { get; set; }
         public string Message { get; set; }
+        public DateTime Time { get; set; }
+
+        public WeddingHallsRequest()
+        {
+            Time = DateTime.Now;
+        }
     }
 }

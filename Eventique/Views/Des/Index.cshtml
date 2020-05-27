@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Designer>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -15,6 +15,8 @@
             <th scope="col">PhoneNumber</th>
             <th scope="col">Address</th>
             <th scope="col">ShopName</th>
+            <th scope="col">Email</th>
+
         </tr>
     </thead>
     <tbody style="color:grey">
@@ -26,7 +28,8 @@
             <td>@item.PhoneNumber</td>
             <td>@item.Address</td>
             <td>@item.ShopName</td>
-           
+            <td>@item.Users.Email</td>
+
             <td>
                 <a href="javascript:void(0);" id="showeditDesignerModal" class="edit" data-toggle="modal">
                     Edit
@@ -56,8 +59,8 @@
                 </div>
                 <div class="modal-body">
                     @*<div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID"  name="ID" />
-                    </div>*@
+            <input class="form-control" type="text" placeholder="ID"  name="ID" />
+        </div>*@
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
                                type="text" required="required" name="Name" />
@@ -72,7 +75,14 @@
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="ShopName"
-                               type="text"   required="required" name="ShopName" />
+                               type="text" required="required" name="ShopName" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Email"
+                               type="text" required="required" name="_Email" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text"  placeholder="password" name="_password" />
                     </div>
                 </div>
                 <div class="modal-footer">
