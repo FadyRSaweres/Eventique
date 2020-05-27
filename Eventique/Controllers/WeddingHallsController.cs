@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 
 namespace Eventique.Controllers
@@ -39,6 +41,58 @@ namespace Eventique.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public  IActionResult AddOffer(weddingHallsOffers weddingHallsOffers)
+        {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            WeddingHall wh = context.Hotels.Where(h => h.Users.Id == user.Value).FirstOrDefault();
+            if (ModelState.IsValid)
+            {
+                context.Hotels.ToList();
+                context.weddingHallsOffers.ToList();
+                context.Users.ToList();
+                wh.weddingHallsOffers.Add(new weddingHallsOffers
+                {
+                    Title = weddingHallsOffers.Title,
+                    Capacity = weddingHallsOffers.Capacity,
+                    Dinner = weddingHallsOffers.Dinner,
+                    otherServices = weddingHallsOffers.otherServices,
+                    Price = weddingHallsOffers.Price,
+                    EndDate = weddingHallsOffers.EndDate
+                });
+                context.SaveChanges();
+                return RedirectToAction("TestWeddEdit");
+            }
+            return View(wh);    
+        }
+
+        [HttpGet]
+        [Route("WeddingHalls/find/{id}")]
+        public IActionResult Find(int id)
+        {
+            var offer= context.weddingHallsOffers.Find(id);
+            Dictionary<string, string> offerList = new Dictionary<string, string>();
+            offerList.Add("ID", offer.ID.ToString());
+            offerList.Add("Title",offer.Title);
+            offerList.Add("Price", offer.Price.ToString());
+            offerList.Add("Capacity", offer.Capacity.ToString());
+            offerList.Add("otherServices", offer.otherServices);
+            offerList.Add("Dinner", offer.Dinner);
+            offerList.Add("EndDate", offer.EndDate.ToString());
+            return new JsonResult(offerList);
+        }
+
+
+        //public IActionResult UpdateOffer(weddingHallsOffers weddingHallsOffers)
+        //{
+        //    weddingHallsOffers Edited = context.weddingHallsOffers.Where(of => of.ID == weddingHallsOffers.ID).FirstOrDefault();
+        //    if (ModelState.IsValid)
+        //    {
+
+        //    }
+        //}
+
         public IActionResult TestWeddEdit()
         {
             try
@@ -53,6 +107,8 @@ namespace Eventique.Controllers
                     context.WeddingHallsRequests.ToList();
                     context.Images.ToList();
                     context.Albums.ToList();
+                    context.weddingHallsOffers.ToList();
+                    context.Users.ToList();
                     return View(wh);
                 }
                 else

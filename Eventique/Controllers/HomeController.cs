@@ -162,6 +162,8 @@ namespace Eventique.Controllers
             hall = context.Hotels.Where(h => h.ID == id).FirstOrDefault();
             context.Albums.ToList();
             context.Images.ToList();
+            context.weddingHallsOffers.ToList();
+            context.Hotels.ToList();
             context.Users.ToList();
             context.Reviews.ToList();
             context.Members.ToList();

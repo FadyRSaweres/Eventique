@@ -13,18 +13,30 @@
 
 <div id="colorlib-main">
     <section class="home-slider js-fullheight owl-carousel" id="AboutSEC">
-        <div class="slider-item js-fullheight" style="background-image: url(@Model.Hall_ImgPath);">
-            <div class="overlay"></div>
-            <div class="container-fluid">
-                <div class="row no-gutters slider-text slider-text-2 js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-                    <div class="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">@Model.Name</h1>
-                        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
+        @{ if (Model.Album != null)
+            {
+                foreach (var item in Model.Album.MyProperty)
+                {
+                    <div class="slider-item js-fullheight" style="background-image: url(@item.Img_Path);">
+                        <div class="overlay"></div>
+                        <div class="container-fluid">
+                            <div class="row no-gutters slider-text slider-text-2 js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+                                <div class="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                                    <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">@Model.Name</h1>
+                                    <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="slider-item js-fullheight" style="background-image:url(/Images/bg_3.jpg);">
+                }
+            }
+            else
+            {
+    <h3 style="color:white;">There is no Album uploaded yet..</h3>
+            }
+        }
+
+        @*<div class="slider-item js-fullheight" style="background-image:url(/Images/bg_3.jpg);">
             <div class="overlay"></div>
             <div class="container-fluid">
                 <div class="row no-gutters slider-text slider-text-2 js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -34,7 +46,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
     </section>
     <section class="ftco-section-2" id="GallerySEC">
         <div class="row justify-content-center mb-5 pb-2" style="margin-top:100px;">
@@ -80,9 +92,55 @@
                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
             </div>
         </div>
-        <div class="row justify-content-center mb-5 pb-2">
-            <p>@Model.Offers</p>
-        </div>
+        @{
+            if (Model.weddingHallsOffers != null)
+            {
+                <div class="row justify-content-center mb-5 pb-2">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">All Offers</strong>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Price</th>
+                                                    <th>Capcity</th>
+                                                    <th>Dinner</th>
+                                                    <th>Services</th>
+                                                    <th>End Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach (var item in Model.weddingHallsOffers)
+                                                {
+                                                    <tr>
+                                                        <td>@item.Title</td>
+                                                        <td><span class="name">@item.Price $</span> </td>
+                                                        <td><span class="product">@item.Capacity</span> </td>
+                                                        <td><span class="count">@item.Dinner</span></td>
+                                                        <td>@item.otherServices</td>
+                                                        <td>@item.EndDate</td>
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <p>there is No Offers avilable yet</p>
+                </div>
+            }
+        }
     </section>
 
     <section class="ftco-section-2" id="ReviewSEC">

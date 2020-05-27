@@ -22,6 +22,7 @@ namespace Eventique.Data
         public DbSet<WeddingHallsRequest> WeddingHallsRequests { get; set; }
         public DbSet<DesignerRequest> DesignerRequests { get; set; }
         public DbSet<Recommendation> Recommendations{ get; set; }
+        public DbSet<weddingHallsOffers> weddingHallsOffers { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

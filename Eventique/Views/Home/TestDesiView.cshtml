@@ -269,7 +269,7 @@
 
             $('.edit').on('click', function () {
                 //debugger;
-                var id = $(this).parent().find('.id').val();
+                var id = document.querySelector(".id").value;
                 $.ajax({
                     type: 'GET',
                     url: '/Home/find/' + id,

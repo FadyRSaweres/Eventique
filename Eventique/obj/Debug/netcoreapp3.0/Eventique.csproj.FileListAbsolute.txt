@@ -316,5 +316,5 @@ E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\Microsoft.Web
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csproj.CoreCompileInputs.cache
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cache
-E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Home\LastReco.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache

@@ -33,6 +33,7 @@ namespace Eventique.Models
         public List<IFormFile> ImageFilePath { get; set; }
         [NotMappedAttribute]
         public List<IFormFile> ImageFilePathAlbum { get; set; }
+        public List<weddingHallsOffers> weddingHallsOffers { get; set; }
         public WeddingHall()
         {
             HallsReview = new List<Review>();
