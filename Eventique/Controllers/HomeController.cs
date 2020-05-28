@@ -50,6 +50,7 @@ namespace Eventique.Controllers
             context.Photographers.ToList();
             context.Hotels.ToList();
             context.InvitationCards.ToList();
+            context.PriceOffers.ToList();
             context.Designers.ToList();
             
             try
@@ -80,8 +81,70 @@ namespace Eventique.Controllers
             return View();
         }
 
+        [Authorize(Roles = "User")]
+        public IActionResult DeletePhoDeal(int ID)
+        {
+            context.PriceOffers.ToList();
+            PhotographerRequest ps = context.PhotographerRequests.Find(ID);
+            var dateLi = ps.Date.Split('/');
 
+            DateTime date1 = new DateTime(int.Parse(dateLi[2]), int.Parse(dateLi[0]), int.Parse(dateLi[1]), 0, 0, 0);
+            TimeSpan d = date1.Subtract(DateTime.Now);
 
+            if (d.Days >= 10 && ps.Status != "Accepted")
+            {
+                context.PhotographerRequests.Remove(ps);
+                context.SaveChanges();
+                TempData["msg"] = "Deleted Request successfully";
+            }
+            else
+            {
+                TempData["msg"] = "Can't delete This request";
+            }
+            return RedirectToAction("MyDeals");
+        }
+        public IActionResult DeleteDesiDeal(int ID)
+        {
+            context.PriceOffers.ToList();
+            DesignerRequest des = context.DesignerRequests.Find(ID);
+            var dateLi = des.Date.Split('-');
+
+            DateTime date1 = new DateTime(int.Parse(dateLi[2]), int.Parse(dateLi[1]), int.Parse(dateLi[0]), 0, 0, 0);
+            TimeSpan d = date1.Subtract(DateTime.Now);
+
+            if (d.Days >= 7 && des.Status != "Accepted")
+            {
+                context.DesignerRequests.Remove(des);
+                context.SaveChanges();
+                TempData["msgDesi"] = "Deleted Request successfully";
+            }
+            else
+            {
+                TempData["msgDesi"] = "Can't delete This request";
+            }
+            return RedirectToAction("MyDeals");
+        }
+        public IActionResult DeleteWeddDeal(int ID)
+        {
+            context.PriceOffers.ToList();
+            WeddingHallsRequest wed = context.WeddingHallsRequests.Find(ID);
+            var dateLi = wed.Date.Split('/');
+
+            DateTime date1 = new DateTime(int.Parse(dateLi[2]), int.Parse(dateLi[0]), int.Parse(dateLi[1]), 0, 0, 0);
+            TimeSpan d = date1.Subtract(DateTime.Now);
+
+            if (d.Days >= 10 && wed.Status != "Accepted")
+            {
+                context.WeddingHallsRequests.Remove(wed);
+                context.SaveChanges();
+                TempData["msgWedd"] = "Deleted Request successfully";
+            }
+            else
+            {
+                TempData["msgWedd"] = "Can't delete This request";
+            }
+            return RedirectToAction("MyDeals");
+        }
         public IActionResult PhotoghrapherShow()
         {
             return View(context.Photographers.ToList());
