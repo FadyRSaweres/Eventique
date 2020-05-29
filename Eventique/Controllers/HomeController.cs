@@ -129,10 +129,8 @@ namespace Eventique.Controllers
             context.PriceOffers.ToList();
             WeddingHallsRequest wed = context.WeddingHallsRequests.Find(ID);
             var dateLi = wed.Date.Split('/');
-
             DateTime date1 = new DateTime(int.Parse(dateLi[2]), int.Parse(dateLi[0]), int.Parse(dateLi[1]), 0, 0, 0);
             TimeSpan d = date1.Subtract(DateTime.Now);
-
             if (d.Days >= 10 && wed.Status != "Accepted")
             {
                 context.WeddingHallsRequests.Remove(wed);
