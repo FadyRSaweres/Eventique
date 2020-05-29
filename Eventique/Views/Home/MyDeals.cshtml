@@ -24,7 +24,81 @@
     <link href="~/css/AllWeddingHallsStyle.css" rel="stylesheet" />
     <!-- Stylesheets -->
 }
-
+@****************************************************************************************@
+<div class="modal fade" id="ModalDeletePho">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-controller="Home" asp-action="DeletePhoDeal">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Offer</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <input type="hidden" id="ID" name="ID" />
+                <div class="modal-body">
+                    <p>Are you sure want to delete this Offer?</p>
+                    <p class="text-warning"><small>this Action cannot be undone</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="cancel" />
+                    <input type="submit" class="btn btn-danger" value="Delete" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*******************************************************************************************@
+@****************************************************************************************@
+<div class="modal fade" id="ModalDeleteDesi">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-controller="Home" asp-action="DeleteDesiDeal">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Offer</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <input type="hidden" id="ID" name="ID" />
+                <div class="modal-body">
+                    <p>Are you sure want to delete this Offer?</p>
+                    <p class="text-warning"><small>this Action cannot be undone</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="cancel" />
+                    <input type="submit" class="btn btn-danger" value="Delete" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*******************************************************************************************@
+@****************************************************************************************@
+<div class="modal fade" id="ModalDeleteWedd">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-controller="Home" asp-action="DeleteWeddDeal">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Offer</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <input type="hidden" id="ID" name="ID" />
+                <div class="modal-body">
+                    <p>Are you sure want to delete this Offer?</p>
+                    <p class="text-warning"><small>this Action cannot be undone</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="cancel" />
+                    <input type="submit" class="btn btn-danger" value="Delete" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*******************************************************************************************@
 <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg" style="position:relative;margin-top:250px">
     <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(/Images/pic20.jpg);">
         <div class="col-md-8 offset-md-2 mt-5" style="">
@@ -62,6 +136,7 @@
                             <th>Name</th>
                             <th>Date</th>
                             <th>Price</th>
+                            <th>Offer Title</th>
                             <th>Message</th>
                             <th>Request Time</th>
                             <th>Status</th>
@@ -80,17 +155,25 @@
                                     </td>
                                     <td>@item.RequestPhotographer.Ph_Name</td>
                                     <td>  <span class="name">@item.Date</span> </td>
-                                    <td> <span class="product">@item.RequestPhotographer.Ph_Price $</span> </td>
+                                    <td> <span class="product">@item.PriceOffer.OffersPrice $</span> </td>
+                                    <td> <span class="product">@item.PriceOffer.OfferTitle $</span> </td>
                                     <td><span class="count">@item.Message</span></td>
                                     <td><span class="count">@item.Time</span></td>
                                     <td>
                                         <span class="badge badge-complete">@item.Status</span>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:void(0);" id="showdeleteDesignerModal" class="deletepho" data-toggle="modal">
+                                            <span><i class="fa fa-remove" style="font-size:30px"></i></span>
+                                        </a>
+                                        <input type="hidden" class="id" value="@item.ID" />
                                     </td>
                                 </tr>
                             }
                         }
                     </tbody>
                 </table>
+                <p class="text-danger" style="text-align:center">@TempData["msg"]</p>
             </div>
         </div>
     </div>
@@ -138,11 +221,18 @@
                                     <td>
                                         <span class="badge badge-complete">@item.Status</span>
                                     </td>
+                                    <td>
+                                        <a href="javascript:void(0);" id="showdeleteDesignerModal" class="deletewedd" data-toggle="modal">
+                                            <span><i class="fa fa-remove" style="font-size:30px"></i></span>
+                                        </a>
+                                        <input type="hidden" class="id" value="@item.ID" />
+                                    </td>
                                 </tr>
                             }
                         }
                     </tbody>
                 </table>
+                <p class="text-danger" style="text-align:center">@TempData["msgWedd"]</p>
             </div>
         </div>
     </div>
@@ -172,7 +262,7 @@
                     <tbody>
 
                         @{ foreach (var item in ViewData["DesiRequest"] as List<Eventique.Models.DesignerRequest>)
-                            {                        
+                            {
                                 <tr>
                                     <td class="serial">@item.ID</td>
                                     <td class="avatar">
@@ -192,11 +282,18 @@
                                     <td>
                                         <span class="badge badge-complete">@item.Status</span>
                                     </td>
+                                    <td>
+                                        <a href="javascript:void(0);" id="showdeleteDesignerModal" class="deletedesi" data-toggle="modal">
+                                            <span><i class="fa fa-remove" style="font-size:30px"></i></span>
+                                        </a>
+                                        <input type="hidden" class="id" value="@item.ID" />
+                                    </td>
                                 </tr>
                             }
                         }
                     </tbody>
                 </table>
+                <p class="text-danger" style="text-align:center">@TempData["msgDesi"]</p>
             </div>
         </div>
     </div>
@@ -215,4 +312,45 @@
     <script src="~/myDeals/js/mixitup.min.js"></script>
     <script src="~/myDeals/js/owl.carousel.min.js"></script>
     <script src="~/myDeals/js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnShowModal").click(function () {
+                $("#ModalCreate").modal('show');
+            });
+
+            $("#OfferEndDate").datepicker({
+                minDate: 0
+            });
+
+            $(".deletepho").click(function () {
+                $("#ModalDeletePho").modal('show');
+            });
+
+            $(".deletedesi").click(function () {
+                $("#ModalDeleteDesi").modal('show');
+            });
+
+            $(".deletewedd").click(function () {
+                $("#ModalDeleteWedd").modal('show');
+            });
+
+            $('table .deletepho').on('click', function () {
+                var id = $(this).parent().find('.id').val();
+                $("#ModalDeletePho #ID").val(id);
+            });
+
+            $('table .deletedesi').on('click', function () {
+                var id = $(this).parent().find('.id').val();
+                $("#ModalDeleteDesi #ID").val(id);
+            });
+
+            $('table .deletewedd').on('click', function () {
+                var id = $(this).parent().find('.id').val();
+                $("#ModalDeleteWedd #ID").val(id);
+            });
+
+
+        });
+    </script>
+
 }
