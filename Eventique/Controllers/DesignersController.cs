@@ -66,7 +66,6 @@ namespace Eventique.Controllers
         {
             string wwwPath = this.Environment.WebRootPath;
             string contentPath = this.Environment.ContentRootPath;
-
             string path = Path.Combine(this.Environment.WebRootPath, "Images");
             if (!Directory.Exists(path))
             {

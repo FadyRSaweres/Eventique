@@ -224,6 +224,20 @@
                             <input type='text' class="form-control" id='txtDateAvailable' name="Date" onmousedown="myFun('@Model.TestDate')" />
                         </div>
                         <div class="form-group">
+                            <label for="Offer">Enter your Offer Title</label>
+                            <select id="Offer" name="offerTitle" class="form-control">
+                                @{
+                                    if (Model.weddingHallsOffers.Count() != 0)
+                                    {
+                                        foreach (var item in Model.weddingHallsOffers)
+                                        {
+                                            <option>@item.Title</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <textarea name="Message" id="Message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
                         </div>
                         <div class="form-group">

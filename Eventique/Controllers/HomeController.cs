@@ -51,7 +51,7 @@ namespace Eventique.Controllers
             context.Hotels.ToList();
             context.InvitationCards.ToList();
             context.Designers.ToList();
-            
+            context.weddingHallsOffers.ToList();
             try
             {
                 ViewData["phoRequest"] = context.PhotographerRequests.Where(p => p.RequestUser.Users.Id == user.Value)?.ToList();
@@ -93,7 +93,7 @@ namespace Eventique.Controllers
             return View(context.Designers.ToList());
 
         }
-
+        [Authorize(Roles = "User")]
         public IActionResult LastReco()
         {
             context.Hotels.ToList();
@@ -102,14 +102,55 @@ namespace Eventique.Controllers
             context.InvitationCards.ToList();
             return View(context.Recommendations.ToList());
         }
-        public IActionResult TestView()
+
+
+        public async Task<IActionResult> TestView()
         {
-            context.Members.ToList();
-            ViewData["photo"] = context.Photographers.ToList();
-            ViewData["halls"] = context.Hotels.ToList();
-            ViewData["designers"] = context.Designers.ToList();
-            ViewData["Reviews"] = context.Reviews.ToList();
-            return View();
+            string returnUrl = null;
+            returnUrl = returnUrl ?? Url.Content("~/");
+
+            if (_signInManager.IsSignedIn(User))
+            {
+                var user = User.FindFirst(ClaimTypes.NameIdentifier);
+                IList<string> role = await _userManager.GetRolesAsync(context.Users.Where(u => u.Id == user.Value).FirstOrDefault());
+                if (role.Contains("Photographer"))
+                {
+                    Photographer photographer = context.Photographers.Where(p => p.Users.Id == user.Value).FirstOrDefault();
+                    returnUrl = "~/Photographers/TestPhoEdit/" + photographer.Ph_Id;
+                    return LocalRedirect(returnUrl);
+                }
+                else if (role.Contains("Designer"))
+                {
+                    Designer designer = context.Designers.Where(d => d.Users.Id == user.Value).FirstOrDefault();
+                    returnUrl = "~/Designers/TestDesiEdit/" + designer.ID;
+                    return LocalRedirect(returnUrl);
+                }
+                else if(role.Contains("WeddingHall"))
+                {
+                    returnUrl = "~/WeddingHalls/TestWeddEdit";
+                    return LocalRedirect(returnUrl);
+                }
+                else
+                {
+                    context.Members.ToList();
+                    ViewData["photo"] = context.Photographers.ToList();
+                    ViewData["halls"] = context.Hotels.ToList();
+                    ViewData["designers"] = context.Designers.ToList();
+                    ViewData["Reviews"] = context.Reviews.ToList();
+                    context.PriceOffers.ToList();
+                    return View();
+                }
+            }
+            else
+            {
+                context.Members.ToList();
+                ViewData["photo"] = context.Photographers.ToList();
+                ViewData["halls"] = context.Hotels.ToList();
+                ViewData["designers"] = context.Designers.ToList();
+                ViewData["Reviews"] = context.Reviews.ToList();
+                context.PriceOffers.ToList();
+                return View();
+            }
             
         }
 
@@ -179,6 +220,7 @@ namespace Eventique.Controllers
             context.InvitationCards.ToList();
             context.Reviews.ToList();
             context.Users.ToList();
+            context.weddingHallsOffers.ToList();
             context.Members.ToList();
             return View(D);
         }
@@ -191,6 +233,7 @@ namespace Eventique.Controllers
             context.Reviews.ToList();
             context.Members.ToList();
             context.Users.ToList();
+            context.PriceOffers.ToList();
             return View(p);
         }
 
@@ -286,14 +329,16 @@ namespace Eventique.Controllers
         //function for photographer requests 
         [HttpPost]
         [Authorize(Roles = "User")]
-        public IActionResult PhoRequest(int id , PhotographerRequest p)
+        public IActionResult PhoRequest(int id , PhotographerRequest p , string Offer)
         {
+            PriceOffer prof = context.PriceOffers.Where(o => o.OfferTitle == Offer).FirstOrDefault();
             PhotographerRequest pr = new PhotographerRequest();
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             Photographer po = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
             context.Users.ToList();
             var member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
             pr.RequestPhotographer = po;
+            pr.PriceOffer = prof;
             pr.Date = p.Date;
             pr.RequestUser = member;
             pr.Message = p.Message;
@@ -306,14 +351,16 @@ namespace Eventique.Controllers
 
         [HttpPost]
         [Authorize(Roles = "User")]
-        public IActionResult WeddRequest(int id, WeddingHallsRequest wd)
+        public IActionResult WeddRequest(int id, WeddingHallsRequest wd,string offerTitle)
         {
+            weddingHallsOffers offer = context.weddingHallsOffers.Where(of => of.Title == offerTitle).FirstOrDefault();
             WeddingHallsRequest wdr = new WeddingHallsRequest();
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             WeddingHall w = context.Hotels.Where(p => p.ID == id).FirstOrDefault();
             context.Users.ToList();
             var member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
             wdr.RequestHotel = w;
+            wdr.Offer = offer;
             wdr.Date = wd.Date;
             wdr.RequestUser = member;
             wdr.Message = wd.Message;
@@ -417,6 +464,7 @@ namespace Eventique.Controllers
         [Authorize(Roles = "User")]
         public IActionResult AcceptReco(int id)
         {
+            context.Users.ToList();
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             Member m = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
             context.Photographers.ToList();

@@ -42,56 +42,7 @@ namespace Eventique.Controllers
             return View();
         }
 
-        [HttpPost]
-        public  IActionResult AddOffer(weddingHallsOffers weddingHallsOffers)
-        {
-            var user = User.FindFirst(ClaimTypes.NameIdentifier);
-            WeddingHall wh = context.Hotels.Where(h => h.Users.Id == user.Value).FirstOrDefault();
-            if (ModelState.IsValid)
-            {
-                context.Hotels.ToList();
-                context.weddingHallsOffers.ToList();
-                context.Users.ToList();
-                wh.weddingHallsOffers.Add(new weddingHallsOffers
-                {
-                    Title = weddingHallsOffers.Title,
-                    Capacity = weddingHallsOffers.Capacity,
-                    Dinner = weddingHallsOffers.Dinner,
-                    otherServices = weddingHallsOffers.otherServices,
-                    Price = weddingHallsOffers.Price,
-                    EndDate = weddingHallsOffers.EndDate
-                });
-                context.SaveChanges();
-                return RedirectToAction("TestWeddEdit");
-            }
-            return View(wh);    
-        }
-
-        [HttpGet]
-        [Route("WeddingHalls/find/{id}")]
-        public IActionResult Find(int id)
-        {
-            var offer= context.weddingHallsOffers.Find(id);
-            Dictionary<string, string> offerList = new Dictionary<string, string>();
-            offerList.Add("ID", offer.ID.ToString());
-            offerList.Add("Title",offer.Title);
-            offerList.Add("Price", offer.Price.ToString());
-            offerList.Add("Capacity", offer.Capacity.ToString());
-            offerList.Add("otherServices", offer.otherServices);
-            offerList.Add("Dinner", offer.Dinner);
-            offerList.Add("EndDate", offer.EndDate.ToString());
-            return new JsonResult(offerList);
-        }
-
-
-        //public IActionResult UpdateOffer(weddingHallsOffers weddingHallsOffers)
-        //{
-        //    weddingHallsOffers Edited = context.weddingHallsOffers.Where(of => of.ID == weddingHallsOffers.ID).FirstOrDefault();
-        //    if (ModelState.IsValid)
-        //    {
-
-        //    }
-        //}
+       
 
         public IActionResult TestWeddEdit()
         {
@@ -221,6 +172,7 @@ namespace Eventique.Controllers
             context.Images.ToList();
             context.Users.ToList();
             context.WeddingHallsRequests.ToList();
+            context.weddingHallsOffers.ToList();
             context.Members.ToList();
             return View(wh);
         }
@@ -291,9 +243,90 @@ namespace Eventique.Controllers
                     return View();
                 }
                 await _signInManager.RefreshSignInAsync(user);
-                return PartialView("ChangePassword");
+                return RedirectToAction("EditWedd");
             }
             return View(passVM);
+        }
+
+        [HttpPost]
+        public IActionResult AddOffer(weddingHallsOffers weddingHallsOffers)
+        {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            WeddingHall wh = context.Hotels.Where(h => h.Users.Id == user.Value).FirstOrDefault();
+            if (ModelState.IsValid)
+            {
+                context.Hotels.ToList();
+                context.weddingHallsOffers.ToList();
+                context.Users.ToList();
+                wh.weddingHallsOffers.Add(new weddingHallsOffers
+                {
+                    Title = weddingHallsOffers.Title,
+                    Capacity = weddingHallsOffers.Capacity,
+                    Dinner = weddingHallsOffers.Dinner,
+                    otherServices = weddingHallsOffers.otherServices,
+                    Price = weddingHallsOffers.Price,
+                    EndDate = weddingHallsOffers.EndDate
+                });
+                context.SaveChanges();
+                return RedirectToAction("TestWeddEdit");
+            }
+            return View(wh);
+        }
+
+        [HttpGet]
+        [Route("WeddingHalls/find/{id}")]
+        public IActionResult Find(int id)
+        {
+            var offer = context.weddingHallsOffers.Find(id);
+            Dictionary<string, string> offerList = new Dictionary<string, string>();
+            offerList.Add("ID", offer.ID.ToString());
+            offerList.Add("Title", offer.Title);
+            offerList.Add("Price", offer.Price.ToString());
+            offerList.Add("Capacity", offer.Capacity.ToString());
+            offerList.Add("otherServices", offer.otherServices);
+            offerList.Add("Dinner", offer.Dinner);
+            offerList.Add("EndDate", offer.EndDate.ToString());
+            return new JsonResult(offerList);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateOffer(weddingHallsOffers weddingHallsOffers)
+        {
+            if (ModelState.IsValid)
+            {
+                weddingHallsOffers Edited = context.weddingHallsOffers.Where(of => of.ID == weddingHallsOffers.ID).FirstOrDefault();
+                Edited.Capacity = weddingHallsOffers.Capacity;
+                Edited.Price = weddingHallsOffers.Price;
+                Edited.Title = weddingHallsOffers.Title;
+                Edited.otherServices = weddingHallsOffers.otherServices;
+                Edited.Dinner = weddingHallsOffers.Dinner;
+                Edited.EndDate = weddingHallsOffers.EndDate;
+                context.SaveChanges();
+                return RedirectToAction("TestWeddEdit");
+            }
+            return View(weddingHallsOffers);
+        }
+
+        [HttpPost]
+        [Route("DeleteOffer")]
+        public IActionResult DeleteOffer(int offId)
+        {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            WeddingHall weddingHall = context.Hotels.Where(w => w.Users.Id == user.Value).FirstOrDefault();
+            WeddingHallsRequest weddingHallsRequest = context.WeddingHallsRequests.Where(wr => wr.ID == offId).FirstOrDefault();
+            if (weddingHallsRequest == null)
+            {
+                weddingHallsOffers hallsOffer = context.weddingHallsOffers.Find(offId);
+                weddingHall.weddingHallsOffers.Remove(hallsOffer);
+                context.weddingHallsOffers.Remove(hallsOffer);
+                context.SaveChanges();
+                return RedirectToAction("TestWeddEdit");
+            }
+            else
+            {
+                TempData["err"] = "this offer can't be deleted it used by some members";
+                return RedirectToAction("TestWeddEdit");
+            }
         }
     }
 }

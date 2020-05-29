@@ -63,6 +63,7 @@ namespace Eventique.Controllers
             context.Members.ToList();
             context.Images.ToList();
             context.Users.ToList();
+            context.PriceOffers.ToList();
             context.PhotographerRequests.ToList();
             context.Members.ToList();
 
@@ -274,6 +275,142 @@ namespace Eventique.Controllers
             }
             return View(passVM);
         }
+
+        [Route("Photographers/Find/{id}")]
+        public IActionResult Find(int id)
+        {
+            context.PriceOffers.ToList();
+            var offers = context.PriceOffers.Where(offer => offer.Of_ID == id).FirstOrDefault();
+            var Photo = context.Photographers.Where(p => p.OffersList.Where(o => o.Of_ID == id).FirstOrDefault().Of_ID == id).FirstOrDefault();
+            Dictionary<string, string> DList = new Dictionary<string, string>();
+            DList.Add("Of_ID", offers.Of_ID.ToString());
+            DList.Add("OfferTitle", offers.OfferTitle);
+            DList.Add("OfferDetails", offers.OfferDetails);
+            DList.Add("OffersPrice", offers.OffersPrice.ToString());
+            DList.Add("OfferImgPath", offers.OfferImgPath);
+            return new JsonResult(DList);
+        }
+
+        [HttpPost]
+        [Route("UpdateOffers")]
+        public IActionResult UpdateOffers(PriceOffer f)
+        {
+            if (ModelState != null)
+            {
+                context.PriceOffers.ToList();
+                var p = context.Photographers.Where(p => p.OffersList.Where(o => o.Of_ID == f.Of_ID).FirstOrDefault().Of_ID == f.Of_ID).FirstOrDefault();
+                string wwwPath = this.Environment.WebRootPath;
+                string contentPath = this.Environment.ContentRootPath;
+                string path = Path.Combine(this.Environment.WebRootPath, "Images");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                List<string> uploadedFiles = new List<string>();
+                if (f.ImageFilePath != null)
+                {
+                    foreach (IFormFile postedFile in f.ImageFilePath)
+                    {
+                        string fileName = Path.GetFileName(postedFile.FileName);
+                        using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                        {
+                            postedFile.CopyTo(stream);
+                            uploadedFiles.Add(fileName);
+                            string imgP = "/Images/" + fileName;
+                            var edited = context.PriceOffers.Where(of => of.Of_ID == f.Of_ID).FirstOrDefault();
+                            edited.OfferTitle = f.OfferTitle;
+                            edited.OfferDetails = f.OfferDetails;
+                            edited.OffersPrice = f.OffersPrice;
+                            edited.OfferImgPath = imgP;
+                            context.SaveChanges();
+                            return RedirectToAction("TestPhoEdit", new { id = p.Ph_Id });
+                        }
+                    }
+                }
+                else
+                {
+                    var edited = context.PriceOffers.Where(of => of.Of_ID == f.Of_ID).FirstOrDefault();
+                    edited.OfferTitle =f.OfferTitle;
+                    edited.OfferDetails = f.OfferDetails;
+                    edited.OffersPrice = f.OffersPrice;
+                    context.SaveChanges();
+                    return RedirectToAction("TestPhoEdit", new { id = p.Ph_Id });
+
+                }
+            }
+            return View(f);
+
+        }
+        [HttpPost]
+        public IActionResult AddOffer(PriceOffer f)
+        {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            Photographer edited = context.Photographers.Where(p => p.Users.Id == user.Value).FirstOrDefault();
+            //Photographer edited = context.Photographers.Where(p => p.OffersList.Where(f => f.Of_ID == f.Of_ID).FirstOrDefault().Of_ID == f.Of_ID).FirstOrDefault();
+            if (ModelState != null)
+            {
+                context.PriceOffers.ToList();
+                var p = context.Photographers.Where(p => p.OffersList.Where(o => o.Of_ID == f.Of_ID).FirstOrDefault().Of_ID == f.Of_ID).FirstOrDefault();
+                string wwwPath = this.Environment.WebRootPath;
+                string contentPath = this.Environment.ContentRootPath;
+                string path = Path.Combine(this.Environment.WebRootPath, "Images");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                List<string> uploadedFiles = new List<string>();
+                if (f.ImageFilePath != null)
+                {
+                    foreach (IFormFile postedFile in f.ImageFilePath)
+                    {
+                        string fileName = Path.GetFileName(postedFile.FileName);
+                        using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                        {
+                            postedFile.CopyTo(stream);
+                            uploadedFiles.Add(fileName);
+                            string imgP = "/Images/" + fileName;
+                            edited.OffersList.Add(new PriceOffer() { OfferTitle = f.OfferTitle, OfferDetails = f.OfferDetails, OfferEndDate = f.OfferEndDate, OfferImgPath = imgP, OffersPrice = f.OffersPrice });
+                            context.SaveChanges();
+                            return RedirectToAction("TestPhoEdit", new { id = edited.Ph_Id });
+                        }
+                    }
+                }
+                else
+                {
+                    edited.OffersList.Add(new PriceOffer() { OfferTitle = f.OfferTitle, OfferDetails = f.OfferDetails, OfferEndDate = f.OfferEndDate, OfferImgPath = "/Images/22.jpg", OffersPrice = f.OffersPrice });
+                    context.SaveChanges();
+                    return RedirectToAction("TestPhoEdit", new { id = edited.Ph_Id });
+
+                }
+            }
+            return View(f);
+
+        }
+        [HttpPost]
+        [Route("RemoveOffer")]
+        public IActionResult RemoveOffer(int Of_ID)
+        {
+            context.PriceOffers.ToList();
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            Photographer pho = context.Photographers.Where(p => p.Users.Id == user.Value).FirstOrDefault();
+            PhotographerRequest ps = context.PhotographerRequests.Where(p => p.PriceOffer.Of_ID == Of_ID).FirstOrDefault();
+            if (ps == null)
+            {
+                PriceOffer pr = context.PriceOffers.Find(Of_ID);
+                pho.OffersList.Remove(pr);
+                context.PriceOffers.Remove(pr);
+                context.SaveChanges();
+                return RedirectToAction("TestPhoEdit", new { id = pho.Ph_Id });
+            }
+            else
+            {
+                TempData["err"] = "this offer can't be deleted it used by some members";
+                return RedirectToAction("TestPhoEdit", new { id = pho.Ph_Id });
+            }
+
+        }
+
+
 
 
     }

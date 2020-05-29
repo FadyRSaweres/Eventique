@@ -133,7 +133,7 @@ namespace Eventique.Controllers
                     return View();
                 }
                 await _signInManager.RefreshSignInAsync(user);
-                return View("ChangePassword");
+                return RedirectToAction("EditUser");
             }
             return View(passVM);
         }

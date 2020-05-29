@@ -32,6 +32,7 @@ namespace Eventique.Models
         public List<PhotographerRequest> Ph_Requests { get; set; }
         public IdentityUser Users { get; set; }
         public string TestDate { get; set; }
+        public List<PriceOffer> OffersList { get; set; }
         public Photographer()
         {
             ImagePath = "/Images/pho_avatar.jpg";
@@ -39,6 +40,7 @@ namespace Eventique.Models
             Ph_AvailableDate = new List<AvailableDate>();
             Ph_Reviews = new List<Review>();
             Ph_Requests = new List<PhotographerRequest>();
+            OffersList = new List<PriceOffer>();
         }
     }
 }

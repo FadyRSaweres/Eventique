@@ -65,6 +65,7 @@
                                     <th>Date</th>
                                     <th>Price</th>
                                     <th>Message</th>
+                                    <th>Request Time</th>
                                     <th>Status</th>
                                     <th>Reply</th>
                                 </tr>
@@ -84,6 +85,7 @@
                                             <td>@item.Date</td>
                                             <td>@Model.Ph_Price</td>
                                             <td>@item.Message</td>
+                                            <td>@item.Time</td>
                                             <td>@item.Status</td>
                                             <td>
                                                 <form method="post" action="~/Photographers/AcceptDeal/@item.ID" >

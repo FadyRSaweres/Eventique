@@ -118,9 +118,7 @@ namespace Eventique.Areas.Identity.Pages.Account
                     }
                     else if (role.Contains("WeddingHall"))
                     {
-                        Designer D = context.Designers.Where(me => me.Users.Id == user.Id).FirstOrDefault();
                         returnUrl = "~/WeddingHalls/TestWeddEdit";
-
                     }
                     else if(role.Contains("Admin"))
                     {

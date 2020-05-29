@@ -63,8 +63,10 @@
                                     <th>Avatar</th>
                                     <th>Name</th>
                                     <th>Date</th>
+                                    <th>Offer Title</th>
                                     <th>Price</th>
                                     <th>Message</th>
+                                    <th>Request Time</th>
                                     <th>Status</th>
                                     <th>Reply</th>
                                 </tr>
@@ -82,11 +84,13 @@
                                             </td>
                                             <td>@item.RequestUser.Name</td>
                                             <td>@item.Date</td>
-                                            <td>@Model.Hall_Price</td>
+                                            <td>@item.Offer.Title</td>
+                                            <td>@item.Offer.Price</td>
                                             <td>@item.Message</td>
+                                            <td>@item.Time</td>
                                             <td>@item.Status</td>
                                             <td>
-                                                <form method="post" action="~/WeddingHalls/AcceptDeal/@item.ID" >
+                                                <form method="post" action="~/WeddingHalls/AcceptDeal/@item.ID">
                                                     <button type="submit" id="btnaccept" class="btn btn-success edit" onclick="disable()">
                                                         Accept
                                                     </button>

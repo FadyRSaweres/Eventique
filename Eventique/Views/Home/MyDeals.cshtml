@@ -63,6 +63,7 @@
                             <th>Date</th>
                             <th>Price</th>
                             <th>Message</th>
+                            <th>Request Time</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -81,6 +82,7 @@
                                     <td>  <span class="name">@item.Date</span> </td>
                                     <td> <span class="product">@item.RequestPhotographer.Ph_Price $</span> </td>
                                     <td><span class="count">@item.Message</span></td>
+                                    <td><span class="count">@item.Time</span></td>
                                     <td>
                                         <span class="badge badge-complete">@item.Status</span>
                                     </td>
@@ -108,8 +110,10 @@
                             <th class="avatar">Avatar</th>
                             <th>Name</th>
                             <th>Date</th>
+                            <th>Offer Title</th>
                             <th>Price</th>
                             <th>Message</th>
+                            <th>Request Time</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -126,8 +130,11 @@
                                     </td>
                                     <td>@item.RequestHotel.Name</td>
                                     <td>  <span class="name">@item.Date</span> </td>
-                                    <td> <span class="product">@item.RequestHotel.Hall_Price $</span> </td>
+                                    <td>  <span class="name">@item.Offer.Title</span> </td>
+                                    <td> <span class="product">@item.Offer.Price $</span> </td>
                                     <td><span class="count">@item.Message</span></td>
+                                    <td><span class="count">@item.Time</span></td>
+
                                     <td>
                                         <span class="badge badge-complete">@item.Status</span>
                                     </td>
@@ -157,6 +164,7 @@
                             <th>Quantitiy</th>
                             <th>Price</th>
                             <th>Message</th>
+                            <th>Request Time</th>
                             <th>Invition Style</th>
                             <th>Status</th>
                         </tr>
@@ -177,6 +185,7 @@
                                     <td>@item.Quantity</td>
                                     <td> <span class="product">@item.price() $</span> </td>
                                     <td><span class="count">@item.Message</span></td>
+                                    <td><span class="count">@item.Time</span></td>
                                     <td class="">
                                         <img src="@item.InvitationStyle.ImageFilePath" style="width:10px; height:15px;">
                                     </td>

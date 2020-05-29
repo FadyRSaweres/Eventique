@@ -40,7 +40,7 @@
         <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
         <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
             <div class="px-xl-3">
-                <a asp-area="Identity" asp-page="/Account/Login">
+                <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("TestView", "Home", new { area = "" })">
                     <button class="btn btn-block btn-secondary">
                         <span>Log Out</span>
                     </button>
