@@ -42,7 +42,8 @@ namespace Eventique.Areas.Identity.Pages.Account
 
         [BindProperty]
         public InputModel Input { get; set; }
-
+        public bool ShowResend { get; set; }
+        public string UserId { get; set; }
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
         public string ReturnUrl { get; set; }
@@ -55,6 +56,7 @@ namespace Eventique.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+            public string UserName { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -83,10 +85,18 @@ namespace Eventique.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            if (context.Recommendations.ToList().Count() != 0)
+            {
+                foreach (var item in context.Recommendations.ToList())
+                {
+                    context.Recommendations.Remove(item);
+                }
+                    context.SaveChanges();
+            }
             returnUrl = returnUrl ?? Url.Content("~/");
 
             if (ModelState.IsValid)
-            {
+            {   
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
@@ -99,7 +109,7 @@ namespace Eventique.Areas.Identity.Pages.Account
                     if (role.Contains("Photographer"))
                     {
                         Photographer ph = context.Photographers.Where(p => p.Users.Id == user.Id).FirstOrDefault();
-                        returnUrl = "~/Photographers/PhoEdit/"+ph.Ph_Id;
+                        returnUrl = "~/Photographers/TestPhoEdit/"+ph.Ph_Id;
                     }
                     else if(role.Contains("User"))
                     {
@@ -107,12 +117,32 @@ namespace Eventique.Areas.Identity.Pages.Account
                         returnUrl = "~/Home/TestView";
 
                     }
+                    else if (role.Contains("Designer"))
+                    {
+                        Designer D = context.Designers.Where(me => me.Users.Id == user.Id).FirstOrDefault();
+                        returnUrl = "~/Designers/TestDesiEdit/"+D.ID;
+
+                    }
+                    else if (role.Contains("WeddingHall"))
+                    {
+                        returnUrl = "~/WeddingHalls/TestWeddEdit";
+                    }
                     else if(role.Contains("Admin"))
                     {
                         returnUrl = "~/PhotographerBack/Index";
                     }
                     return LocalRedirect(returnUrl);
                 }
+
+                //if (result.IsNotAllowed)
+                //{
+                //    _logger.LogWarning("User email is not confirmed.");
+                //    ModelState.AddModelError(string.Empty, "Email is not confirmed.");
+                //    var user = await _userManager.FindByNameAsync(Input.Email);
+                //    UserId = user.Id;
+                //    ShowResend = true;
+                //    return Page();
+                //}
                 if (result.RequiresTwoFactor)
                 {
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });

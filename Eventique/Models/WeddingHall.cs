@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,9 +25,26 @@ namespace Eventique.Models
         public string OtherServices { get; set; }
         public string HallType { get; set; }
         public List<AvailableDate> AvailbleDates { get; set; }
+        public string TestDate { get; set; }
         public Album Album { get; set; }
         public List<WeddingHallsRequest> HotelRequest { get; set; }
         public IdentityUser Users { get; set; }
+        [NotMappedAttribute]
+        public List<IFormFile> ImageFilePath { get; set; }
+        [NotMappedAttribute]
+        public List<IFormFile> ImageFilePathAlbum { get; set; }
+        public List<weddingHallsOffers> weddingHallsOffers { get; set; }
+        public WeddingHall()
+        {
+            HallsReview = new List<Review>();
+            HotelRequest = new List<WeddingHallsRequest>();
+        }
+
+        //public WeddingHall()
+        //{
+        //    HallsReview = new List<Review>();
+        //    HotelRequest = new List<WeddingHallsRequest>();
+        //}
 
     }
 }

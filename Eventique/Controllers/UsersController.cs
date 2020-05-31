@@ -30,7 +30,11 @@ namespace Eventique.Controllers.Admin
         }
         [HttpPost]
         [Route("AddUser")]
+<<<<<<< HEAD:Eventique/Controllers/UsersController.cs
         public async Task< IActionResult> AddUser(string Name, int PhoneNumber, string _Email, string _Password)
+=======
+        public IActionResult AddUser(string Name, int PhoneNumber)
+>>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62:Eventique/Controllers/Admin/UsersController.cs
         {
             var user = new IdentityUser { Email = _Email, UserName = _Email, NormalizedEmail = _Email.ToUpper() };
 

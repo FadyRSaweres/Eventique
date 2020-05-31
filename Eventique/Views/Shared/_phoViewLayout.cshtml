@@ -7,6 +7,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
     @RenderSection("Styles", required: false)
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
@@ -17,35 +24,33 @@
     <link rel="stylesheet" href="~/elen/css/owl.carousel.min.css">
     <link rel="stylesheet" href="~/elen/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="~/elen/css/magnific-popup.css">
-
     <link rel="stylesheet" href="~/elen/css/aos.css">
-
     <link rel="stylesheet" href="~/elen/css/ionicons.min.css">
-
     <link rel="stylesheet" href="~/elen/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="~/elen/css/jquery.timepicker.css">
-
-
     <link rel="stylesheet" href="~/elen/css/flaticon.css">
     <link rel="stylesheet" href="~/elen/css/icomoon.css">
     <link rel="stylesheet" href="~/elen/PhoViewStyle.css">
     <link rel="stylesheet" href="~/css/phoView.css" />
+    <link rel="stylesheet" type="text/css" href="~/js/jqueryui/jquery-ui.min.css">
+
 </head>
 <body>
-
     <div id="colorlib-page">
         <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
         <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-            <h1 id="colorlib-logo"><a href="index.html">elen<span>.</span></a></h1>
+            <a href="~/Home/TestView" class="previous round" style="color:black;font-size:30px;">&#8249;<span style="font-size:13px;">Back</span></a>
+            <h1 id="colorlib-logo"><img src="~/Images/LogoE.png" style="width:70%" /></h1>
             <nav id="colorlib-main-menu" role="navigation">
-                <ul>
-                    <li class="colorlib-active"><a href="index.html">Home</a></li>
-                    <li><a href="photography.html">About</a></li>
-                    <li><a href="travel.html">Gallery</a></li>
-                    <li><a href="fashion.html">Offers</a></li>
-                    <li><a href="about.html">Reviews</a></li>
-                    <li><a href="contact.html">Contact & Request</a></li>
-                </ul>
+                <div id="myDiv">
+                    <ul>
+                        <li class="test colorlib-active"><a href="#AboutSEC">About</a></li>
+                        <li class="test"><a href="#GallerySEC">Gallery</a></li>
+                        <li class="test"><a href="#OfferSEC">Offers</a></li>
+                        <li class="test"><a href="#ReviewSEC">Reviews</a></li>
+                        <li class="test"><a href="#ContactSEC">Contact & Request</a></li>
+                    </ul>
+                </div>
             </nav>
 
             <div class="colorlib-footer">
@@ -65,7 +70,6 @@
             @RenderBody()
         </div>
     </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/popper.js/umd/popper.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/ph.js" asp-append-version="true"></script>
@@ -83,10 +87,24 @@
     <script src="~/js/js/jquery.animateNumber.min.js"></script>
     <script src="~/js/js/bootstrap-datepicker.js"></script>
     <script src="~/js/js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="~/js/js/google-map.js"></script>
     <script src="~/js/js/main.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     @RenderSection("Scripts", required: false)
 
+
+    <script>
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("myDiv");
+        var btns = header.getElementsByClassName("test");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("colorlib-active");
+                current[0].className = current[0].className.replace(" colorlib-active", "");
+                this.className += " colorlib-active";
+            });
+        }
+    </script>
 </body>
 </html>

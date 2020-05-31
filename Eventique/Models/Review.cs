@@ -18,5 +18,11 @@ namespace Eventique.Models
         public DateTime ReviewDate { get; set; }
 
 
+        public float Avg()
+        {
+            float avg = (float)(Quality + TimeManagement + DeleverTime) / 3;
+            return (avg);
+        }
+
     }
 }

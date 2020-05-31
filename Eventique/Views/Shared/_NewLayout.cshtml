@@ -7,9 +7,10 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    
     <title>_NewLayout</title>
     @RenderSection("Styles", required: false)
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
@@ -19,23 +20,26 @@
     <link href="~/css/01-homepage/css/styles.css" rel="stylesheet">
     <link href="~/css/01-homepage/css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="~/notifications_css/css/style.css">
-
-
-
+    <style>
+        #navbar {
+            position: fixed;
+            top: -110px;
+            width: 100%;
+            display: block;
+            transition: top 0.3s;
+        }
+    </style>
 </head>
 <body class="">
-    <header>
+    <header id="basicNav">
         <div class="top-menu">
             <partial name="_LoginPartial" />
             <div class="right-area">
 
                 <div class="src-area">
-                    <form action="post">
-                        <input class="src-input" type="text" placeholder="Search">
-                        <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
-                    </form>
+                    <a href="~/Home/LastReco">Find our Recommendations</a>
+                    <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
                 </div><!-- src-area -->
-
                 <ul class="social-icons">
                     <li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
                     <li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
@@ -43,17 +47,11 @@
                     <li><a href="#"><i class="ion-social-vimeo-outline"></i></a></li>
                     <li><a href="#"><i class="ion-social-pinterest-outline"></i></a></li>
                 </ul><!-- right-area -->
-
             </div><!-- right-area -->
-
         </div><!-- top-menu -->
-
         <div class="middle-menu center-text"><a href="#" class="logo"><img src="~/Images/newLogo.png" alt="Logo Image"></a></div>
-
         <div class="bottom-area">
-
             <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
-
             <ul class="main-menu visible-on-click" id="main-menu">
                 <li><a asp-controller="Home" asp-action="TestView">Home</a></li>
                 <li><a asp-controller="Home" asp-action="AllPhotographers">Photographers</a></li>
@@ -62,18 +60,42 @@
                 <li><a href="#">CONTACT</a></li>
                 <li id="notification_li">
                     <span id="notification_count">3</span>
-                    <a asp-controller="Home" asp-action="MyDeals" id="notificationLink"><i class="fa fa-handshake-o" style="color:black !important;font-size:35px"></i></a>
-                    <div id="notificationContainer">
-                        <div id="notificationTitle">Notifications</div>
-                        <div id="notificationsBody" class="notifications">
-                        </div>
-                        <div id="notificationFooter"><a href="#">See All</a></div>
-                    </div>
+                    <a asp-controller="Home" asp-action="MyDeals"><i class="fa fa-handshake-o" style="color:black !important;font-size:35px"></i></a>
                 </li>
             </ul><!-- main-menu -->
+        </div><!-- conatiner -->
+    </header>
+    <header id="navbar">
+        <div class="top-menu">
+            <partial name="_LoginPartial" />
+            <div class="right-area">
 
-
-
+                <div class="src-area">
+                    <a href="~/Home/LastReco">Find our Recommendations</a>
+                    <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+                </div><!-- src-area -->
+                <ul class="social-icons">
+                    <li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
+                    <li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
+                    <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                    <li><a href="#"><i class="ion-social-vimeo-outline"></i></a></li>
+                    <li><a href="#"><i class="ion-social-pinterest-outline"></i></a></li>
+                </ul><!-- right-area -->
+            </div><!-- right-area -->
+        </div><!-- top-menu -->
+        <div class="bottom-area">
+            <div class="menu-nav-icon" data-nav-menu="#second-menu"><i class="ion-navicon"></i></div>
+            <ul class="main-menu visible-on-click" id="second-menu">
+                <li><a asp-controller="Home" asp-action="TestView">Home</a></li>
+                <li><a asp-controller="Home" asp-action="AllPhotographers">Photographers</a></li>
+                <li><a asp-controller="Home" asp-action="AllWeddingHalls">Wedding Halls</a></li>
+                <li><a asp-controller="Home" asp-action="AllDesigners">Designer Shop</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li id="notification_li">
+                    <span id="notification_count">3</span>
+                    <a asp-controller="Home" asp-action="MyDeals"><i class="fa fa-handshake-o" style="color:black !important;font-size:35px"></i></a>
+                </li>
+            </ul><!-- main-menu -->
         </div><!-- conatiner -->
     </header>
     <div class="">
@@ -174,7 +196,6 @@
                     <h4 class="txt13 m-b-33">
                         Our Services
                     </h4>
-
                     <div class="m-b-25">
                         <a href="#" class="txt10">
                             Choose your Wedding Hall now
@@ -219,7 +240,18 @@
     <div>
 
     </div>
-
+    <script>
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
+                document.getElementById("navbar").style.top = "0";
+                document.getElementById('basicNav').style.visibility = "hidden";
+            } else {
+                document.getElementById("navbar").style.top = "-110px";
+                document.getElementById('basicNav').style.visibility = "visible";
+            }
+        }
+    </script>
     <script src="~/js/common-js/jquery-3.1.1.min.js"></script>
     <script src="~/js/common-js/tether.min.js"></script>
     <script src="~/js/common-js/bootstrap.js"></script>
@@ -231,8 +263,8 @@
     <script src="~/js/ph.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/notifications_css/js/main.js"></script>
-
-
     @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>

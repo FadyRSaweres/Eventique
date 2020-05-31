@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,9 +31,16 @@ namespace Eventique.Models
         public List<IFormFile> ImageFilePath{ get; set; }
         public List<PhotographerRequest> Ph_Requests { get; set; }
         public IdentityUser Users { get; set; }
+        public string TestDate { get; set; }
+        public List<PriceOffer> OffersList { get; set; }
         public Photographer()
         {
+            ImagePath = "/Images/pho_avatar.jpg";
             ListAlbum = new List<Album>();
+            Ph_AvailableDate = new List<AvailableDate>();
+            Ph_Reviews = new List<Review>();
+            Ph_Requests = new List<PhotographerRequest>();
+            OffersList = new List<PriceOffer>();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Eventique.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
+        private readonly Models.IEmailSender _emailSender;
         private readonly ApplicationDbContext context;
 
 
@@ -34,7 +34,8 @@ namespace Eventique.Areas.Identity.Pages.Account
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             RoleManager<IdentityRole> roleManager,
-            ApplicationDbContext _context
+            ApplicationDbContext _context,
+            Models.IEmailSender emailSender
             )
 
         {
@@ -43,6 +44,7 @@ namespace Eventique.Areas.Identity.Pages.Account
             _logger = logger;
             _roleManager = roleManager;
             context = _context;
+            _emailSender = emailSender;
         }
 
         [BindProperty]
@@ -51,7 +53,7 @@ namespace Eventique.Areas.Identity.Pages.Account
         public string ReturnUrl { get; set; }
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
-
+        
         public class InputModel
         {
             [Required]
@@ -86,34 +88,44 @@ namespace Eventique.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.UserName, Email = Input.Email, PhoneNumber = Input.PhoneNumber};
+
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber};
                
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
 
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    //var callbackUrl = Url.Page(
+                    //    "/Account/ConfirmEmail",
+                    //    pageHandler: null,
+                    //    values: new { area = "Identity", userId = user.Id, code = code },
+                    //    protocol: Request.Scheme);
+                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
                     if (!await _roleManager.RoleExistsAsync(Input.Role))
                     {
-                        await _roleManager.CreateAsync(new IdentityRole(Input.Role)); 
+                        await _roleManager.CreateAsync(new IdentityRole(Input.Role));
                     }
 
                     {
                         await _userManager.AddToRoleAsync(user, Input.Role);
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        //await _signInManager.SignInAsync(user, isPersistent: false);
                         if (Input.Role == "Photographer")
                         {
                             Photographer photographer = new Photographer();
-                            photographer.Ph_Name = user.UserName;
+                            photographer.Ph_Name = Input.UserName;
                             photographer.Users = user;
                             context.Photographers.Add(photographer);
                             context.SaveChanges();
-                            returnUrl ="~/Photographers/PhoEdit/"+photographer.Ph_Id;
+                            returnUrl = "~/Photographers/TestPhoEdit/" + photographer.Ph_Id;
                         }
-                        else if(Input.Role == "User")
+                        else if (Input.Role == "User")
                         {
                             Member member = new Member();
-                            member.Name = user.UserName;
+                            member.Name = Input.UserName;
                             member.Users = user;
                             context.Members.Add(member);
                             context.SaveChanges();
@@ -122,24 +134,36 @@ namespace Eventique.Areas.Identity.Pages.Account
                         else if (Input.Role == "Designer")
                         {
                             Designer designer = new Designer();
-                            designer.Name = user.UserName;
+                            designer.Name = Input.UserName;
                             designer.Users = user;
                             context.Designers.Add(designer);
                             context.SaveChanges();
-                            returnUrl = "~/Home/TestView";
+                            returnUrl = "~/Designers/TestDesiEdit/" + designer.ID;
                         }
                         else if (Input.Role == "WeddingHall")
                         {
                             WeddingHall wh = new WeddingHall();
-                            wh.Name = user.UserName;
+                            wh.Name = Input.UserName;
                             wh.Users = user;
                             context.Hotels.Add(wh);
                             context.SaveChanges();
-                            returnUrl = "~/Home/TestView/";
+                            returnUrl = "/Home/TestView/";
                         }
-                        return LocalRedirect(returnUrl);
                     }
-                    
+                    //if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    //{                     
+                    //    return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
+                    //}
+                    //else
+                    //{
+                    //    //await _signInManager.SignInAsync(user, isPersistent: false);
+                    //    //return LocalRedirect(returnUrl);
+                    //    return RedirectToPage("./CheckEmail");
+                    //}
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
+
+
                 }
                 foreach (var error in result.Errors)
                 {

@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,5 +25,13 @@ namespace Eventique.Models
         public List<DesignerRequest> DesignerRequest { get; set; }
         public List<InvitationCard> Invitations { get; set; }
         public IdentityUser Users { get; set; }
+        [NotMappedAttribute]
+        public List<IFormFile> ImageFilePath { get; set; }
+        public Designer()
+        {
+            Reviews = new List<Review>();
+            DesignerRequest = new List<DesignerRequest>();
+            Invitations = new List<InvitationCard>();
+        }
     }
 }
