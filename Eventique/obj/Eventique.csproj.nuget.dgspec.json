@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\final9-5\\Eventique\\Eventique\\Eventique.csproj": {}
+    "E:\\Eventique\\Eventique\\Eventique.csproj": {}
   },
   "projects": {
-    "E:\\final9-5\\Eventique\\Eventique\\Eventique.csproj": {
+    "E:\\Eventique\\Eventique\\Eventique.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\final9-5\\Eventique\\Eventique\\Eventique.csproj",
+        "projectUniqueName": "E:\\Eventique\\Eventique\\Eventique.csproj",
         "projectName": "Eventique",
-        "projectPath": "E:\\final9-5\\Eventique\\Eventique\\Eventique.csproj",
+        "projectPath": "E:\\Eventique\\Eventique\\Eventique.csproj",
         "packagesPath": "C:\\Users\\MASTER\\.nuget\\packages\\",
-        "outputPath": "E:\\final9-5\\Eventique\\Eventique\\obj\\",
+        "outputPath": "E:\\Eventique\\Eventique\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MASTER\\AppData\\Roaming\\NuGet\\NuGet.Config",

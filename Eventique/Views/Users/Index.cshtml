@@ -14,31 +14,33 @@
             <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">PhoneNumber</th>
-           
+            <th scope="col">Email</th>
+
         </tr>
     </thead>
     <tbody style="color:grey">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.ID</td>
-                <td>@item.Name</td>
-                <td>@item.PhoneNumber</td>
-                
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.Users.Email</td>
 
-                <td>
-                    <a href="javascript:void(0);" id="showeditMemberModal" class="edit" data-toggle="modal">
-                        Edit
-                    </a>
-                    <input type="hidden" class="id" value="@item.ID" />
-                </td>
-                <td>
-                    <a href="javascript:void(0);" id="showdeleteMemberModal" class="delete" data-toggle="modal">
-                        Delete
-                    </a>
-                    <input type="hidden" class="id" value="@item.ID" />
-                </td>
-            </tr>
+
+            <td>
+                <a href="javascript:void(0);" id="showeditMemberModal" class="edit" data-toggle="modal">
+                    Edit
+                </a>
+                <input type="hidden" class="id" value="@item.ID" />
+            </td>
+            <td>
+                <a href="javascript:void(0);" id="showdeleteMemberModal" class="delete" data-toggle="modal">
+                    Delete
+                </a>
+                <input type="hidden" class="id" value="@item.ID" />
+            </td>
+        </tr>
         }
     </tbody>
 </table>
@@ -48,15 +50,15 @@
         <div class="modal-content">
             <form method="post" asp-controller="Users" asp-action="AddUser">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Desiner</h4>
+                    <h4 class="modal-title">Add User</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         ×
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID" required="required" name="ID" />
-                    </div>
+                    @*<div class="form-group">
+            <input class="form-control" type="text" placeholder="ID" required="required" name="ID" />
+        </div>*@
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
                                type="text" required="required" name="Name" />
@@ -64,6 +66,14 @@
                     <div class="form-group">
                         <input class="form-control" placeholder="PhoneNumber"
                                type="text" required="required" name="PhoneNumber" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Email"
+                               type="text" required="required" name="_Email" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Password"
+                               type="text" required="required" name="_Password" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -79,22 +89,22 @@
         <div class="modal-content">
             <form method="post" asp-controller="Users" asp-action="UpdateUser">
                 <div class="modal-header">
-                    <h4 class="modal-title">Update Desiner</h4>
+                    <h4 class="modal-title">Update User</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         ×
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="ID" id="IDDesigner;" required="required" name="ID" />
+                        <input class="form-control" type="text" placeholder="ID" id="IDMember" required="required" name="ID" readonly />
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
-                               type="text" id="NameDesigner" required="required" name="Name" />
+                               type="text" id="NameMember" required="required" name="Name" />
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="PhoneNumber"
-                               type="text" id="PhoneNumberDesigner" required="required" name="PhoneNumber" />
+                               type="text" id="PhoneNumberMember" required="required" name="PhoneNumber" />
                     </div>
                   
                 </div>
@@ -112,7 +122,7 @@
         <div class="modal-content">
             <form method="post" asp-controller="Users" asp-action="RemoveUser">
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete Designer</h4>
+                    <h4 class="modal-title">Delete User</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         ×
                     </button>
@@ -155,11 +165,11 @@
                 var id = $(this).parent().find('.id').val();
                 $.ajax({
                     type: 'GET',
-                    url: '/Designers/FindDesigner/' + id,
-                    success: function (Designer) {
-                        $('#ModalUpdate #IDDesigner').val(Designer.ID);
-                        $('#ModalUpdate #NameDesigner').val(Designer.Name);
-                        $('#ModalUpdate #PhoneNumberDesigner').val(Designer.PhoneNumber);
+                    url: '/Users/FindUser/' + id,
+                    success: function (Users) {
+                        $('#ModalUpdate #IDMember').val(Users.ID);
+                        $('#ModalUpdate #NameMember').val(Users.Name);
+                        $('#ModalUpdate #PhoneNumberMember').val(Users.PhoneNumber);
                     }
                 });
             });

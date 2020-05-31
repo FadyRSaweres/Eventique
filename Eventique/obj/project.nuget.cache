@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JYCwmNUfkOJ/gGuCJuItmc+GEIKa6XnN1W9cKnsGp7P2p/tUyn27JXG0AD2ffMlopIYvNzWnmailDwa59bRi/A==",
+  "dgSpecHash": "x8pkKGSNBctYqosARrY/u3EO9qj6rr8ldy1oi1KG7XUggCV8KlE3wPD6KY6j2HP2984Cz4CwkmwMjHyN1L9NRg==",
   "success": true,
-  "projectFilePath": "E:\\final9-5\\Eventique\\Eventique\\Eventique.csproj",
+  "projectFilePath": "E:\\Eventique\\Eventique\\Eventique.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MASTER\\.nuget\\packages\\bootstrap\\4.4.1\\bootstrap.4.4.1.nupkg.sha512",
     "C:\\Users\\MASTER\\.nuget\\packages\\entityframework\\6.4.0\\entityframework.6.4.0.nupkg.sha512",

@@ -7,29 +7,42 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Eventique.Data;
 using Eventique.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Eventique.Controllers.Admin
 {
     public class UsersController : Controller
     {
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         ApplicationDbContext context;
-        public UsersController(ApplicationDbContext _context)
+        public UsersController(ApplicationDbContext _context, UserManager<IdentityUser> userManager,
+             SignInManager<IdentityUser> signInManager)
         {
             context = _context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         public IActionResult Index()
         {
+            context.Users.ToList();
             return View(context.Members.ToList());
         }
         [HttpPost]
-        [Route("AddMember")]
-        public IActionResult AddUser(string Name, int PhoneNumber)
+        [Route("AddUser")]
+        public async Task< IActionResult> AddUser(string Name, int PhoneNumber, string _Email, string _Password)
         {
+            var user = new IdentityUser { Email = _Email, UserName = _Email, NormalizedEmail = _Email.ToUpper() };
+
+            var result = await _userManager.CreateAsync(user, _Password);
+            await _userManager.AddToRoleAsync(user, "User");
+            await _signInManager.SignInAsync(user, isPersistent: false);
             var member = new Member
             {
 
                 Name = Name,
                 PhoneNumber = PhoneNumber,
+                Users=user
                
             };
             context.Members.Add(member);
@@ -39,7 +52,7 @@ namespace Eventique.Controllers.Admin
 
 
         [HttpPost]
-        [Route("RemoveMember")]
+        [Route("RemoveUser")]
         public IActionResult RemoveUser(int id)
         {
             var member = context.Members.Find(id);
@@ -49,25 +62,28 @@ namespace Eventique.Controllers.Admin
         }
 
         [HttpGet]
-        [Route("Members/FindMembers/{id}")]
+        [Route("Users/FindUser/{id}")]
         public IActionResult FindUser(int id)
         {
             var member = context.Members.Find(id);
-            Dictionary<string, string> DList = new Dictionary<string, string>();
-            DList.Add("ID", member.ID.ToString());
-            DList.Add("Name", member.Name);
-            DList.Add("PhoneNumber", member.PhoneNumber.ToString());
-            return new JsonResult(DList);
+            Dictionary<string, string> UList = new Dictionary<string, string>
+            {
+                { "ID", member.ID.ToString() },
+                { "Name", member.Name },
+                { "PhoneNumber", member.PhoneNumber.ToString() }
+            };
+            return new JsonResult(UList);
         }
 
         [HttpPost]
-        [Route("UpdateMember")]
-        public IActionResult UpdateUser(string ID, string Name, string PhoneNumber, string Address, string ShopName)
+        [Route("UpdateUser")]
+        public IActionResult UpdateUser(int ID, string Name, string PhoneNumber)
         {
-            var member = context.Members.Find(int.Parse(ID));
+            var member = context.Members.Find(ID);
             //designer.ID = ID;
             member.Name = Name;
             member.PhoneNumber = int.Parse(PhoneNumber);
+            
            
             context.SaveChanges();
             return RedirectToAction("Index");
