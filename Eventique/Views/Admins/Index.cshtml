@@ -4,14 +4,13 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 <!-- Content -->
 <div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
         <!-- Widgets  -->
         <div class="row">
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-6" >
                 <div class="card">
                     <div class="card-body">
                         <div class="stat-widget-five">
@@ -21,8 +20,8 @@
                             <div class="stat-content">
                                 <div class="text-left dib">
 
-                                    @ViewBag.desCount
-                                    <div class="stat-heading">Requst desinger</div>
+                                    @ViewBag.allmember
+                                    <div class="stat-heading">Members</div>
                                 </div>
                             </div>
                         </div>
@@ -41,8 +40,8 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    @ViewBag.PhotographersCount
-                                    <div class="stat-heading">Requst photographer</div>
+                                    @ViewBag.allimage
+                                    <div class="stat-heading">ImagesCount</div>
                                 </div>
                             </div>
                         </div>
@@ -86,35 +85,35 @@
                 <div class="col-lg-8">
                     <div class="card-body">
                         <!-- <canvas id="TrafficChart"></canvas>   -->
-                        <div style="min-height: 335px ;width:600px ;margin-right:30px" id="traffic-chart" class="traffic-chart"></div>
+                        <div style="min-height: 335px ;width:600px ;margin-right:80px" id="traffic-chart" class="traffic-chart"></div>
                     </div>
                 </div>
-                <div class="col-lg-4" style="width:380px">
+                <div class="col-lg-4" style="width:400px">
                     <div class="card-body">
                         <div class="progress-box progress-1">
                             <h4 class="por-title">Visits your website</h4>
-                            <div class="por-txt">96,930 Users (40%)</div>
+                            <div class="por-txt">@ViewBag.usercount</div>
                             <div class="progress mb-2" style="height: 5px;">
                                 <div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="progress-box progress-2">
-                            <h4 class="por-title">Bounce Rate</h4>
-                            <div class="por-txt">3,220 Users (24%)</div>
+                            <h4 class="por-title">Desinger</h4>
+                            <div class="por-txt">@ViewBag.designercount </div>
                             <div class="progress mb-2" style="height: 5px;">
                                 <div class="progress-bar bg-flat-color-2" role="progressbar" style="width: 24%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="progress-box progress-2">
-                            <h4 class="por-title">Unique Visitors</h4>
-                            <div class="por-txt">29,658 Users (60%)</div>
+                            <h4 class="por-title">Photographer</h4>
+                            <div class="por-txt">@ViewBag.photographercount </div>
                             <div class="progress mb-2" style="height: 5px;">
                                 <div class="progress-bar bg-flat-color-3" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="progress-box progress-2">
-                            <h4 class="por-title">Targeted </h4>
-                            <div class="por-txt">99,658 Users (90%)</div>
+                            <h4 class="por-title">members </h4>
+                            <div class="por-txt">@ViewBag.allmember </div>
                             <div class="progress mb-2" style="height: 5px;">
                                 <div class="progress-bar bg-flat-color-4" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
@@ -132,11 +131,11 @@
 <!-- Orders -->
 <div class="orders">
     <div class="row">
-        <div class="col-xl-8">
+        <div class="col-xl-8" style="width:500px">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="box-title">Admin </h4>
-                    <input type="button" id="btnShowModal" value="Add New admin" class="btn btn-primary" />
+                    <h4 class="box-title"> </h4>
+                    <input type="button" id="btnShowModal" value="Add New " class="btn btn-primary" />
                 </div>
                 <div class="card-body--">
                     <div class="table-stats order-table ov-h">
@@ -181,7 +180,7 @@
 
         <div class="col-xl-4">
             <div class="row">
-                <div class="col-lg-6 col-xl-12" style="width:550px">
+                <div class="col-lg-6 col-xl-12" style="width:370px">
                     <div class="card br-0">
                         <div class="card-body">
                             <div class="chart-container ov-h">
@@ -191,7 +190,7 @@
                     </div><!-- /.card -->
                 </div>
 
-                <div class="col-lg-6 col-xl-12">
+                <div class="col-lg-6 col-xl-12" style="width:370px">
                     <h3></h3>
                     <div class="card bg-flat-color-3  ">
                         <div class="card-body">
@@ -203,7 +202,7 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 </div>
 
@@ -258,7 +257,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" type="text" name="ID"  placeholder="ID" id="IDadmin" required="required" readonly/>
+                        <input class="form-control" type="text" name="ID" placeholder="ID" id="IDadmin" required="required" readonly />
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
@@ -522,7 +521,7 @@
             }
 
         });
-    </script>    
+    </script>
 }
 
 

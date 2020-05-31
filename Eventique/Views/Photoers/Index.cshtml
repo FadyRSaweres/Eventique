@@ -17,10 +17,7 @@
             <th scope="col">Name</th>
             <th scope="col">Address</th>
             <th scope="col">PhoneNumber</th>
-<<<<<<< HEAD
             <th scope="col">Email</th>
-=======
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
 
         </tr>
     </thead>
@@ -32,12 +29,7 @@
             <td>@item.Ph_Name</td>
             <td>@item.Ph_Address</td>
             <td>@item.Ph_PhoneNumber</td>
-<<<<<<< HEAD
             <td>@item.Users.Email</td>
-=======
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
-
-
 
             <td>
                 <a href="javascript:void(0);" id="showeditPhotographerModal" class="edit" data-toggle="modal">
@@ -82,7 +74,6 @@
                         <input class="form-control" placeholder="PhoneNumber"
                                type="text" required="required" name="Ph_PhoneNumber" />
                     </div>
-<<<<<<< HEAD
                     <div class="form-group">
                         <input class="form-control" placeholder="Email"
                                type="text" required="required" name="_Email" />
@@ -91,8 +82,6 @@
                         <input class="form-control" placeholder="Password"
                                type="text" required="required" name="_Password" />
                     </div>
-=======
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-success" value="Save" />
@@ -114,11 +103,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-<<<<<<< HEAD
                         <input class="form-control" type="text" placeholder="Ph_Id" id="IDpho" required="required" name="Ph_Id"  readonly/>
-=======
-                        <input class="form-control" type="text" placeholder="Ph_Id" id="IDpho" required="required" name="Ph_Id"  />
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="Ph_Name"
@@ -136,11 +121,8 @@
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-success" value="Save" />
-<<<<<<< HEAD
                     @*<input type="hidden" name="Ph_Id" id="id" />*@
-=======
                     <input type="hidden" name="Ph_Id" id="id" />
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
                 </div>
             </form>
         </div>
@@ -191,19 +173,16 @@
                 $("#ModalDelete #idhh").val(id);
             });
 
-<<<<<<< HEAD
             $('table .edit').on('click', function () {
                 var id = $(this).parent().find('.id').val();
                 $.ajax({
                     type: 'GET',
                     url: '/Photoers/Find/' + id,
-=======
-            $('.edit').on('click', function () {
+                    $('.edit').on('click', function () {
                 var id = $(this).parent().find('.id').val();
                 $.ajax({
                     type: 'GET',
                     url: '/Photoers/find/' + id,
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
                     success: function (pho) {
                         $('#ModalUpdate #IDpho').val(pho.Ph_Id);
                         $('#ModalUpdate #Namepho').val(pho.Ph_Name);

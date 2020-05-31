@@ -227,14 +227,25 @@
                             <label for="Offer">Enter your Offer Title</label>
                             <select id="Offer" name="offerTitle" class="form-control">
                                 @{
-                                    if (Model.weddingHallsOffers.Count() != 0)
+                                    //if (Model.weddingHallsOffers.Count() != 0)
+                                    //{
+
+                                    if (Model.weddingHallsOffers != null)
                                     {
                                         foreach (var item in Model.weddingHallsOffers)
                                         {
+
                                             <option>@item.Title</option>
+
                                         }
                                     }
+                                    else
+                                    {
+                                        <option>No offers</option>
+                                    }
+
                                 }
+
                             </select>
                         </div>
                         <div class="form-group">
@@ -269,14 +280,14 @@
         }
 
         function available(date) {
-            dmy = date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
-            var li = dmy.split('-');
+            dmy = date.getDate() + "/0" + (date.getMonth() + 1) + "/" + date.getFullYear();
+            var li = dmy.split('/');
             if (li[0].length == 1) {
-                dmy = `0${li[0]}-${li[1]}-${li[2]}`;
+                dmy = `0${li[0]}/${li[1]}/${li[2]}`;
             }
             else {
                 //11-05-2020
-                dmy = date.getDate() + "-0" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                dmy = date.getDate() + "/0" + (date.getMonth() + 1) + "/" + date.getFullYear();
             }
             if ($.inArray(dmy, availableDates) != -1) {
                 return true;

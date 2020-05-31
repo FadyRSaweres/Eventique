@@ -14,6 +14,8 @@ namespace Eventique.Models
         public Designer RecommendedDesigner { get; set; }
         public WeddingHall RecommendedWeddingHall { get; set; }
         public InvitationCard RecommendedInvitation { get; set; }
+        public PriceOffer phOffer { get; set; }
+        public weddingHallsOffers hallsOffers { get; set; }
         public string Date { get; set; }
         public float Save { get; set; }
         public int InvQuantity { get; set; }

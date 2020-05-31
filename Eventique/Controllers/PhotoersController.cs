@@ -24,6 +24,7 @@ namespace Eventique.Controllers
 
         public IActionResult Index()
         {
+            context.Users.ToList();
             return View(context.Photographers.ToList());
         }
 

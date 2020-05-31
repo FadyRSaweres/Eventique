@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Eventique.Data;
 using Eventique.Models;
@@ -59,7 +60,7 @@ namespace Eventique.Controllers
                     context.Images.ToList();
                     context.Albums.ToList();
                     context.weddingHallsOffers.ToList();
-                    context.Users.ToList();
+                    context.Hotels.ToList();
                     return View(wh);
                 }
                 else
@@ -101,7 +102,7 @@ namespace Eventique.Controllers
                     Directory.CreateDirectory(path);
                 }
                 List<string> uploadedFiles = new List<string>();
-                if (wed.ImageFilePath != null || wed.ImageFilePathAlbum != null)
+                if (wed.ImageFilePath != null && wed.ImageFilePathAlbum != null)
                 {
                     foreach (IFormFile postedFile in wed.ImageFilePath)
                     {
@@ -180,9 +181,37 @@ namespace Eventique.Controllers
         [HttpPost]
         public IActionResult AcceptDeal(int id)
         {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            WeddingHall hall = context.Hotels.Where(h => h.Users.Id == user.Value).FirstOrDefault();
             WeddingHallsRequest wh = context.WeddingHallsRequests.Where(fr => fr.ID == id).FirstOrDefault();
             wh.Status = "Accepted";
+            var DateLi = hall.TestDate.Split(",");
+            List<string> dt = new List<string>();
+            dt = DateLi.ToList();
+            foreach (var item in dt)
+            {
+                if (wh.Date == item)
+                {
+                    dt.Remove(item);
+                    break;
+                }
+
+            }
+            StringBuilder st = new StringBuilder();
+            for (int i = 0; i < dt.Count; i++)
+            {
+                if (i == dt.Count - 1)
+                {
+                    st.Append(dt[i]);
+                }
+                else
+                {
+                    st.Append(dt[i] + ",");
+                }
+            }
+            hall.TestDate = st.ToString();
             context.SaveChanges();
+
             //GMailer.GmailUsername = "fady.ragaa48@gmail.com";
             //GMailer.GmailPassword = "fady2020";
 
@@ -198,8 +227,27 @@ namespace Eventique.Controllers
         [HttpPost]
         public IActionResult CancelDeal(int id)
         {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            WeddingHall hall = context.Hotels.Where(h => h.Users.Id == user.Value).FirstOrDefault();
             WeddingHallsRequest wh = context.WeddingHallsRequests.Where(fr => fr.ID == id).FirstOrDefault();
             wh.Status = "Canceled";
+            var DateLi = hall.TestDate.Split(",");
+            List<string> dt = new List<string>();
+            dt = DateLi.ToList();
+            dt.Add(wh.Date);
+            StringBuilder st = new StringBuilder();
+            for (int i = 0; i < dt.Count; i++)
+            {
+                if (i == dt.Count - 1)
+                {
+                    st.Append(dt[i]);
+                }
+                else
+                {
+                    st.Append(dt[i] + ",");
+                }
+            }
+            hall.TestDate = st.ToString();
             context.SaveChanges();
             //GMailer.GmailUsername = "fady.ragaa48@gmail.com";
             //GMailer.GmailPassword = "fady2020";
@@ -253,12 +301,13 @@ namespace Eventique.Controllers
         {
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             WeddingHall wh = context.Hotels.Where(h => h.Users.Id == user.Value).FirstOrDefault();
-            if (ModelState.IsValid)
+            context.Hotels.ToList();
+            
+            context.Users.ToList();
+            if (ModelState != null)
             {
-                context.Hotels.ToList();
                 context.weddingHallsOffers.ToList();
-                context.Users.ToList();
-                wh.weddingHallsOffers.Add(new weddingHallsOffers
+                wh.weddingHallsOffers.Add(new weddingHallsOffers()
                 {
                     Title = weddingHallsOffers.Title,
                     Capacity = weddingHallsOffers.Capacity,

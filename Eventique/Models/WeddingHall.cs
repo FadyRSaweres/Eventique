@@ -38,6 +38,7 @@ namespace Eventique.Models
         {
             HallsReview = new List<Review>();
             HotelRequest = new List<WeddingHallsRequest>();
+            weddingHallsOffers = new List<weddingHallsOffers>();
         }
 
         //public WeddingHall()

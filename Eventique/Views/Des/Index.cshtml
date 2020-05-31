@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-﻿@model IEnumerable<Eventique.Models.Designer>
-
-=======
-﻿@model List<Designer>
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
+@model List<Designer>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -21,10 +16,6 @@
             <th scope="col">Address</th>
             <th scope="col">ShopName</th>
             <th scope="col">Email</th>
-<<<<<<< HEAD
-=======
-
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
         </tr>
     </thead>
     <tbody style="color:grey">
@@ -37,12 +28,6 @@
             <td>@item.Address</td>
             <td>@item.ShopName</td>
             <td>@item.Users.Email</td>
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
             <td>
                 <a href="javascript:void(0);" id="showeditDesignerModal" class="edit" data-toggle="modal">
                     Edit
@@ -95,12 +80,7 @@
                                type="text" required="required" name="_Email" />
                     </div>
                     <div class="form-group">
-<<<<<<< HEAD
-                        <input class="form-control" placeholder="Password"
-                               type="text" required="required" name="_Password" />
-=======
-                        <input class="form-control" type="text"  placeholder="password" name="_password" />
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
+                        <input class="form-control" placeholder="Password" type="text" required="required" name="_Password" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -206,11 +186,6 @@
                         $('#ModalUpdate #PhoneNumberDesigner').val(Des.PhoneNumber);
                         $('#ModalUpdate #AddressDesigner').val(Des.Address);
                         $('#ModalUpdate #ShopNameDesigner').val(Des.ShopName);
-<<<<<<< HEAD
-
-=======
-                        
->>>>>>> db8b27900c8cf3bd471e2d765a95ca26428c4c62
                     }
                 });
             });
