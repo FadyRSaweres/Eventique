@@ -394,6 +394,12 @@ namespace Eventique.Data.Migrations
                     b.Property<float>("Save")
                         .HasColumnType("real");
 
+                    b.Property<int?>("hallsOffersID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("phOfferOf_ID")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("RecommendedDesignerID");
@@ -403,6 +409,10 @@ namespace Eventique.Data.Migrations
                     b.HasIndex("RecommendedPhotographerPh_Id");
 
                     b.HasIndex("RecommendedWeddingHallID");
+
+                    b.HasIndex("hallsOffersID");
+
+                    b.HasIndex("phOfferOf_ID");
 
                     b.ToTable("Recommendations");
                 });
@@ -899,6 +909,14 @@ namespace Eventique.Data.Migrations
                     b.HasOne("Eventique.Models.WeddingHall", "RecommendedWeddingHall")
                         .WithMany()
                         .HasForeignKey("RecommendedWeddingHallID");
+
+                    b.HasOne("Eventique.Models.weddingHallsOffers", "hallsOffers")
+                        .WithMany()
+                        .HasForeignKey("hallsOffersID");
+
+                    b.HasOne("Eventique.Models.PriceOffer", "phOffer")
+                        .WithMany()
+                        .HasForeignKey("phOfferOf_ID");
                 });
 
             modelBuilder.Entity("Eventique.Models.Review", b =>

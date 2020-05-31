@@ -161,6 +161,8 @@ namespace Eventique.Controllers
             context.Designers.ToList();
             context.Photographers.ToList();
             context.InvitationCards.ToList();
+            context.weddingHallsOffers.ToList();
+            context.PriceOffers.ToList();
             return View(context.Recommendations.ToList());
         }
 
@@ -186,7 +188,7 @@ namespace Eventique.Controllers
                     returnUrl = "~/Designers/TestDesiEdit/" + designer.ID;
                     return LocalRedirect(returnUrl);
                 }
-                else if(role.Contains("WeddingHall"))
+                else if (role.Contains("WeddingHall"))
                 {
                     returnUrl = "~/WeddingHalls/TestWeddEdit";
                     return LocalRedirect(returnUrl);
@@ -219,6 +221,7 @@ namespace Eventique.Controllers
         {
             context.Albums.ToList();
             context.Images.ToList();
+            context.Recommendations.ToList();
             List<WeddingHall> wedHalls = new List<WeddingHall>();
             if(Date == "Next Month")
             {
@@ -416,10 +419,10 @@ namespace Eventique.Controllers
         {
             weddingHallsOffers offer = context.weddingHallsOffers.Where(of => of.Title == offerTitle).FirstOrDefault();
             WeddingHallsRequest wdr = new WeddingHallsRequest();
-            var user = User.FindFirst(ClaimTypes.NameIdentifier);
-            WeddingHall w = context.Hotels.Where(p => p.ID == id).FirstOrDefault();
+            var user =  User.FindFirst(ClaimTypes.NameIdentifier);
+            WeddingHall w =  context.Hotels.Where(p => p.ID == id).FirstOrDefault();
             context.Users.ToList();
-            var member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
+            var member =  context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
             wdr.RequestHotel = w;
             wdr.Offer = offer;
             wdr.Date = wd.Date;
@@ -490,12 +493,14 @@ namespace Eventique.Controllers
                 }
             }
             var newdate = date.Split('-');
-            string dateNew = $"{newdate[2]}-{newdate[1]}-{newdate[0]}";
+            string dateNew = $"{newdate[2]}/{newdate[1]}/{newdate[0]}";
             List<Recommendation> recommendations = new List<Recommendation>();
             List<Photographer> ph = new List<Photographer>();
             List<WeddingHall> wd = new List<WeddingHall>();
             List<Designer> d = new List<Designer>();
             context.InvitationCards.ToList();
+            context.weddingHallsOffers.ToList();
+            context.PriceOffers.ToList();
             d = context.Designers.ToList();
             wd = context.Hotels.Where(w => w.Address.Contains(City) && w.TestDate.Contains(dateNew)).ToList();
             ph = context.Photographers.Where(p => p.TestDate.Contains(dateNew) && p.Ph_Address.Contains(City)).ToList();
@@ -508,12 +513,13 @@ namespace Eventique.Controllers
                         for (int z = 0; z < d[x].Invitations.Count(); z++)
                         {
                             float totalCardPrice = InvNumber * d[x].Invitations[0].Inv_Price;
-                            if((wd[i].Hall_Price + ph[j].Ph_Price + totalCardPrice) < Budget)
+                            if((wd[i].weddingHallsOffers[z].Price + ph[j].OffersList[z].OffersPrice + totalCardPrice) < Budget)
                             {
-                                context.Recommendations.Add(new Recommendation() { RecommendedWeddingHall = wd[i], RecommendedPhotographer = ph[j], RecommendedDesigner = d[x], RecommendedInvitation = d[x].Invitations[z] , Save = Budget - (wd[i].Hall_Price + ph[j].Ph_Price + totalCardPrice) , Date = dateNew , InvQuantity = InvNumber});
+                                context.Recommendations.Add(new Recommendation() { RecommendedWeddingHall = wd[i], RecommendedPhotographer = ph[j], RecommendedDesigner = d[x] ,phOffer = ph[j].OffersList[j], hallsOffers = wd[i].weddingHallsOffers[i], RecommendedInvitation = d[x].Invitations[z] , Save = Budget - (wd[i].weddingHallsOffers[z].Price + ph[j].OffersList[z].OffersPrice + totalCardPrice) , Date = dateNew , InvQuantity = InvNumber});
                                 context.SaveChanges();
+                                break;
                             }
-                            break;
+                            
                         }
                     }
                 }
@@ -530,11 +536,13 @@ namespace Eventique.Controllers
             Member m = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
             context.Photographers.ToList();
             context.Designers.ToList();
+            context.PriceOffers.ToList();
+            context.weddingHallsOffers.ToList();
             context.Hotels.ToList();
             context.InvitationCards.ToList();
             Recommendation reco = context.Recommendations.Where(r => r.ID == id).FirstOrDefault();
-            context.WeddingHallsRequests.Add(new WeddingHallsRequest() { Date = reco.Date, Message = "Recomendation", RequestHotel = reco.RecommendedWeddingHall, RequestUser = m, Status = "Pending" });
-            context.PhotographerRequests.Add(new PhotographerRequest() { Date = reco.Date, Message = "Recommendation", RequestPhotographer = reco.RecommendedPhotographer, RequestUser = m, Status = "Prnding" });
+            context.WeddingHallsRequests.Add(new WeddingHallsRequest() { Date = reco.Date, Message = "Recomendation", RequestHotel = reco.RecommendedWeddingHall, RequestUser = m, Status = "Pending" ,Offer = reco.hallsOffers});
+            context.PhotographerRequests.Add(new PhotographerRequest() { Date = reco.Date, Message = "Recommendation", RequestPhotographer = reco.RecommendedPhotographer, RequestUser = m, Status = "Prnding" , PriceOffer = reco.phOffer});
             context.DesignerRequests.Add(new DesignerRequest() { Date = reco.Date, Message = "Recommendation", RequestHotel = reco.RecommendedDesigner, InvitationStyle = reco.RecommendedInvitation, Quantity = reco.InvQuantity, RequestUser = m, Status = "Pending" });
             context.SaveChanges();
             return RedirectToAction("TestView");

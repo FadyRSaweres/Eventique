@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Eventique.Data;
 using Eventique.Models;
@@ -212,9 +213,37 @@ namespace Eventique.Controllers
         [HttpPost]
         public IActionResult AcceptDeal (int id)
         {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            Photographer ph = context.Photographers.Where(h => h.Users.Id == user.Value).FirstOrDefault();
             PhotographerRequest pr = context.PhotographerRequests.Where(fr => fr.ID == id).FirstOrDefault();
             pr.Status = "Accepted";
+            var DateLi = ph.TestDate.Split(",");
+            List<string> dt = new List<string>();
+            dt = DateLi.ToList();
+            foreach (var item in dt)
+            {
+                if (pr.Date == item)
+                {
+                    dt.Remove(item);
+                    break;
+                }
+
+            }
+            StringBuilder st = new StringBuilder();
+            for (int i = 0; i < dt.Count; i++)
+            {
+                if (i == dt.Count-1 )
+                {
+                    st.Append(dt[i]);
+                }
+                else
+                {
+                    st.Append(dt[i] + ",");
+                }
+            }
+            ph.TestDate = st.ToString();
             context.SaveChanges();
+
             //GMailer.GmailUsername = "fady.ragaa48@gmail.com";
             //GMailer.GmailPassword = "fady2020";
 
@@ -230,8 +259,27 @@ namespace Eventique.Controllers
         [HttpPost]
         public IActionResult CancelDeal(int id)
         {
+            var user = User.FindFirst(ClaimTypes.NameIdentifier);
+            Photographer ph = context.Photographers.Where(h => h.Users.Id == user.Value).FirstOrDefault();
             PhotographerRequest pr = context.PhotographerRequests.Where(fr => fr.ID == id).FirstOrDefault();
             pr.Status = "Canceled";
+            var DateLi = ph.TestDate.Split(",");
+            List<string> dt = new List<string>();
+            dt = DateLi.ToList();
+            dt.Add(pr.Date);
+            StringBuilder st = new StringBuilder();
+            for (int i = 0; i < dt.Count; i++)
+            {
+                if (i == dt.Count - 1)
+                {
+                    st.Append(dt[i]);
+                }
+                else
+                {
+                    st.Append(dt[i] + ",");
+                }
+            }
+            ph.TestDate = st.ToString();
             context.SaveChanges();
             //GMailer.GmailUsername = "fady.ragaa48@gmail.com";
             //GMailer.GmailPassword = "fady2020";
