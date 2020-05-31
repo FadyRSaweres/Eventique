@@ -181,7 +181,6 @@ E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\unix
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
 E:\Final final project\Eventique\Eventique\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csproj.CoreCompileInputs.cache
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cache
@@ -234,6 +233,7 @@ E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\I
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Admins\Index.cshtml.g.cs
+E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Admins\wedgits.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Create.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Delete.cshtml.g.cs
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Razor\Views\Albums\Details.cshtml.g.cs

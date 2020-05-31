@@ -35,7 +35,7 @@ namespace Eventique.Controllers
             Environment = _environment;
             _userManager = userManager;
             _signInManager = signInManager;
-            halls = context.Hotels.ToList();
+            //halls = context.Hotels.ToList();
         }
         public IActionResult Index()
         {
@@ -214,7 +214,7 @@ namespace Eventique.Controllers
                 context.PriceOffers.ToList();
                 return View();
             }
-            
+
         }
 
         public IActionResult AllWeddingHalls(int Price = 5000, string HallType = null, string OtherServices = null, int Capacity = 100, string Regon = null, string Date = null)

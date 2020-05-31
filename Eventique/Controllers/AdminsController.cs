@@ -20,16 +20,43 @@ namespace Eventique.Controllers
         }
         public IActionResult Index()
         {
-            //Photographer photo = new Photographer();
-            //ViewBag.PhotographersCount = _context.Photographers.Count(x => x.Ph_Requests.Count != 0);
-            //Designer des = new Designer();
-            //ViewBag.desCount = _context.Designers.Count(x => x.DesignerRequest.Count != 0);
-
+            ViewBag.usercount = _context.Users.ToList().Count();
+            ViewBag.designercount = _context.Designers.ToList().Count();
+            ViewBag.photographercount = _context.Photographers.ToList().Count();
 
             return View(_context.Admins.ToList());
         }
+
+
+        public IActionResult wedgits()
+        {
+
+            ViewBag.usercount = _context.Users.ToList().Count();
+            ViewBag.designercount = _context.Designers.ToList().Count();
+            ViewBag.photographercount = _context.Photographers.ToList().Count();
+            ViewBag.hallscount = _context.Hotels.ToList().Count();
+            ViewBag.allmember = _context.Users.ToList().Count() +
+                _context.Designers.ToList().Count() + _context.Photographers.ToList().Count();
+            //ViewBag.allRequst = _context.DesignerRequests.ToList().Count() +
+            //   _context.PhotographerRequests.ToList().Count() + _context.WeddingHallsRequests.ToList().Count();
+
+            ViewBag.allimage = _context.Images.ToList().Count();
+            ViewBag.imagephoto = _context.Photographers.Where(x => x.ImagePath != null).ToList().Count();
+
+            ViewBag.imagedesigner = _context.Designers.Where(x => x.Designer_ImgPath != null).ToList().Count();
+            //ViewBag.imageholls = _context.Albums.Where(x => x.ImageFilePath!=null).ToList().Count();
+            //ViewBag.requstholls = _context.WeddingHallsRequests.ToList().Count();
+
+            //ViewBag.requstphoto = _context.PhotographerRequests.ToList().Count();
+            //ViewBag.requstdesinger = _context.DesignerRequests.ToList().Count();
+            //ViewBag.requsthalls = _context.Hotels.ToList().Count();
+            return View(_context.Admins.ToList());
+        }
+
+
         [HttpPost]
         [Route("AddAdmin")]
+
         public IActionResult AddAdmin(int ID, string Name)
         {
             var admin = new Eventique.Models.Admin
