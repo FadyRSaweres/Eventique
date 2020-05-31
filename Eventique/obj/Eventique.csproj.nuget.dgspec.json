@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Eventique\\Eventique\\Eventique.csproj": {}
+    "E:\\final final\\Eventique\\Eventique\\Eventique.csproj": {}
   },
   "projects": {
-    "E:\\Eventique\\Eventique\\Eventique.csproj": {
+    "E:\\final final\\Eventique\\Eventique\\Eventique.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Eventique\\Eventique\\Eventique.csproj",
+        "projectUniqueName": "E:\\final final\\Eventique\\Eventique\\Eventique.csproj",
         "projectName": "Eventique",
-        "projectPath": "E:\\Eventique\\Eventique\\Eventique.csproj",
-        "packagesPath": "C:\\Users\\MASTER\\.nuget\\packages\\",
-        "outputPath": "E:\\Eventique\\Eventique\\obj\\",
+        "projectPath": "E:\\final final\\Eventique\\Eventique\\Eventique.csproj",
+        "packagesPath": "C:\\Users\\magdy\\.nuget\\packages\\",
+        "outputPath": "E:\\final final\\Eventique\\Eventique\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\MASTER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\magdy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -141,7 +144,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,7 @@
+E:\final final\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.AssemblyInfoInputs.cache
+E:\final final\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.AssemblyInfo.cs
+E:\final final\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csproj.CoreCompileInputs.cache
+E:\final final\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cs
+E:\final final\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.MvcApplicationPartsAssemblyInfo.cache
+E:\final final\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorAssemblyInfo.cache
+E:\final final\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.RazorAssemblyInfo.cs
