@@ -7,29 +7,42 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Eventique.Data;
 using Eventique.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Eventique.Controllers.Admin
 {
     public class UsersController : Controller
     {
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         ApplicationDbContext context;
-        public UsersController(ApplicationDbContext _context)
+        public UsersController(ApplicationDbContext _context, UserManager<IdentityUser> userManager,
+             SignInManager<IdentityUser> signInManager)
         {
             context = _context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         public IActionResult Index()
         {
+            context.Users.ToList();
             return View(context.Members.ToList());
         }
         [HttpPost]
         [Route("AddUser")]
-        public IActionResult AddUser(string Name, int PhoneNumber)
+        public async Task< IActionResult> AddUser(string Name, int PhoneNumber, string _Email, string _Password)
         {
+            var user = new IdentityUser { Email = _Email, UserName = _Email, NormalizedEmail = _Email.ToUpper() };
+
+            var result = await _userManager.CreateAsync(user, _Password);
+            await _userManager.AddToRoleAsync(user, "User");
+            await _signInManager.SignInAsync(user, isPersistent: false);
             var member = new Member
             {
 
                 Name = Name,
                 PhoneNumber = PhoneNumber,
+                Users=user
                
             };
             context.Members.Add(member);

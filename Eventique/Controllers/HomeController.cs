@@ -513,9 +513,9 @@ namespace Eventique.Controllers
                         for (int z = 0; z < d[x].Invitations.Count(); z++)
                         {
                             float totalCardPrice = InvNumber * d[x].Invitations[0].Inv_Price;
-                            if((wd[i].weddingHallsOffers[z].Price + ph[j].OffersList[z].OffersPrice + totalCardPrice) < Budget)
+                            if((wd[i].weddingHallsOffers[i].Price + ph[j].OffersList[j].OffersPrice + totalCardPrice) < Budget)
                             {
-                                context.Recommendations.Add(new Recommendation() { RecommendedWeddingHall = wd[i], RecommendedPhotographer = ph[j], RecommendedDesigner = d[x] ,phOffer = ph[j].OffersList[j], hallsOffers = wd[i].weddingHallsOffers[i], RecommendedInvitation = d[x].Invitations[z] , Save = Budget - (wd[i].weddingHallsOffers[z].Price + ph[j].OffersList[z].OffersPrice + totalCardPrice) , Date = dateNew , InvQuantity = InvNumber});
+                                context.Recommendations.Add(new Recommendation() { RecommendedWeddingHall = wd[i], RecommendedPhotographer = ph[j], RecommendedDesigner = d[x] ,phOffer = ph[j].OffersList[j], hallsOffers = wd[i].weddingHallsOffers[i], RecommendedInvitation = d[x].Invitations[z] , Save = Budget - (wd[i].weddingHallsOffers[i].Price + ph[j].OffersList[j].OffersPrice + totalCardPrice) , Date = dateNew , InvQuantity = InvNumber});
                                 context.SaveChanges();
                                 break;
                             }

@@ -129,7 +129,7 @@ namespace Eventique.Areas.Identity.Pages.Account
                     }
                     else if(role.Contains("Admin"))
                     {
-                        returnUrl = "~/PhotographerBack/Index";
+                        returnUrl = "~/Admins/Index";
                     }
                     return LocalRedirect(returnUrl);
                 }
