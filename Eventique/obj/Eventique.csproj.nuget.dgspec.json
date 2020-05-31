@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "E:\\final9-5\\Eventique\\Eventique\\Eventique.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MASTER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "E:\\Final final project\\Eventique\\Eventique\\Eventique.csproj": {}
+  },
+  "projects": {
+    "E:\\Final final project\\Eventique\\Eventique\\Eventique.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Final final project\\Eventique\\Eventique\\Eventique.csproj",
+        "projectName": "Eventique",
+        "projectPath": "E:\\Final final project\\Eventique\\Eventique\\Eventique.csproj",
+        "packagesPath": "C:\\Users\\Qasem\\.nuget\\packages\\",
+        "outputPath": "E:\\Final final project\\Eventique\\Eventique\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Qasem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 529fc0b30dd88cdd76f5a5ebaf09c7624d65b160
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
