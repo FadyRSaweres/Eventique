@@ -35,7 +35,7 @@ namespace Eventique.Controllers
             Environment = _environment;
             _userManager = userManager;
             _signInManager = signInManager;
-            halls = context.Hotels.ToList();
+            //halls = context.Hotels.ToList();
         }
         public IActionResult Index()
         {
