@@ -24,26 +24,28 @@
     <tbody style="color:grey">
         @foreach (var item in Model)
         {
-        <tr>
-            <td>@item.Ph_Id</td>
-            <td>@item.Ph_Name</td>
-            <td>@item.Ph_Address</td>
-            <td>@item.Ph_PhoneNumber</td>
-            <td>@item.Users.Email</td>
+            <tr>
+                <td>@item.Ph_Id</td>
+                <td>@item.Ph_Name</td>
+                <td>@item.Ph_Address</td>
+                <td>@item.Ph_PhoneNumber</td>
+                <td>@item.Users.Email</td>
 
-            <td>
-                <a href="javascript:void(0);" id="showeditPhotographerModal" class="edit" data-toggle="modal">
-                    Edit
-                </a>
-                <input type="hidden" class="id" name="Ph_Id" value="@item.Ph_Id" />
-            </td>
-            <td>
-                <a href="javascript:void(0);" id="showdeletePhotographerModal" class="delete" data-toggle="modal">
-                    Delete
-                </a>
-                <input type="hidden"  name="Ph_Id" value="@item.Ph_Id" />
-            </td>
-        </tr>
+
+
+                <td>
+                    <a href="javascript:void(0);" id="showeditPhotographerModal" class="edit" data-toggle="modal">
+                        Edit
+                    </a>
+                    <input type="hidden" class="id" value="@item.Ph_Id" />
+                </td>
+                <td>
+                    <a href="javascript:void(0);" id="showdeletePhotographerModal" class="delete" data-toggle="modal">
+                        Delete
+                    </a>
+                    <input type="hidden" class="id" value="@item.Ph_Id" />
+                </td>
+            </tr>
         }
     </tbody>
 </table>
@@ -60,8 +62,8 @@
                 </div>
                 <div class="modal-body">
                     @*<div class="form-group">
-            <input class="form-control" type="text" placeholder="ID" required="required" name="ID" />
-        </div>*@
+                            <input class="form-control" type="text" placeholder="ID" required="required" name="ID" />
+                        </div>*@
                     <div class="form-group">
                         <input class="form-control" placeholder="Name"
                                type="text" required="required" name="Ph_Name" />
@@ -103,7 +105,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Ph_Id" id="IDpho" required="required" name="Ph_Id"  readonly/>
+                        <input class="form-control" type="text" placeholder="Ph_Id" id="IDpho" required="required" name="Ph_Id" readonly />
                     </div>
                     <div class="form-group">
                         <input class="form-control" placeholder="Ph_Name"
@@ -122,7 +124,6 @@
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-success" value="Save" />
                     @*<input type="hidden" name="Ph_Id" id="id" />*@
-                    <input type="hidden" name="Ph_Id" id="id" />
                 </div>
             </form>
         </div>
@@ -178,16 +179,11 @@
                 $.ajax({
                     type: 'GET',
                     url: '/Photoers/Find/' + id,
-                    $('.edit').on('click', function () {
-                var id = $(this).parent().find('.id').val();
-                $.ajax({
-                    type: 'GET',
-                    url: '/Photoers/find/' + id,
                     success: function (pho) {
                         $('#ModalUpdate #IDpho').val(pho.Ph_Id);
                         $('#ModalUpdate #Namepho').val(pho.Ph_Name);
                         $('#ModalUpdate #Addresspho').val(pho.Ph_Address);
-                        $('#ModalUpdate #PhoneNumberpho').val(pho.Ph_PhoneNumber); 
+                        $('#ModalUpdate #PhoneNumberpho').val(pho.Ph_PhoneNumber);
                     }
                 });
             });

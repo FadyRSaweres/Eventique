@@ -318,4 +318,3 @@ E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\staticwebasse
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.dll
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.pdb
 E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.genruntimeconfig.cache
-E:\Final final project\Eventique\Eventique\obj\Debug\netcoreapp3.0\Eventique.csprojAssemblyReference.cache

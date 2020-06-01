@@ -7,296 +7,96 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Eventique.Data;
 using Eventique.Models;
+using Microsoft.AspNetCore.Identity;
 
-namespace Eventique.Controllers.Admin
+namespace Eventique.Controllers
 {
     public class HallsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        ApplicationDbContext context;
 
-        public HallsController(ApplicationDbContext context)
+        public HallsController(ApplicationDbContext _context, UserManager<IdentityUser> userManager,
+             SignInManager<IdentityUser> signInManager)
         {
-            _context = context;
-        }
-     
-        // GET: Halls
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Hotels.ToListAsync());
-        }
-
-        // GET: Halls/Details/5
-
-        public async Task<IActionResult> Widgets()
-        {
-            return View(await _context.Admins.ToListAsync());
-        }
-        public async Task<IActionResult>Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var weddingHall = await _context.Hotels
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (weddingHall == null)
-            {
-                return NotFound();
-            }
-
-            return View(weddingHall);
+            context = _context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
-        // GET: Halls/Create
-        public IActionResult Create()
+        public IActionResult Index()
         {
-            return View();
+            context.Users.ToList();
+            return View(context.Hotels.ToList());
         }
 
-        // POST: Halls/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,PhoneNumber,Hall_ImgPath,Address,Hall_Price,Offers,Capacity,OtherServices,HallType")] WeddingHall weddingHall)
+        [Route("CreateHall")]
+        public async Task<IActionResult> CreateHall(string Name, string Address, int PhoneNumber, string HallType, string _Email, string _Password)
         {
-            if (ModelState.IsValid)
+            var user = new IdentityUser { Email = _Email, UserName = _Email, NormalizedEmail = _Email.ToUpper() };
+
+            var result = await _userManager.CreateAsync(user, _Password);
+            await _userManager.AddToRoleAsync(user, "WeddingHall");
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            WeddingHall w = new WeddingHall()
             {
-                _context.Add(weddingHall);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(weddingHall);
+                Name = Name,
+                Address = Address,
+                PhoneNumber = PhoneNumber,
+                HallType = HallType,
+                Users = user
+
+            };
+            context.Hotels.Add(w);
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        // GET: Halls/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var weddingHall = await _context.Hotels.FindAsync(id);
-            if (weddingHall == null)
-            {
-                return NotFound();
-            }
-            return View(weddingHall);
-        }
-
-        // POST: Halls/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,PhoneNumber,Hall_ImgPath,Address,Hall_Price,Offers,Capacity,OtherServices,HallType")] WeddingHall weddingHall)
+        [Route("RemoveHall")]
+        public IActionResult RemoveHall(int id)
         {
-            if (id != weddingHall.ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(weddingHall);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!WeddingHallExists(weddingHall.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(weddingHall);
+            var WeddingHall = context.Hotels.Find(id);
+            context.Hotels.Remove(WeddingHall);
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        // GET: Halls/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        [HttpGet]
+        [Route("Halls/FindHall/{id}")]
+        public IActionResult FindHall(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var WeddingHall = context.Hotels.Find(id);
+            //ArrayList li = new ArrayList();
+            //li.Add(Photographer.Ph_Id);
+            //li.Add(Photographer.Ph_Name);
+            //li.Add(Photographer.Ph_Address);
+            //li.Add(Photographer.Ph_PhoneNumber);
+            Dictionary<string, string> HallsList = new Dictionary<string, string>();
+            HallsList.Add("ID", WeddingHall.ID.ToString());
+            HallsList.Add("Name", WeddingHall.Name);
+            HallsList.Add("Address", WeddingHall.Address);
+            HallsList.Add("PhoneNumber", WeddingHall.PhoneNumber.ToString());
+            HallsList.Add("HallType", WeddingHall.HallType);
 
-            var weddingHall = await _context.Hotels
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (weddingHall == null)
-            {
-                return NotFound();
-            }
-
-            return View(weddingHall);
-        }
-
-        // POST: Halls/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var weddingHall = await _context.Hotels.FindAsync(id);
-            _context.Hotels.Remove(weddingHall);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool WeddingHallExists(int id)
-        {
-            return _context.Hotels.Any(e => e.ID == id);
+            return new JsonResult(HallsList);
         }
 
 
+        [HttpPost]
+        [Route("UpdateHall")]
+        public IActionResult UpdateHall(int ID, string Name, string Address, string PhoneNumber, string HallType)
+        {
+            var WeddingHall = context.Hotels.Find(ID);
+            //photographer.Ph_Id = Ph_Id;
+            WeddingHall.Name = Name;
+            WeddingHall.Address = Address;
+            WeddingHall.PhoneNumber = int.Parse(PhoneNumber);
+            WeddingHall.HallType = HallType;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
-
-//        // GET: Admins
-//        public async Task<IActionResult> Index()
-//        {
-
-
-//            Photographer photo = new Photographer();
-//            ViewBag.PhotographersCount = _context.Photographers.Count(x=>x.Ph_Requests.Count!=0);
-//            return View(await _context.Admins.ToListAsync());
-//        }
-//        public async Task<IActionResult>Details(int? id)
-//        {
-//            if (id == null)
-//            {
-//                return NotFound();
-//            }
-
-//            var admin = await _context.Admins
-//                .FirstOrDefaultAsync(m => m.ID == id);
-//            if (admin == null)
-//            {
-//                return NotFound();
-//            }
-
-//            return View(admin);
-//        }
-
-//        // GET: Admins/Create
-//        public IActionResult Create()
-//        {
-//            return View();
-//        }
-
-//        // POST: Admins/Create
-//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-//        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> Create([Bind("ID,Name")] Admin admin)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                _context.Add(admin);
-//                await _context.SaveChangesAsync();
-//                return RedirectToAction(nameof(Index));
-//            }
-//            return View(admin);
-//        }
-
-//        // GET: Admins/Edit/5
-//        public async Task<IActionResult> Edit(int? id)
-//        {
-//            if (id == null)
-//            {
-//                return NotFound();
-//            }
-
-//            var admin = await _context.Admins.FindAsync(id);
-//            if (admin == null)
-//            {
-//                return NotFound();
-//            }
-//            return View(admin);
-//        }
-
-//        // POST: Admins/Edit/5
-//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-//        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> Edit(int id, [Bind("ID,Name")] Admin admin)
-//        {
-//            if (id != admin.ID)
-//            {
-//                return NotFound();
-//            }
-
-//            if (ModelState.IsValid)
-//            {
-//                try
-//                {
-//                    _context.Update(admin);
-//                    await _context.SaveChangesAsync();
-//                }
-//                catch (DbUpdateConcurrencyException)
-//                {
-//                    if (!AdminExists(admin.ID))
-//                    {
-//                        return NotFound();
-//                    }
-//                    else
-//                    {
-//                        throw;
-//                    }
-//                }
-//                return RedirectToAction(nameof(Index));
-//            }
-//            return View(admin);
-//        }
-
-//        // GET: Admins/Delete/5
-//        public async Task<IActionResult> Delete(int? id)
-//        {
-//            if (id == null)
-//            {
-//                return NotFound();
-//            }
-
-//            var admin = await _context.Admins
-//                .FirstOrDefaultAsync(m => m.ID == id);
-//            if (admin == null)
-//            {
-//                return NotFound();
-//            }
-
-//            return View(admin);
-//        }
-
-//        // POST: Admins/Delete/5
-//        [HttpPost, ActionName("Delete")]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> DeleteConfirmed(int id)
-//        {
-//            var admin = await _context.Admins.FindAsync(id);
-//            _context.Admins.Remove(admin);
-//            await _context.SaveChangesAsync();
-//            return RedirectToAction(nameof(Index));
-//        }
-
-//        private bool AdminExists(int id)
-//        {
-//            return _context.Admins.Any(e => e.ID == id);
-//        }
-
-
-
-
-
-
-
-//    }
-//}
