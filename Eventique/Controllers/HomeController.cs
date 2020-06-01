@@ -15,6 +15,7 @@ using System.Security.Policy;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections;
+using System.Runtime.Intrinsics.X86;
 
 namespace Eventique.Controllers
 {
@@ -513,10 +514,10 @@ namespace Eventique.Controllers
                         for (int z = 0; z < d[x].Invitations.Count(); z++)
                         {
                             float totalCardPrice = InvNumber * d[x].Invitations[0].Inv_Price;
-                            if((wd[i].weddingHallsOffers[i].Price + ph[j].OffersList[j].OffersPrice + totalCardPrice) < Budget)
+                            if((wd[i].weddingHallsOffers[0].Price + ph[j].OffersList[0].OffersPrice + totalCardPrice) < Budget)
                             {
-                                context.Recommendations.Add(new Recommendation() { RecommendedWeddingHall = wd[i], RecommendedPhotographer = ph[j], RecommendedDesigner = d[x] ,phOffer = ph[j].OffersList[j], hallsOffers = wd[i].weddingHallsOffers[i], RecommendedInvitation = d[x].Invitations[z] , Save = Budget - (wd[i].weddingHallsOffers[i].Price + ph[j].OffersList[j].OffersPrice + totalCardPrice) , Date = dateNew , InvQuantity = InvNumber});
-                                context.SaveChanges();
+                                recommendations.Add(new Recommendation() { RecommendedWeddingHall = wd[i], RecommendedPhotographer = ph[j], RecommendedDesigner = d[x], phOffer = ph[j].OffersList[0], hallsOffers = wd[i].weddingHallsOffers[0], RecommendedInvitation = d[x].Invitations[z], Save = Budget - (wd[i].weddingHallsOffers[0].Price + ph[j].OffersList[0].OffersPrice + totalCardPrice), Date = dateNew, InvQuantity = InvNumber });
+                                
                                 break;
                             }
                             
@@ -524,6 +525,9 @@ namespace Eventique.Controllers
                     }
                 }
             }
+            float f = recommendations.Select(r => r.Save).Min();
+            context.Recommendations.Add(recommendations.Where(r => r.Save == f).FirstOrDefault());
+            context.SaveChanges();
             return RedirectToAction("LastReco");    
         }
 
