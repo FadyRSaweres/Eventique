@@ -10,11 +10,8 @@
     <div class="container-login100">
         <div class="wrap-login100" style="width: 500px !important">
             <form class="login100-form validate-form" id="account" method="post">
-                <span class="login100-form-title p-b-26">
-                    Welcome
-                </span>
                 <span class="login100-form-title p-b-48">
-                    <i class="zmdi zmdi-font"></i>
+                    <img src="~/Images/LogoE.png" style="width:50%"  />
                 </span>
 
                 <div class="wrap-input100 validate-input" data-validate="Valid Email is: a@b.c">
@@ -66,10 +63,10 @@
         </div>
     </div>
 
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>Use another service to log in.</h4>
-            <hr />
+    @*<div class="col-md-6 col-md-offset-2">
+        <section>*@
+            @*<h4>Use another service to log in.</h4>
+            <hr />*@
             @*@{
                 if (Model.ShowResend)
                 {
@@ -79,8 +76,8 @@
                     </p>
                 }
             }*@
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+            @*@{*@
+                @*if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
                         <p>
@@ -105,7 +102,7 @@
             }
         </section>
     </div>
-</div>
+</div>*@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

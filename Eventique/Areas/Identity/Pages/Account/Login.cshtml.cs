@@ -127,7 +127,7 @@ namespace Eventique.Areas.Identity.Pages.Account
                     {
                         returnUrl = "~/WeddingHalls/TestWeddEdit";
                     }
-                    else if(role.Contains("Admin"))
+                    else
                     {
                         returnUrl = "~/Admins/Index";
                     }

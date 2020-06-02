@@ -134,6 +134,7 @@ namespace Eventique.Controllers
                     wh.Hall_Price = wed.Hall_Price;
                     wh.HallType = wed.HallType;
                     wh.Address = wed.Address;
+                    wh.Capacity = wed.Capacity;
                     wh.OtherServices = wed.OtherServices;
                     wh.TestDate = wed.TestDate;
                     wh.Album = new Album() { Al_Title = wed.Name , MyProperty = imgPForAlbum };
@@ -149,21 +150,17 @@ namespace Eventique.Controllers
                     wh.Hall_Price = wed.Hall_Price;
                     wh.HallType = wed.HallType;
                     wh.Address = wed.Address;
+                    wh.Capacity = wed.Capacity;
                     wh.OtherServices = wed.OtherServices;
                     wh.TestDate = wed.TestDate;
                     wh.Offers = wed.Offers;
                     context.SaveChanges();
                     return RedirectToAction("TestWeddEdit");
-
                 }
-
-
             }
 
             return View(wh);
         }
-
-
 
         public IActionResult Deals()
         {
@@ -177,6 +174,7 @@ namespace Eventique.Controllers
             context.Members.ToList();
             return View(wh);
         }
+
 
         [HttpPost]
         public IActionResult AcceptDeal(int id)
@@ -360,14 +358,17 @@ namespace Eventique.Controllers
         [Route("DeleteOffer")]
         public IActionResult DeleteOffer(int offId)
         {
+
+            context.weddingHallsOffers.ToList();
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             WeddingHall weddingHall = context.Hotels.Where(w => w.Users.Id == user.Value).FirstOrDefault();
-            WeddingHallsRequest weddingHallsRequest = context.WeddingHallsRequests.Where(wr => wr.ID == offId).FirstOrDefault();
+            WeddingHallsRequest weddingHallsRequest = context.WeddingHallsRequests.Where(wr => wr.Offer.ID == offId).FirstOrDefault();
             if (weddingHallsRequest == null)
             {
                 weddingHallsOffers hallsOffer = context.weddingHallsOffers.Find(offId);
                 weddingHall.weddingHallsOffers.Remove(hallsOffer);
                 context.weddingHallsOffers.Remove(hallsOffer);
+                
                 context.SaveChanges();
                 return RedirectToAction("TestWeddEdit");
             }

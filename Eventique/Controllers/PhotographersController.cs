@@ -301,6 +301,9 @@ namespace Eventique.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePassVM passVM)
         {
+            var user2 = User.FindFirst(ClaimTypes.NameIdentifier);
+            Photographer ph = context.Photographers.Where(h => h.Users.Id == user2.Value).FirstOrDefault();
+
             if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(User);
@@ -319,7 +322,7 @@ namespace Eventique.Controllers
                     return View();
                 }
                 await _signInManager.RefreshSignInAsync(user);
-                return PartialView("ChangePassword");
+                return RedirectToAction("EditPho", new { id= ph.Ph_Id });
             }
             return View(passVM);
         }

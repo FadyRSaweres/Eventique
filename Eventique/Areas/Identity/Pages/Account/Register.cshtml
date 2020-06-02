@@ -14,7 +14,7 @@
                     <hr />
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <span class="login100-form-title p-b-26">
-                        Welcome
+                        <img src="~/Images/LogoE.png" style="width:50%" />
                     </span>
                     <div class="wrap-input100 validate-input" data-validate="Valid username is: a@b.c">
                         <input asp-for="Input.UserName" class="input100" />
@@ -60,7 +60,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-6 col-md-offset-2">
+            @*<div class="col-md-6 col-md-offset-2">
                 <section>
                     <h4>Use another service to register.</h4>
                     <hr />
@@ -91,7 +91,7 @@
                 </section>
             </div>
         </div>
-    </div>
+    </div>*@
         @section Scripts {
             <partial name="_ValidationScriptsPartial" />
         }
