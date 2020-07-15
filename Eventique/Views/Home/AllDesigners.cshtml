@@ -12,128 +12,71 @@
     <link rel="stylesheet" type="text/css" href="~/pato/css/main.css">
     <link rel="icon" type="image/png" href="~/Images/newLogo.png" />
     <link rel="stylesheet" type="text/css" href="~/css/CardDesigner.css">
+    <link href="~/css/AllWeddingHallsStyle.css" rel="stylesheet" />
     <link href="~/search/css/main.css" rel="stylesheet" />
 
 }
-<section style="margin-top:200px;position:relative" class="container">
-    <div class="col-lg-12 text-center mt-5">
-    </div>
 
-    @{
-        foreach (var item in Model)
-        {
-            <div class="blog-card" style="position:relative;margin-top:50px">
-                <div class="meta">
-                    <div class="photo" style="background-image: url(..@item.Designer_ImgPath)"></div>
-                    <ul class="details">
-                        <li class="author"><a href="#">@item.ShopName</a></li>
-                        <li class="date">Aug. 24, 2015</li>
-                    </ul>
-                </div>
-                <div class="description">
-                    <h1>@item.ShopName</h1>
-                    <h2>Opening a door to the future</h2>
-                    <p> @item.Offers</p>
-                    <p class="read-more">
-                        <a href="~/Home/TestDesiView/@item.ID">Go To Profile</a>
-                    </p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<section>
+    <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(/Images/alldesigners.jpg);">
+        <div class="col-md-8 offset-md-2 mt-5" style="">
+        </div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="page-title">Designres</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Designer Shop</li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <section style="margin-top:100px;position:relative" class="container">
 
+
+        <div class="col-lg-12 text-center mt-5">
+
+        </div>
+
+        @{
+            foreach (var item in Model)
+            {
+                <div class="blog-card" style="position:relative;margin-top:50px;height:250px;">
+                    <div class="meta">
+                        <div class="photo" style="background-image: url(..@item.Designer_ImgPath)"></div>
+                        <ul class="details">
+                            <li class="author"><a href="#">@item.ShopName</a></li>
+                            <li class="date">Aug. 24, 2015</li>
+                        </ul>
+                    </div>
+                    <div class="description">
+                        <h1>@item.ShopName</h1>
+                        <h2>Opening a door to the future</h2>
+                        <p> @item.Offers</p>
+                        <p class="read-more">
+                            <a href="~/Home/TestDesiView/@item.ID">Go To Profile</a>
+                        </p>
+                    </div>
+                </div>
+
+            }
         }
-    }
-    <div class="s007">
-        <form>
-            <div class="inner-form">
-                <div class="basic-search">
-                    <div class="input-field">
-                        <div class="icon-wrap">
-                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
-                                <path d="M18.869 19.162l-5.943-6.484c1.339-1.401 2.075-3.233 2.075-5.178 0-2.003-0.78-3.887-2.197-5.303s-3.3-2.197-5.303-2.197-3.887 0.78-5.303 2.197-2.197 3.3-2.197 5.303 0.78 3.887 2.197 5.303 3.3 2.197 5.303 2.197c1.726 0 3.362-0.579 4.688-1.645l5.943 6.483c0.099 0.108 0.233 0.162 0.369 0.162 0.121 0 0.242-0.043 0.338-0.131 0.204-0.187 0.217-0.503 0.031-0.706zM1 7.5c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5-6.5-2.916-6.5-6.5z"></path>
-                            </svg>
-                        </div>
-                        <input id="search" type="text" placeholder="Search..." />
-                        <div class="result-count">
-                            <span>108 </span>results
-                        </div>
-                    </div>
-                </div>
-                <div class="advance-search">
-                    <span class="desc">Advanced Search</span>
-                    <div class="row">
-                        <div class="input-field">
-                            <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
-                                    <option placeholder="" value="">ACCESSORIES</option>
-                                    <option>ACCESSORIES</option>
-                                    <option>SUBJECT B</option>
-                                    <option>SUBJECT C</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="input-field">
-                            <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
-                                    <option placeholder="" value="">COLOR</option>
-                                    <option>GREEN</option>
-                                    <option>SUBJECT B</option>
-                                    <option>SUBJECT C</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="input-field">
-                            <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
-                                    <option placeholder="" value="">SIZE</option>
-                                    <option>SIZE</option>
-                                    <option>SUBJECT B</option>
-                                    <option>SUBJECT C</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row second">
-                        <div class="input-field">
-                            <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
-                                    <option placeholder="" value="">SALE</option>
-                                    <option>SALE</option>
-                                    <option>SUBJECT B</option>
-                                    <option>SUBJECT C</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="input-field">
-                            <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
-                                    <option placeholder="" value="">TIME</option>
-                                    <option>THIS WEEK</option>
-                                    <option>SUBJECT B</option>
-                                    <option>SUBJECT C</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="input-field">
-                            <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
-                                    <option placeholder="" value="">TYPE</option>
-                                    <option>TYPE</option>
-                                    <option>SUBJECT B</option>
-                                    <option>SUBJECT C</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row third">
-                        <div class="input-field">
-                            <button class="btn-search">Search</button>
-                            <button class="btn-delete" id="delete">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+    </section>
 </section>
 @section Scripts {
     <script type="text/javascript" src="~/pato/vendor/jquery/jquery-3.2.1.min.js"></script>

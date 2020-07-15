@@ -17,10 +17,10 @@ namespace Eventique.Models
         public Member ReviewedMember { get; set; }
         public DateTime ReviewDate { get; set; }
 
-
         public float Avg()
         {
             float avg = (float)(Quality + TimeManagement + DeleverTime) / 3;
+            avg = (float)Math.Floor(avg * 10) / 10;
             return (avg);
         }
 

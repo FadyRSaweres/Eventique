@@ -3,7 +3,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @{
-    ViewData["Title"] = "TestDesiView";
+    ViewData["Title"] = "My Prpfile";
     Layout = "~/Views/Shared/_BackViewLayout.cshtml";
 }
 
@@ -41,7 +41,8 @@
                     <div class="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
                         <a href="~/Designers/EditDesi/@Model.ID" class="btn btn-danger" style="font-size:20px">Edit Your Personal Informations</a>
                         <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">@Model.Name</h1>
-                        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
+                        <p class="mb-4" style="color:#b30202;font-size:larger;font-weight:bold;"> <span><i class="icon-star"></i></span>@Model.Rate / <span><i class="icon-user"></i></span> @Model.Reviews.Count() User </p>
+
                     </div>
                 </div>
             </div>

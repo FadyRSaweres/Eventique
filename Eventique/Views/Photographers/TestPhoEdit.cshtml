@@ -3,7 +3,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @{
-    ViewData["Title"] = "TestPhoView";
+    ViewData["Title"] = "My Profile";
     Layout = "~/Views/Shared/_BackViewLayout.cshtml";
 }
 <link href="~/css/GetAllReviews.css" rel="stylesheet" />
@@ -37,7 +37,8 @@
                             <div class="desc">
                                 <h2 class="subheading">Hello I'm</h2>
                                 <h1 class="mb-4">@Model.Ph_Name</h1>
-                                <p class="mb-4">I am A Blogger Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                                <p>@Model.Description</p>
+                                <p class="mb-4" style="color:#b30202;font-size:larger;font-weight:bold;"> <span><i class="icon-star"></i></span>@Model.Rate / <span><i class="icon-user"></i></span> @Model.Ph_Reviews.Count() User </p>
                                 <a href="~/Photographers/EditPho/@Model.Ph_Id" class="btn btn-danger">Edit your Personal Infornations</a>
                             </div>
                         </div>

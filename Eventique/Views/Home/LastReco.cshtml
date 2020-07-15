@@ -4,8 +4,10 @@
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
 
-@section Styles{ 
+@section Styles{
     <link href="~/css/AllWeddingHallsStyle.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/pato/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/pato/css/main.css">
 }
 
 <section class="rooms-area section-padding-100-0" style="">
@@ -14,7 +16,7 @@
     <br />
     <br />
     <br />
-    <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(/Images/coverphoto.png);">
+    <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(/Images/Lastreco.jpg);">
         <div class="col-md-8 offset-md-2 mt-5" style="">
         </div>
         <div class="container h-100">
@@ -58,6 +60,7 @@
                     <input type="submit" class="btn btn-success" value="Find" />
                     <br />
                     <br />
+                    <p class="text-danger" style="text-align:center">@TempData["testReco"]</p>
                 </form>
             </div>
             <div class="col-md-3"></div>
@@ -81,45 +84,45 @@
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
-                                            <tr>
-                                                <th class="serial">Wedding Hall</th>
-                                                <th class="serial">Hall Offer Title</th>
-                                                <th class="avatar">Wedding Hall Price</th>
-                                                <th>Photographer</th>
-                                                <th>Photographee offer title</th>
-                                                <th>Photographer price</th>
-                                                <th>Designer Shop</th>
-                                                <th>Invitation Title</th>
-                                                <th>Invitation number</th>
-                                                <th>ٍsave</th>
-                                                <th>Book</th>
+                                    <tr>
+                                        <th class="serial">Wedding Hall</th>
+                                        <th class="serial">Hall Offer Title</th>
+                                        <th class="avatar">Wedding Hall Price</th>
+                                        <th>Photographer</th>
+                                        <th>Photographee offer title</th>
+                                        <th>Photographer price</th>
+                                        <th>Designer Shop</th>
+                                        <th>Invitation Title</th>
+                                        <th>Invitation number</th>
+                                        <th>ٍsave</th>
+                                        <th>Book</th>
 
-                                            </tr>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
 
 
-                                    <tr>
-                                        <td><a style="text-decoration:underline !important" href="~/Home/TestWeddView/@item.RecommendedWeddingHall.ID">@item.RecommendedWeddingHall.Name</a></td>
-                                        <td>@item.hallsOffers.Title</td>
-                                        <td>@item.hallsOffers.Price</td>
-                                        <td><a style="text-decoration:underline !important" href="~/Home/TestPhoView/@item.RecommendedPhotographer.Ph_Id"> @item.RecommendedPhotographer.Ph_Name</a></td>
-                                        <td>@item.phOffer.OfferTitle</td>
-                                        <td>@item.phOffer.OffersPrice</td>
-                                        <td><a style="text-decoration:underline !important" href="~/Home/TestDesiView/@item.RecommendedDesigner.ID"> @item.RecommendedDesigner.ShopName</a></td>
-                                        <td>@item.RecommendedInvitation.Inv_Title</td>
-                                        <td>@item.InvQuantity</td>
-                                        <td>@item.Save</td>
-                                        <td>
-                                            <form method="post" action="~/Home/AcceptReco/@item.ID">
-                                                <button type="submit" id="btnaccept" class="badge badge-complete" onclick="disable()">
-                                                    Accept
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td><a style="text-decoration:underline !important" href="~/Home/TestWeddView/@item.RecommendedWeddingHall.ID">@item.RecommendedWeddingHall.Name</a></td>
+                                            <td>@item.hallsOffers.Title</td>
+                                            <td>@item.hallsOffers.Price</td>
+                                            <td><a style="text-decoration:underline !important" href="~/Home/TestPhoView/@item.RecommendedPhotographer.Ph_Id"> @item.RecommendedPhotographer.Ph_Name</a></td>
+                                            <td>@item.phOffer.OfferTitle</td>
+                                            <td>@item.phOffer.OffersPrice</td>
+                                            <td><a style="text-decoration:underline !important" href="~/Home/TestDesiView/@item.RecommendedDesigner.ID"> @item.RecommendedDesigner.ShopName</a></td>
+                                            <td>@item.RecommendedInvitation.Inv_Title</td>
+                                            <td>@item.InvQuantity</td>
+                                            <td>@item.Save</td>
+                                            <td>
+                                                <form method="post" action="~/Home/AcceptReco/@item.ID">
+                                                    <button type="submit" id="btnaccept" class="badge badge-complete" onclick="disable()">
+                                                        Accept
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
 
                                     }
 
@@ -131,55 +134,55 @@
             }
         }
     </div>
-    </section>
+</section>
 
 
-    @*<div class="container">
-            @{ var list = Model;
-                if (list.Count() != 0)
-                {
-                    <div class="container">
-                        <div class="row block-9">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Wedding Hall</th>
-                                        <th>Wedding Hall Price</th>
-                                        <th>Photographer</th>
-                                        <th>Photographer price</th>
-                                        <th>Designer Shop</th>
-                                        <th>Invitation number</th>
-                                        <th>Save</th>
-                                        <th>Book</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @{
-                                        foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td><a href="~/Home/TestWeddView/@item.RecommendedWeddingHall.ID" class="btn btn-primary">@item.RecommendedWeddingHall.Name</a></td>
-                                                <td>@item.RecommendedWeddingHall.Hall_Price</td>
-                                                <td><a href="~/Home/TestPhoView/@item.RecommendedPhotographer.Ph_Id" class="btn btn-primary"> @item.RecommendedPhotographer.Ph_Name</a></td>
-                                                <td>@item.RecommendedPhotographer.Ph_Price</td>
-                                                <td><a href="~/Home/TestDesiView/@item.RecommendedDesigner.ID" class="btn btn-primary"> @item.RecommendedDesigner.ShopName</a></td>
-                                                <td>@item.RecommendedInvitation.Inv_Title</td>
-                                                <td>@item.Save</td>
-                                                <td>
-                                                    <form method="post" action="~/Home/AcceptReco/@item.ID">
-                                                        <button type="submit" id="btnaccept" class="btn btn-success edit" onclick="disable()">
-                                                            Accept
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        }
+@*<div class="container">
+        @{ var list = Model;
+            if (list.Count() != 0)
+            {
+                <div class="container">
+                    <div class="row block-9">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Wedding Hall</th>
+                                    <th>Wedding Hall Price</th>
+                                    <th>Photographer</th>
+                                    <th>Photographer price</th>
+                                    <th>Designer Shop</th>
+                                    <th>Invitation number</th>
+                                    <th>Save</th>
+                                    <th>Book</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td><a href="~/Home/TestWeddView/@item.RecommendedWeddingHall.ID" class="btn btn-primary">@item.RecommendedWeddingHall.Name</a></td>
+                                            <td>@item.RecommendedWeddingHall.Hall_Price</td>
+                                            <td><a href="~/Home/TestPhoView/@item.RecommendedPhotographer.Ph_Id" class="btn btn-primary"> @item.RecommendedPhotographer.Ph_Name</a></td>
+                                            <td>@item.RecommendedPhotographer.Ph_Price</td>
+                                            <td><a href="~/Home/TestDesiView/@item.RecommendedDesigner.ID" class="btn btn-primary"> @item.RecommendedDesigner.ShopName</a></td>
+                                            <td>@item.RecommendedInvitation.Inv_Title</td>
+                                            <td>@item.Save</td>
+                                            <td>
+                                                <form method="post" action="~/Home/AcceptReco/@item.ID">
+                                                    <button type="submit" id="btnaccept" class="btn btn-success edit" onclick="disable()">
+                                                        Accept
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     }
+                                }
 
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
-                }
+                </div>
             }
-        </div>*@
+        }
+    </div>*@

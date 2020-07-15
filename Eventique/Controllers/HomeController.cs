@@ -368,6 +368,11 @@ namespace Eventique.Controllers
             Photographer photographer = context.Photographers.Where(p => p.Ph_Id == id).FirstOrDefault();
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             context.Users.ToList();
+            float temp = photographer.Rate;
+            temp = (temp + review.Avg()) / 2;
+            temp = (float)Math.Floor(temp * 10) / 10;
+            photographer.Rate = temp;
+            context.SaveChanges();
             Member member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
             if (ModelState.IsValid)
             {
@@ -393,6 +398,10 @@ namespace Eventique.Controllers
             Designer designer = context.Designers.Where(d => d.ID == id).FirstOrDefault();
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             context.Users.ToList();
+            float temp = designer.Rate;
+            temp = (temp + review.Avg()) / 2;
+            temp = (float)Math.Floor(temp * 10) / 10;
+            designer.Rate = temp;
             Member member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
             if (ModelState.IsValid)
             {
@@ -418,6 +427,11 @@ namespace Eventique.Controllers
             WeddingHall hall = context.Hotels.Where(d => d.ID == id).FirstOrDefault();
             var user = User.FindFirst(ClaimTypes.NameIdentifier);
             context.Users.ToList();
+            float temp = hall.Rate;
+            temp = (temp + review.Avg()) / 2;
+            temp = (float)Math.Floor(temp * 10) / 10;
+            hall.Rate = temp;
+            context.SaveChanges();
             Member member = context.Members.Where(m => m.Users.Id == user.Value).FirstOrDefault();
             if (ModelState.IsValid)
             {
@@ -584,10 +598,17 @@ namespace Eventique.Controllers
                     }
                 }
             }
-            float f = recommendations.Select(r => r.Save).Min();
-            context.Recommendations.Add(recommendations.Where(r => r.Save == f).FirstOrDefault());
-            context.SaveChanges();
-            return RedirectToAction("LastReco");    
+            try
+            {
+                float f = recommendations.Select(r => r.Save).Min();
+                context.Recommendations.Add(recommendations.Where(r => r.Save == f).FirstOrDefault());
+                context.SaveChanges();
+            }
+            catch
+            {
+                TempData["testReco"] = "there is No Dates avilable";
+            }
+            return RedirectToAction("LastReco");
         }
 
         [HttpPost]

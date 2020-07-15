@@ -22,6 +22,7 @@ namespace Eventique.Models
         public string Offers { get; set; }
         public List<Review> HallsReview { get; set; }
         public int Capacity { get; set; }
+        public float Rate { get; set; }
         public string OtherServices { get; set; }
         public string HallType { get; set; }
         public List<AvailableDate> AvailbleDates { get; set; }

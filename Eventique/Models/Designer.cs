@@ -18,6 +18,7 @@ namespace Eventique.Models
         public int PhoneNumber { get; set; }
         public string Address { get; set; }
         public string ShopName { get; set; }
+        public float Rate { get; set; }
         public string Designer_ImgPath { get; set; }
         public string Offers { get; set; }
         public List<Review> Reviews { get; set; }
